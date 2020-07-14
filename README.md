@@ -1,10 +1,7 @@
 # ProyectoFinalEgg
-<<<<<<< HEAD
-cris
-=======
 Cris
-
+Renzo
 Martin
-Agus
+Agus B
 facuuu
->>>>>>> 974322c1fc2a31af665602cd809248341ac702c1
+Agus R
