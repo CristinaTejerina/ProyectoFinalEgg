@@ -1,6 +1,7 @@
 # ProyectoFinalEgg
-Cris
 
+Cris
+Renzo
 Martin
 Agus
 facuuu
