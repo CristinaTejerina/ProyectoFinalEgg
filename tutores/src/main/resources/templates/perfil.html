@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es">
 
 <head>
 
@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Tutores.com - inicio</title>
+  <title>Tutores.com - Perfil</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,23 +22,12 @@
 
 </head>
 <body>
-    <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Salir</a>
-          </li>
-        </ul>
-      </div>
-  </nav>
 <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
-        <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
+        <h1 class="masthead-heading mb-0">Tutores.com</h1>
+        <h2 class="masthead-subheading mb-0">Registro de Usuarios</h2>
         <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
-        <a th:href="@{/cliente/editarPerfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>
       </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -52,13 +41,29 @@
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="../static/img/done.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="../static/img/cliente.png" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4" th:text="${titulo}"></h2>
-            <p th:text="${descripcion}"></p>
+            <h2 class="display-4">Modifica tus datos Personales</h2>
+            <p>Carga tus datos y pasa a formar parte de la libreria de tu mama!! =).</p>
+            <form action="/cliente/actualizarPerfil" method="POST">
+              <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
+              
+              <input type="hidden" name="id" th:value="${perfil.id}"/> 
+
+              <label>DNI / clave </label>
+              <input type="password" class="form-control" name="documento" th:value="${perfil.documento}"/>
+              <label>Nombre completo </label>
+              <input type="text" class="form-control" name="nombre" th:value="${perfil.nombre}"/>
+              <label>Mail </label>
+              <input type="text" class="form-control" name="mail" th:value="${perfil.mail}"/>
+              <label>Domicilio </label>
+              <input type="text" class="form-control" name="domicilio" th:value="${perfil.domicilio}"/>
+              <label>Telefono </label>
+              <input type="text" class="form-control" name="telefono" th:value="${perfil.telefono}"/>
+              <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
       </div>
     </div>
@@ -78,4 +83,3 @@
 </body>
 
 </html>
-
