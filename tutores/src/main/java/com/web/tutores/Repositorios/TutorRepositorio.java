@@ -7,21 +7,19 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 @Repository
-public interface TutorRepositorio extends JpaRepository<Tutor, String>{
-    
-    @Query("SELECT a FROM Tutor a WHERE (a.nombre = :nombre AND a.apellido = :apellido)")
+public interface TutorRepositorio extends JpaRepository<Tutor, String> {
+
+    @Query("SELECT a FROM Tutor a WHERE a.nombre = :nombre AND a.apellido = :apellido")
     public Tutor buscarPorNombre(@Param("nombre") String nombre, @Param("apellido") String apellido);
-    
-    @Query("SELECT a FROM Tutor a ORDER BY a.apellido")
-    public List <Tutor> listaTutores();
-    
-    @Query("SELECT a FROM Tutor a WHERE(a.zona = :nombre)")
+
+    @Query("SELECT a FROM Tutor a ORDER BY a.apellido ")
+    public List<Tutor> listaTutores();
+
+    @Query("SELECT a FROM Tutor a WHERE a.zona.nombre = :nombre")
     public List<Tutor> buscarPorZona(@Param("nombre") String nombre);
-    
-    @Query("SELECT a FROM Tutor a WHERE(a.materia = :nombre)")
+
+    @Query("SELECT a FROM Tutor a, IN(a.materias) m WHERE m.nombre = :nombre")
     public List<Tutor> buscarPorMateria(@Param("nombre") String nombre);
-    
-    
+
 }
