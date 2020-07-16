@@ -16,7 +16,6 @@ public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-
     protected String id;
     protected String nombre;
     protected String apellido;
@@ -25,18 +24,21 @@ public class Usuario {
     protected String telefono;
 
     @OneToOne
-    private Zona zona;
+    protected Zona zona;
 
     @OneToOne
-    private Foto foto;
+    protected Foto foto;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date alta;
+    protected Date alta;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date baja;
+    protected Date baja;
 
     //GET - SET
+    public Usuario() {
+    }
+
     public Date getAlta() {
         return alta;
     }
