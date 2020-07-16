@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Entidades/Usuario.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/SeguridadConfiguracion.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Repositorios/FotoRepositorio.java
@@ -26,6 +27,8 @@
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/TutoresApplication.java
 =======
 
+=======
+>>>>>>> 0ac20b2d283402a7ff9d7a79ef5de2f8497a4fa1
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Enums.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\NivelEducativo.java
@@ -33,6 +36,7 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\Controladores.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\ZonaServicio.java
+E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\PlataformaControlador.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\SeguridadConfiguracion.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Errores\ErrorServicio.java
@@ -51,5 +55,8 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\TutorControlador.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
+<<<<<<< HEAD
 
 >>>>>>> a51a3c7254ad0054391628296e494bed6f53f7f2
+=======
+>>>>>>> 0ac20b2d283402a7ff9d7a79ef5de2f8497a4fa1
