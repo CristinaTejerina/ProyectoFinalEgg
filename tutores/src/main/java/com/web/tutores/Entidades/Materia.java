@@ -1,6 +1,8 @@
 
 package com.web.tutores.Entidades;
 
+import com.web.tutores.Enums.Asignatura;
+import com.web.tutores.Enums.NivelEducativo;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -28,7 +30,7 @@ public class Materia {
     private Date baja;
     
     @Enumerated(EnumType.STRING) //hacer refactor cuando importe enums
-    private Asignaturas asignatura;
+    private Asignatura asignatura;
     
     @Enumerated(EnumType.STRING)
     private NivelEducativo nivelEducativo;
@@ -89,6 +91,22 @@ public class Materia {
 
     public void setBaja(Date baja) {
         this.baja = baja;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
+    }
+
+    public NivelEducativo getNivelEducativo() {
+        return nivelEducativo;
+    }
+
+    public void setNivelEducativo(NivelEducativo nivelEducativo) {
+        this.nivelEducativo = nivelEducativo;
     }
             
     
