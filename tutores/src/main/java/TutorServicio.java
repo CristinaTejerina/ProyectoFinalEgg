@@ -8,6 +8,7 @@ import com.web.tutores.Repositorios.TutorRepositorio;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -43,7 +44,7 @@ public class TutorServicio{
     }
         
         
-    
+    @Transactional
     public void modificarTutor(String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Foto foto, List<Materia>materias, String descripcion) throws ErrorServicio{
         
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, zona, materias);
@@ -153,8 +154,6 @@ public class TutorServicio{
         return tutorRepositorio.buscarPorNombre(nombre, apellido);
     }
         
-        
-        
         public List <Tutor> tutoresDisponibles(){
         return tutorRepositorio.listaTutores();
     }
@@ -171,5 +170,6 @@ public class TutorServicio{
         public List<Tutor> buscarPorMateria(String nombre){
             return tutorRepositorio.buscarPorMateria(nombre);
         }
+        
 }
 

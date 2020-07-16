@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/web/tutores/Controladores/TutorControlador.class
 com/web/tutores/Servicio/UsuarioServicio.class
 com/web/tutores/TutoresApplication.class
@@ -23,3 +24,10 @@ com/web/tutores/Repositorios/ZonaRepositorio.class
 com/web/tutores/Entidades/Materia.class
 com/web/tutores/Servicio/FotoServicio.class
 com/web/tutores/Enums/Enums.class
+=======
+
+com\web\tutores\SeguridadConfiguracion.class
+com\web\tutores\TutoresApplication.class
+
+
+>>>>>>> a51a3c7254ad0054391628296e494bed6f53f7f2
