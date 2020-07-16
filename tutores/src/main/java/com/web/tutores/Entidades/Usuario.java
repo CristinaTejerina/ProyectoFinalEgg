@@ -29,15 +29,14 @@ public class Usuario {
 
     @OneToOne
     private Foto foto;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date alta;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
-    
-       //GET - SET
 
+    //GET - SET
     public Date getAlta() {
         return alta;
     }
@@ -53,8 +52,6 @@ public class Usuario {
     public void setBaja(Date baja) {
         this.baja = baja;
     }
-    
- 
 
     public String getId() {
         return id;
