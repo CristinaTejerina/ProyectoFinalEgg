@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es">
 
 <head>
 
@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Tutores.com - inicio</title>
+  <title>Tutores.com - Usuario</title>
 
   <!-- Bootstrap core CSS -->
   <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -22,23 +22,12 @@
 
 </head>
 <body>
-    <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/logout">Salir</a>
-          </li>
-        </ul>
-      </div>
-  </nav>
 <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
-        <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
+        <h1 class="masthead-heading mb-0">Tutores.com</h1>
+        <h2 class="masthead-subheading mb-0">Registro de Usuario</h2>
         <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
-        <a th:href="@{/cliente/editarPerfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>
       </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -52,13 +41,31 @@
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="../static/img/done.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="../static/img/cliente.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4" th:text="${titulo}"></h2>
-            <p th:text="${descripcion}"></p>
+            <h2 class="display-4">Cargar un Libro</h2>
+            <p>Carga los datos del libro nuevo que se incorpora a la libreria.</p>
+            <form action="/libro/registrarLibro" method="POST">
+              <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
+              <label>Isbn del Libro </label>
+              <input type="text" class="form-control" name="isbn"/>
+              <label>Titulo del Libro </label>
+              <input type="text" class="form-control" name="titulo"/>
+              <label>Cantidad de ejemplares en libreria </label>
+              <input type="number" class="form-control" name="ejemplares"/>
+              <label>Año de Publicacion </label>
+              <input type="text" class="form-control" name="anio"/>
+              <br><label>Nombre de la Editorial </label><br>
+              <select clas="form-control" name= "idEditorial">
+                  <option th:each="editorial: ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"></option>
+              </select>
+              <br><label>Nombre del Autor </label><br>
+              <input type="text" class="form-control" name="autor"/>
+
+              <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
       </div>
     </div>
