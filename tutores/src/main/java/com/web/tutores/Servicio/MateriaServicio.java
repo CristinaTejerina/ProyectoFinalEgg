@@ -21,7 +21,7 @@ public class MateriaServicio {
     }
     
     
-    public void validar(String nombre, Asignaturas asignatura, NivelEducativo nivel) extends ErrorServicio{
+    public void validar(String nombre, Asignaturas asignatura, NivelEducativo nivel) extends ErrorServicio throws ErrorServicio{
         if(nombre == null || nombre.isEmpty()){
             throw new ErrorServicio("El nombre de la mascota no puede ser nulo o vacio");
         }
