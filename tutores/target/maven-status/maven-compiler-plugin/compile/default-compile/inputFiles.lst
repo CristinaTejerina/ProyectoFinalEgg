@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Entidades/Usuario.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/SeguridadConfiguracion.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/TutorServicio.java
@@ -53,3 +54,32 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
 >>>>>>> 853d7a5befa3ae3f27c32356998020ba7a262ea1
+=======
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Errores\ErrorServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\ZonaRepositorio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Usuario.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\FotoServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Enums.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\PlataformaControlador.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\MateriaControlador.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\TutoresApplication.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\SeguridadConfiguracion.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\NivelEducativo.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\Controladores.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\UsuarioControlador.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\TutorControlador.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Asignatura.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\MateriaServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\TutorServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\ZonaServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Materia.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\UsuarioRepositorio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\FotoRepositorio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ErroresController.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Tutor.java
+C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
+>>>>>>> 3578df153acd15bbbcd3365bcf2f8d4586cadfc7

@@ -36,10 +36,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-
-    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String idZona) throws ErrorServicio {
-        Zona zona = zonaRepositorio.getOne(mail);
-        validar(nombre,apellido,mail,clave,zona);
+    
+    @Transactional
+    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave,String clave2, String telefono, String idZona) throws ErrorServicio {
+        Zona zona = zonaRepositorio.getOne(idZona);
+        validar(nombre,apellido,mail,clave,clave2,zona);
         Usuario usuario = new Usuario();
 
         usuario.setNombre(nombre);
@@ -48,20 +49,21 @@ public class UsuarioServicio implements UserDetailsService {
 
         usuario.setZona(zona);
         String encriptada = new BCryptPasswordEncoder().encode(clave);
-        usuario.setClave(clave);
+        usuario.setClave(encriptada);
         usuario.setAlta(new Date());
+        usuario.setTelefono(telefono);
 
-        Foto foto = fotoServicio.guardar(archivo);
+        usuario.setFoto(fotoServicio.guardar(archivo));
         usuarioRepositorio.save(usuario);
 
         return usuario;
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String idZona) throws ErrorServicio {
+    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave,String clave2, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
         
-        validar(nombre, apellido, mail, clave,zona);
+        validar(nombre, apellido, mail, clave,clave2,zona);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -115,6 +117,10 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     public void validar(String nombre, String apellido, String mail, String clave, String clave2, Zona zona) throws ErrorServicio {
+       
+        System.out.println("++++++++++++++++"+clave+"++++++++++++++++++++++"+clave2);
+        System.out.println(clave.equals(clave2));
+        
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre del usuario no puede ser nulo");
         }
@@ -125,7 +131,10 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El mail del usuario no puede ser nulo");
         }
         if (clave == null || clave.isEmpty() || clave.length() <= 6) {
-            throw new ErrorServicio("El clave del usuario no puede ser nulo y tiene que tener mas de 6 digitos ");
+            throw new ErrorServicio("La clave del usuario no puede ser nulo y tiene que tener mas de 6 digitos ");
+        }
+         if (!clave2.equals( clave)) {
+            throw new ErrorServicio("La clave 2 no es igual a la primera ingresada");
         }
 
         if (zona == null) {
