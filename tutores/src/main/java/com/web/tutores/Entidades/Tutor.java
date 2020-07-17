@@ -12,30 +12,30 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Tutor extends Usuario{
+public class Tutor{
 
-//    //GENERADOR DE ID AUTOMATICO
-//    @Id
-//    @GeneratedValue(generator = "uuid")
-//    @GenericGenerator(name = "uuid", strategy = "uuid2")
-//    private String id;
-//    private String nombre;
-//    private String apellido;
-//    private String mail;
-//    private String clave;
-//    private String telefono;
-//
-//    @OneToOne
-//    private Zona zona;
-//
-//    @OneToOne
-//    private Foto foto;
-//
-//    @Temporal(TemporalType.TIMESTAMP)
-//    private Date alta;
-//
-//    @Temporal(TemporalType.TIMESTAMP)
-//    private Date baja;
+    //GENERADOR DE ID AUTOMATICO
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    private String nombre;
+    private String apellido;
+    private String mail;
+    private String clave;
+    private String telefono;
+
+    @OneToOne
+    private Zona zona;
+
+    @OneToOne
+    private Foto foto;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date alta;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date baja;
     
     private String descripcion;
 
@@ -65,6 +65,86 @@ public class Tutor extends Usuario{
 
     public void setMaterias(List<Materia> materias) {
         this.materias = materias;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Zona getZona() {
+        return zona;
+    }
+
+    public void setZona(Zona zona) {
+        this.zona = zona;
+    }
+
+    public Foto getFoto() {
+        return foto;
+    }
+
+    public void setFoto(Foto foto) {
+        this.foto = foto;
+    }
+
+    public Date getAlta() {
+        return alta;
+    }
+
+    public void setAlta(Date alta) {
+        this.alta = alta;
+    }
+
+    public Date getBaja() {
+        return baja;
+    }
+
+    public void setBaja(Date baja) {
+        this.baja = baja;
     }
     
     
