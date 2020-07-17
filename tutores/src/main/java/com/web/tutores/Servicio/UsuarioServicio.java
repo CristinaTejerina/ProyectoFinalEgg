@@ -73,7 +73,7 @@ public class UsuarioServicio implements UserDetailsService {
             usuario.setMail(mail);
             String encriptada = new BCryptPasswordEncoder().encode(clave);
             usuario.setClave(encriptada);
-            usuario.getZona();
+            usuario.setZona(zona);
 
             String idFoto = null;
 
