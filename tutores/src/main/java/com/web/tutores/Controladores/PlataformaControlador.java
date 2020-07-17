@@ -19,11 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/")
 public class PlataformaControlador {
 
-    @Autowired
-    private UsuarioServicio usuarioServicio;
-
-    @Autowired
-    private ZonaRepositorio zonaRepositorio;
+//    @Autowired
+//    private UsuarioServicio usuarioServicio;
+//
+//    @Autowired
+//    private ZonaRepositorio zonaRepositorio;
 
     @GetMapping("/")
     public String index() {
@@ -42,12 +42,12 @@ public class PlataformaControlador {
         return "login.html";
     }
 
-    @GetMapping("/registro")
-    public String registro(ModelMap modelo) {
-        List<Zona> zonas = zonaRepositorio.findAll();
-        modelo.put("zonas", zonas);
-        return "registro.html";
-    }
+//    @GetMapping("/registro")
+//    public String registro(ModelMap modelo) {
+//        List<Zona> zonas = zonaRepositorio.findAll();
+//        modelo.put("zonas", zonas);
+//        return "registro.html";
+//    }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
     @GetMapping("/inicio")
@@ -67,25 +67,25 @@ public class PlataformaControlador {
         return "exito.html";
     }
 
-    @PostMapping("/registrar")
-    public String registrar(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave1, @RequestParam String clave2, String idZona) {
-        try {
-            usuarioServicio.registrar(archivo, nombre, apellido, mail, clave1, clave2, idZona);
-        } catch (ErrorServicio ex) {
-
-            List<Zona> zonas = zonaRepositorio.findAll();
-            modelo.put("zonas", zonas);
-            modelo.put("error", ex.getMessage());
-            modelo.put("nombre", nombre);
-            modelo.put("apellido", apellido);
-            modelo.put("maiil", mail);
-            modelo.put("clave1", clave1);
-            modelo.put("clave2", clave2);
-
-            return "registro.html";
-        }
-        modelo.put("titulo", "¡Bienvenido a la comunidad de Tinder !");
-        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
-        return "exito.html";
-    }
+//    @PostMapping("/registrar")
+//    public String registrar(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave1, @RequestParam String clave2, String idZona) {
+//        try {
+//            usuarioServicio.registrar(archivo, nombre, apellido, mail, clave1, clave2, idZona);
+//        } catch (ErrorServicio ex) {
+//
+//            List<Zona> zonas = zonaRepositorio.findAll();
+//            modelo.put("zonas", zonas);
+//            modelo.put("error", ex.getMessage());
+//            modelo.put("nombre", nombre);
+//            modelo.put("apellido", apellido);
+//            modelo.put("maiil", mail);
+//            modelo.put("clave1", clave1);
+//            modelo.put("clave2", clave2);
+//
+//            return "registro.html";
+//        }
+//        modelo.put("titulo", "¡Bienvenido a la comunidad de Tinder !");
+//        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
+//        return "exito.html";
+//    }
 }
