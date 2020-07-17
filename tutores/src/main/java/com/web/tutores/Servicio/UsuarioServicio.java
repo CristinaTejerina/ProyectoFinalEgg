@@ -37,9 +37,9 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
-    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String idZona) throws ErrorServicio {
+    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave,String clave2, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(mail);
-        validar(nombre,apellido,mail,clave,zona);
+        validar(nombre,apellido,mail,clave,clave2,zona);
         Usuario usuario = new Usuario();
 
         usuario.setNombre(nombre);
@@ -58,10 +58,10 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String idZona) throws ErrorServicio {
+    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave,String clave2, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
         
-        validar(nombre, apellido, mail, clave,zona);
+        validar(nombre, apellido, mail, clave,clave2,zona);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -125,6 +125,9 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("El mail del usuario no puede ser nulo");
         }
         if (clave == null || clave.isEmpty() || clave.length() <= 6) {
+            throw new ErrorServicio("El clave del usuario no puede ser nulo y tiene que tener mas de 6 digitos ");
+        }
+         if (clave2 == null || clave2.isEmpty() || clave2.length() <= 6) {
             throw new ErrorServicio("El clave del usuario no puede ser nulo y tiene que tener mas de 6 digitos ");
         }
 
