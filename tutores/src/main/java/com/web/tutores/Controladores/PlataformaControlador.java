@@ -22,8 +22,8 @@ public class PlataformaControlador {
 //    @Autowired
 //    private UsuarioServicio usuarioServicio;
 //
-//    @Autowired
-//    private ZonaRepositorio zonaRepositorio;
+    @Autowired
+    private ZonaRepositorio zonaRepositorio;
 
     @GetMapping("/")
     public String index() {
@@ -42,12 +42,12 @@ public class PlataformaControlador {
         return "login.html";
     }
 
-//    @GetMapping("/registro")
-//    public String registro(ModelMap modelo) {
-//        List<Zona> zonas = zonaRepositorio.findAll();
-//        modelo.put("zonas", zonas);
-//        return "registro.html";
-//    }
+    @GetMapping("/registro")
+    public String registro(ModelMap modelo) {
+        List<Zona> zonas = zonaRepositorio.findAll();
+        modelo.put("zonas", zonas);
+        return "registro2.html";
+    }
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
     @GetMapping("/inicio")
