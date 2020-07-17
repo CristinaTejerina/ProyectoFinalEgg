@@ -28,8 +28,9 @@ public class TutorServicio {
 
     @Autowired
     private TutorRepositorio tutorRepositorio;
-
-    public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, Foto foto, List<Materia> materias, String descripcion) throws ErrorServicio {
+    
+    @Transactional
+    public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, List<Materia> materias, String descripcion) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
         validarTutor(nombre, apellido, mail, clave, telefono, zona, materias);
 
