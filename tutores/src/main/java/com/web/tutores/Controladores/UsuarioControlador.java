@@ -24,11 +24,11 @@ public class UsuarioControlador {
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
-    @GetMapping("/registro")
+    @GetMapping("/registroAlumno")
     public String registro(ModelMap modelo) {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
-        return "registro.html";
+        return "registroAlumno.html";
     }
 
     @GetMapping("/modificar")
@@ -53,7 +53,7 @@ public class UsuarioControlador {
         return "habilitar.html";
     }
 
-    @PostMapping("/registrar")
+    @PostMapping("/registrarAlumno")
     public String registrar(ModelMap modelo, MultipartFile archivo, 
             @RequestParam String nombre, 
             @RequestParam String apellido,
@@ -74,7 +74,7 @@ public class UsuarioControlador {
             modelo.put("clave2", clave2);
             modelo.put("telefono", telefono);
 
-            return "registro.html";
+            return "registro2.html";
         }
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
