@@ -28,7 +28,6 @@
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/TutoresApplication.java
 =======
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
-E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Enums.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\NivelEducativo.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Asignatura.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
@@ -54,4 +53,8 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\TutorControlador.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
+<<<<<<< HEAD
 >>>>>>> b395119cc4b7bf12c2a4e3a17a817f111ec878eb
+=======
+>>>>>>> 5179d8cbaa7157de90cd9ae57b0be4e5031eab55
+>>>>>>> 15cf793f781210aabd8985846a06a965ef682130

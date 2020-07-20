@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com/web/tutores/TutoresApplication.class
 com/web/tutores/Repositorios/MateriaRepositorio.class
 com/web/tutores/Controladores/MateriaControlador.class
@@ -25,3 +26,5 @@ com/web/tutores/Entidades/Usuario.class
 com/web/tutores/Repositorios/UsuarioRepositorio.class
 com/web/tutores/Repositorios/TutorRepositorio.class
 com/web/tutores/Servicio/FotoServicio.class
+=======
+>>>>>>> 15cf793f781210aabd8985846a06a965ef682130

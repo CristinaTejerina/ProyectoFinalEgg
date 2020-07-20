@@ -1,20 +1,28 @@
 package com.web.tutores.Controladores;
 
+<<<<<<< HEAD
 
 import org.springframework.stereotype.Controller;
+=======
+import com.web.tutores.Entidades.Tutor;
+>>>>>>> 15cf793f781210aabd8985846a06a965ef682130
 import com.web.tutores.Entidades.Zona;
-import com.web.tutores.Errores.ErrorServicio;
+
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -86,6 +94,25 @@ public class TutorControlador {
 //        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
 //        return "exito.html";
         return null;
+
+    }
+
+    @GetMapping("/listado")
+    public ModelAndView listar(@RequestParam(required = false) String q) {
+
+        ModelAndView modelV = new ModelAndView("nombrevista");
+
+        List<Tutor> tutores;
+
+        if (q == null || q.isEmpty()) {
+            tutores = tutorServicio.listarActivos();
+        } else {
+            tutores = tutorServicio.listarActivos(q);
+        }
+
+        modelV.addObject("listatutores", tutores);
+
+        return modelV;
     }
 
 }
