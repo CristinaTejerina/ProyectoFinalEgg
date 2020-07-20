@@ -1,8 +1,7 @@
 package com.web.tutores.Controladores;
 
-<<<<<<< HEAD
+
 import org.springframework.stereotype.Controller;
-=======
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
@@ -16,16 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
->>>>>>> e5863bd46e8496947bfe7c0279f377cecca125ce
+
 
 @Controller
 public class TutorControlador {
-<<<<<<< HEAD
-    
-    
-    
-}
-=======
+
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
@@ -95,4 +89,3 @@ public class TutorControlador {
     }
 
 }
->>>>>>> e5863bd46e8496947bfe7c0279f377cecca125ce

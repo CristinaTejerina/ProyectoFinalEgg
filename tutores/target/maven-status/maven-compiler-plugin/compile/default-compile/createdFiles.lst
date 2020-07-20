@@ -14,9 +14,12 @@ com/web/tutores/Servicio/ZonaServicio.class
 com/web/tutores/Enums/Asignatura.class
 com/web/tutores/Controladores/Controladores.class
 com/web/tutores/Entidades/Tutor.class
+com/web/tutores/Controladores/UsuarioControlador.class
 com/web/tutores/Errores/ErrorServicio.class
+com/web/tutores/Controladores/PlataformaControlador.class
 com/web/tutores/Entidades/Zona.class
 com/web/tutores/Entidades/Foto.class
+com/web/tutores/Servicio/TutorServicio.class
 com/web/tutores/Servicio/MateriaServicio.class
 com/web/tutores/Entidades/Usuario.class
 com/web/tutores/Repositorios/UsuarioRepositorio.class
