@@ -51,9 +51,9 @@
             <form action="/logincheck" method="POST">
               <p th:if="${error != null}" th:text="${error}" style="color:red"></p>
               <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p>
-              <label>Nombre completo </label>
-              <input type="text" class="form-control" name="nombre"/>
-              <label>DNI / clave </label>
+              <label>Mail </label>
+              <input type="email" class="form-control" name="mail"/>
+              <label>Clave </label>
               <input type="password" class="form-control" name="clave"/>
               <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
