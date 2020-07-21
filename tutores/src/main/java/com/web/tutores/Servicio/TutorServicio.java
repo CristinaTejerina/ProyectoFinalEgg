@@ -8,11 +8,14 @@ import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.TutorRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
+import java.awt.print.Pageable;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,13 +25,13 @@ public class TutorServicio {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
-     @Autowired
+
+    @Autowired
     private FotoServicio fotoServicio;
 
     @Autowired
     private TutorRepositorio tutorRepositorio;
-    
+
     @Transactional
     public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, List<Materia> materias, String descripcion) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
@@ -43,16 +46,15 @@ public class TutorServicio {
         tutor.setClave(encriptada);
         tutor.setTelefono(telefono);
         tutor.setZona(zona);
-        
+
         tutor.setAlta(new Date());
         tutor.setBaja(null);
         tutor.setDescripcion(descripcion);
         tutor.setMaterias(materias);
-        
+
         tutor.setFoto(fotoServicio.guardar(archivo));
         tutorRepositorio.save(tutor);
 
-       
     }
 
     @Transactional
@@ -75,7 +77,6 @@ public class TutorServicio {
             tutor.setZona(zona);
             tutor.setFoto(foto);
             tutor.setMaterias(materias);
-            
 
             tutorRepositorio.save(tutor);
 
@@ -169,4 +170,11 @@ public class TutorServicio {
         return tutorRepositorio.buscarPorMateria(nombre);
     }
 
+    public List<Tutor> listarActivos( String q) {
+        return tutorRepositorio.buscarActivos("%" + q + "%");
+    }
+    
+    public List<Tutor> listarActivos() {
+        return tutorRepositorio.buscarActivos();
+    }
 }
