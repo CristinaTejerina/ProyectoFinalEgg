@@ -18,8 +18,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="../static/css/one-page-wonder.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../static/css/tabla.css">
+  <link href="/css/one-page-wonder.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -66,8 +65,9 @@
 
               <br><label> Zona </label></br>
               <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
-                  <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>  
+                  <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
               </select>
+
               <table style="width: 50%;";>
                 <tr>
                   <th>Materias</th>
@@ -154,7 +154,6 @@
                 </tr>
 
               </table>
-                
 
               <br><label >Contraseña</label></br>
               <input name= "clave"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave}"/>
