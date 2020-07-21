@@ -24,7 +24,7 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     @Query("SELECT a FROM Tutor a, IN(a.materias) m WHERE m.nombre = :nombre")
     public List<Tutor> buscarPorMateria(@Param("nombre") String nombre);
 
-<<<<<<< HEAD
+
 //    @Query("SELECT a from Tutor a WHERE a.eliminado IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Actividad> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
 //
@@ -53,7 +53,7 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
 //    public Page<HelpRequest> toList(Pageable paginable, String q) {
 //        return helpRequestRepository.searchActives(paginable, "%" + q + "%");
 //    }
-=======
+
 //    @Query("SELECT a from Tutor a WHERE a.baja IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Tutor> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
     
@@ -70,6 +70,6 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
             + " OR v.nivelEducativo LIKE :q "
             + " OR v.asignatura LIKE :q ")
     public List<Tutor> buscarActivos(@Param("q") String q);
->>>>>>> b32ab8803b5433646bc0ee0c72fdb7e3ecc15b93
+
 
 }
