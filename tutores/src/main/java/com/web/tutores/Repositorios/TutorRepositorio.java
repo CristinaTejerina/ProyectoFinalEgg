@@ -24,16 +24,15 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     @Query("SELECT a FROM Tutor a, IN(a.materias) m WHERE m.nombre = :nombre")
     public List<Tutor> buscarPorMateria(@Param("nombre") String nombre);
 
-<<<<<<< HEAD
+
 //    @Query("SELECT a from Tutor a WHERE a.eliminado IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Actividad> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
 //
 //    @Query("SELECT a from Actividad a WHERE a.eliminado IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Actividad> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
-<<<<<<< HEAD
+
 //
-=======
->>>>>>> b395119cc4b7bf12c2a4e3a17a817f111ec878eb
+
 //    public Page<Actividad> listarActivos(String q) {
 //        return actividadRepository.buscarActivos(paginable, "%" + q + "%");
 //    }
@@ -56,13 +55,12 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
 //    public Page<HelpRequest> toList(Pageable paginable, String q) {
 //        return helpRequestRepository.searchActives(paginable, "%" + q + "%");
 //    }
-<<<<<<< HEAD
 
-=======
->>>>>>> b395119cc4b7bf12c2a4e3a17a817f111ec878eb
-=======
+
+
 //    @Query("SELECT a from Tutor a WHERE a.baja IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Tutor> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
+    
     
     @Query("SELECT a from Tutor a WHERE a.baja IS NULL")
     public List<Tutor> buscarActivos();
@@ -78,5 +76,5 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
             + " OR v.asignatura LIKE :q ")
     public List<Tutor> buscarActivos(@Param("q") String q);
 
->>>>>>> 15cf793f781210aabd8985846a06a965ef682130
+
 }

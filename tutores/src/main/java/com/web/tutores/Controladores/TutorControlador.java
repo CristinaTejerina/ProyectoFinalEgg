@@ -1,11 +1,11 @@
 package com.web.tutores.Controladores;
 
-<<<<<<< HEAD
+
 
 import org.springframework.stereotype.Controller;
-=======
+
 import com.web.tutores.Entidades.Tutor;
->>>>>>> 15cf793f781210aabd8985846a06a965ef682130
+
 import com.web.tutores.Entidades.Zona;
 
 import com.web.tutores.Repositorios.ZonaRepositorio;
