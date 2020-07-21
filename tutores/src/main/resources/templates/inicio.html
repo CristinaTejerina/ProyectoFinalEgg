@@ -37,7 +37,7 @@
       <div class="container">
         <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
         <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
-        <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
+        <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
         <a th:href="@{/cliente/editarPerfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>
       </div>
     </div>
