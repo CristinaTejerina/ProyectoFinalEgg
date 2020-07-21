@@ -36,11 +36,11 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Transactional
-    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave,String clave2, String telefono, String idZona) throws ErrorServicio {
+    public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
-        validar(nombre,apellido,mail,clave,clave2,zona);
+        validar(nombre, apellido, mail, clave, clave2, zona);
         Usuario usuario = new Usuario();
 
         usuario.setNombre(nombre);
@@ -60,10 +60,10 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave,String clave2, String idZona) throws ErrorServicio {
+    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
-        
-        validar(nombre, apellido, mail, clave,clave2,zona);
+
+        validar(nombre, apellido, mail, clave, clave2, zona);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -117,10 +117,10 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     public void validar(String nombre, String apellido, String mail, String clave, String clave2, Zona zona) throws ErrorServicio {
-       
-        System.out.println("++++++++++++++++"+clave+"++++++++++++++++++++++"+clave2);
+
+        System.out.println("++++++++++++++++" + clave + "++++++++++++++++++++++" + clave2);
         System.out.println(clave.equals(clave2));
-        
+
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre del usuario no puede ser nulo");
         }
@@ -133,7 +133,7 @@ public class UsuarioServicio implements UserDetailsService {
         if (clave == null || clave.isEmpty() || clave.length() <= 6) {
             throw new ErrorServicio("La clave del usuario no puede ser nulo y tiene que tener mas de 6 digitos ");
         }
-         if (!clave2.equals( clave)) {
+        if (!clave2.equals(clave)) {
             throw new ErrorServicio("La clave 2 no es igual a la primera ingresada");
         }
 
@@ -146,11 +146,14 @@ public class UsuarioServicio implements UserDetailsService {
         return usuarioRepositorio.getOne(id);
     }
 
+    public Usuario buscarPorEmail(String email) {
+        return usuarioRepositorio.buscarPorMail(email);
+    }
+
     private void validar(String nombre, String apellido, String mail, String clave, Zona zona) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
+
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepositorio.buscarPorMail(mail);
@@ -160,12 +163,10 @@ public class UsuarioServicio implements UserDetailsService {
 
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
             permisos.add(p1);
-            
-            ServletRequestAttributes attr=(ServletRequestAttributes)RequestContextHolder.currentRequestAttributes();
-            HttpSession session=attr.getRequest().getSession();
-            session.setAttribute("usuariosession", usuario);
 
-         
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession();
+            session.setAttribute("usuariosession", usuario);
 
             User user = new User(usuario.getMail(), usuario.getClave(), permisos);
             return user;
@@ -173,8 +174,5 @@ public class UsuarioServicio implements UserDetailsService {
             return null;
         }
     }
-    
 
-   
-    
 }
