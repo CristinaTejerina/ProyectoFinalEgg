@@ -1,12 +1,17 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.UsuarioServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSessionIdListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +24,9 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/")
 public class PlataformaControlador {
 
-//    @Autowired
-//    private UsuarioServicio usuarioServicio;
-//
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
@@ -49,9 +54,21 @@ public class PlataformaControlador {
         return "registro2.html";
     }
 
+    public Usuario usuarioLogueado() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
+
+        return usuario;
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
     @GetMapping("/inicio")
-    public String inicio() {
+    public String inicio(ModelMap model, HttpSession session) {
+
+        session.setAttribute("clientesession", usuarioLogueado());
+
         return "inicio.html";
     }
 
