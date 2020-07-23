@@ -174,5 +174,9 @@ public class UsuarioServicio implements UserDetailsService {
             return null;
         }
     }
+    
+     public Usuario buscarPorId(String id){
+        return usuarioRepositorio.getOne(id);
+    } 
 
 }

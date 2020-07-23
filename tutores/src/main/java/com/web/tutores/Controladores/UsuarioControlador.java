@@ -1,5 +1,6 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
@@ -31,12 +32,17 @@ public class UsuarioControlador {
         return "registroAlumno.html";
     }
 
-    @GetMapping("/modificar")
-    public String modificar(ModelMap modelo) {
+   @GetMapping("/editar-perfil")
+    public String editarPerfil(@RequestParam String id, ModelMap model) {
         List<Zona> zonas = zonaRepositorio.findAll();
-        modelo.put("zonas", zonas);
-        return "modificar.html";
+        model.put("zonas", zonas);
+        
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+        model.addAttribute("perfil", usuario);  
+
+        return "perfilAlumno.html";
     }
+    
 
     @GetMapping("/deshabilitar")
     public String deshabilitar(ModelMap modelo) {
@@ -81,4 +87,5 @@ public class UsuarioControlador {
         return "exito.html";
     }
 
+    
 }
