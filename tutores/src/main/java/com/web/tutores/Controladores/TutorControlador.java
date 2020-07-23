@@ -32,11 +32,11 @@ public class TutorControlador {
         return "registroTutor.html";
     }
 
-    @GetMapping("/modificar")
+    @GetMapping("/configuracionTutor")
     public String modificar(ModelMap modelo) {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
-        return "modificar.html";
+        return "configuracionTutor.html";
     }
 
     @GetMapping("/deshabilitar")
