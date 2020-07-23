@@ -67,13 +67,94 @@
               <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
                   <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
               </select>
-              
-              <br><label> Asignatura </label></br>
-              <p>En la seccion de "Configuracion" de "Tutor", podrá especificar datos de materia e incluir otras más para enseñar</p>
-              <select class="form-control" name= "idMateria"  type="text" placeholder="Indique la materia que quiere enseñar">
-                <option th:each="materia:${materias}" th:value="${materia.id}" th:text="${materia.nombre + ' ' + materia.nivelEducativo}" >Asignatura</option>
-              </select>
-              
+
+              <table style="width: 50%;">
+                <tr>
+                <br> <th>Asignatura</th>
+                  <th></th>
+                  <th>Nivel</th>
+                </tr>
+                <tr>
+                  <td>Idiomas</td>
+                  <td><input type="checkbox" name="pone"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Historia</td>
+                  <td><input type="checkbox" name="historia" ></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Lengua y literatura</td>
+                  <td><input type="checkbox" name="pone"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Matematica y Algebra</td>
+                  <td><input type="checkbox"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td> Fisica</td>
+                  <td><input type="checkbox"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td> Quimica</td>
+                  <td><input type="checkbox"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Otras</td>
+                  <td><input type="checkbox"></td>
+                  <td><select name="nivel" id="idMateria">
+                    <option ></option>
+                    <option>Inicial</option>
+                    <option value="">Intermedio</option>
+                    <option value="">Universitario</option>
+                  </select>
+                  </td>
+                  <td> <input type="text" placeholder="Escriba la materia a dar"></td>
+                </tr>
+
+              </table>
+
               <br><label >Contraseña</label></br>
               <input name= "clave"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave}"/>
 
@@ -85,14 +166,6 @@
                   <input class="form-control" name="archivo" id="foto" type="file" placeholder="Foto" />
                   <p class="help-block text-danger"></p>
               </div>
-
-              <a href="/configuracionGral/crearMateria" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar materia</a>
-
-              <div class="col-lg-6 order-lg-1">
-                <div class="p-5">
-                  <h2 class="display-4" th:text="${titulo}"></h2>
-              </div>
-
               </div>
               <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
