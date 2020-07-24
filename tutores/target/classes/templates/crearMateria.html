@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<html lang="es">
 
 <head>
 
@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Tutores.com - Exito</title>
+  <title>Tutores.com - Materias</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,8 +26,8 @@
     <div class="masthead-content">
       <div class="container">
         <h1 class="masthead-heading mb-0">Tutores.com</h1>
-        <h2 class="masthead-subheading mb-0">Carga</h2>
-        <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
+        <h2 class="masthead-subheading mb-0">Materias</h2>
+        <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
       </div>
     </div>
     <div class="bg-circle-1 bg-circle"></div>
@@ -41,13 +41,32 @@
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="/img/done.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="/img/profesor.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4" th:text="${titulo}"></h2>
-            <p th:text="${descripcion}"></p>
+            <h2 class="display-4">Crear Nueva Materia</h2>
+            
+            <form action="/materia/registraMateria" method="POST">
+              <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
+              
+              <br><label> Asignatura </label></br>
+              <select class="form-control" name= "asignatura"  type="text" placeholder="Indique la Asignatura">
+                <option th:each="asignaturaOpt : ${T(com.web.tutores.Enums.Asignatura).values()}" 
+                th:value="${asignaturaOpt}" th:text="${asignaturaOpt}"></option>
+              </select>
+              <br><label>Nombre de Materia</label></br>
+              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la materia" class="form-control" th:value="${nombre}"/>
+              <br><label> Nivel Educativo </label></br>
+              <select class="form-control" name= "nivel"  type="text" placeholder="Indique el nivel de la materia">
+                <option th:each="nivelOpt : ${T(com.web.tutores.Enums.NivelEducativo).values()}" 
+                th:value="${nivelOpt}" th:text="${nivelOpt}"></option>
+              </select>
+              <br><label>Descripcion de la Materia</label></br>
+              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${descripcion}"/>
+            </div>
+            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
       </div>
     </div>

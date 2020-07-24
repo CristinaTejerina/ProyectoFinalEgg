@@ -12,11 +12,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
 
+@EnableGlobalMethodSecurity(prePostEnabled=true)
+public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter{
+    
     @Autowired
     public UsuarioServicio usuarioServicio;
+    
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -24,6 +27,7 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter {
                 .userDetailsService(usuarioServicio)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

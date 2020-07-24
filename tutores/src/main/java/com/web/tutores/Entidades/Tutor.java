@@ -1,8 +1,11 @@
 package com.web.tutores.Entidades;
 
+import com.web.tutores.Enums.Rol;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -12,7 +15,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Tutor{
+public class Tutor {
 
     //GENERADOR DE ID AUTOMATICO
     @Id
@@ -36,20 +39,29 @@ public class Tutor{
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
-    
+
     private String descripcion;
 
     @OneToMany
     private List<Materia> materias;
 
+    @Enumerated(EnumType.STRING)
+    protected Rol rol;
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
 //    public Tutor(String id, String nombre, String apellido, String mail, String clave, String telefono, Zona zona, Foto foto, Date alta, Date baja) {
 //        super(id, nombre, apellido, mail, clave, telefono, zona, foto, alta, baja);
 //    }
-
     public Tutor() {
 
     }
-
 
     public String getDescripcion() {
         return descripcion;
@@ -146,7 +158,5 @@ public class Tutor{
     public void setBaja(Date baja) {
         this.baja = baja;
     }
-    
-    
 
 }
