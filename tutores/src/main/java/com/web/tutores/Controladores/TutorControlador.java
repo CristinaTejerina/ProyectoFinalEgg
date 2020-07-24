@@ -6,17 +6,11 @@ import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 
 import com.web.tutores.Repositorios.UsuarioRepositorio;
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 import com.web.tutores.Repositorios.MateriaRepositorio;
 
-=======
 import com.web.tutores.Repositorios.MateriaRepositorio;
->>>>>>> 100c00228a12dba8773e0aa07396bc756d619306
-=======
 
->>>>>>> bfa5b03287ad95a09632190422ca2e3e552d84af
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
