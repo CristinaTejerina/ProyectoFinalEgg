@@ -6,16 +6,9 @@ import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
-<<<<<<< HEAD
-
 import com.web.tutores.Repositorios.UsuarioRepositorio;
-
 import com.web.tutores.Repositorios.MateriaRepositorio;
-
 import com.web.tutores.Repositorios.MateriaRepositorio;
-
-=======
->>>>>>> 9a536a6860ecc920734b7a03db7fce89bedf9ced
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -150,3 +143,4 @@ public class TutorControlador {
     }
 
 }
+//comentario 
