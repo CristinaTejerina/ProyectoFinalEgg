@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
 C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\ZonaServicio.java
 C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
@@ -27,6 +28,8 @@ C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\
 C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ErroresController.java
 C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\UsuarioRepositorio.java
 =======
+=======
+>>>>>>> 8d338ef320733d2e68cd210f9544937cf1edb47d
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Errores\ErrorServicio.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\ZonaRepositorio.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Usuario.java
@@ -54,6 +57,7 @@ C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\t
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ErroresController.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Tutor.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
+<<<<<<< HEAD
 >>>>>>> 9a536a6860ecc920734b7a03db7fce89bedf9ced
 =======
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
@@ -83,3 +87,5 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
 >>>>>>> 7bda35544c502732e7cc71f8af9d3047d2cd216e
+=======
+>>>>>>> 8d338ef320733d2e68cd210f9544937cf1edb47d

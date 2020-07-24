@@ -33,16 +33,17 @@ public class TutorControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-
+    
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-
+    
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
     private TutorServicio tutorServicio;
 
+    
     public Usuario usuarioLogueado() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -65,6 +66,8 @@ public class TutorControlador {
         modelo.put("zonas", zonas);
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
+
+        modelo.put("titulo", "¡Bienvenido nuevamente !");
 
         return "registroTutor.html";
     }
@@ -97,8 +100,7 @@ public class TutorControlador {
             @RequestParam String apellido,
             @RequestParam String mail,
             @RequestParam String clave,
-            @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, String idZona, String idMateria) {
-
+            @RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
         try {
             tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
         } catch (ErrorServicio ex) {
@@ -122,6 +124,7 @@ public class TutorControlador {
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
+
     }
 
     @GetMapping("/listado")
