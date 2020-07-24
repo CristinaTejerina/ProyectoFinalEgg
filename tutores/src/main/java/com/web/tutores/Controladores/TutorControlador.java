@@ -7,8 +7,6 @@ import com.web.tutores.Entidades.Zona;
 
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 
-import com.web.tutores.Repositorios.MateriaRepositorio;
-
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -102,7 +100,7 @@ public class TutorControlador {
 
 //        try {
 //            tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, materia, descripcion);
-//            
+//
 //            archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, Foto foto, List<Materia> materias, String descripcion
 //        } catch (ErrorServicio ex) {
 //
