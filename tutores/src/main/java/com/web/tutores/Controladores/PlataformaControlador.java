@@ -49,8 +49,8 @@ public class PlataformaControlador {
 
     @GetMapping("/registro")
     public String registro(ModelMap modelo) {
-        List<Zona> zonas = zonaRepositorio.findAll();
-        modelo.put("zonas", zonas);
+//        List<Zona> zonas = zonaRepositorio.findAll();
+//        modelo.put("zonas", zonas);
         return "registro2.html";
     }
 
@@ -82,6 +82,12 @@ public class PlataformaControlador {
         modelo.put("titulo", "¡Bienvenido nuevamente !");
         modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
         return "exito.html";
+    }
+    
+    @GetMapping("/configuracion")
+    public String configuracion () {
+
+        return "configuracionGral.html";
     }
 
 //    @PostMapping("/registrar")
