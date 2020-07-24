@@ -32,7 +32,7 @@ public class MateriaControlador {
             return "crearMateria.html";
         }
         
-        //modelo.put("titulo", "Tu materia fue registrado correctamene!");
+        modelo.put("titulo", "Tu materia fue registrado correctamene!");
 
         return "configuracionGral.html";
     }
