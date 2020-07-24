@@ -1,7 +1,9 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Zona;
+import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import java.util.List;
@@ -21,6 +23,9 @@ public class TutorControlador {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
+    
+    @Autowired
+    private MateriaRepositorio materiaRepositorio;
 
     @Autowired
     private TutorServicio tutorServicio;
@@ -29,6 +34,12 @@ public class TutorControlador {
     public String registro(ModelMap modelo) {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
+        List<Materia> materias = materiaRepositorio.findAll();
+        modelo.put("materias", materias);
+        
+        
+        
+        modelo.put("titulo", "¡Bienvenido nuevamente !");
         return "registroTutor.html";
     }
 

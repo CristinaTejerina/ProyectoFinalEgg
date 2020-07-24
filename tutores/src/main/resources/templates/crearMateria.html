@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Tutores.com - Tutores</title>
+  <title>Tutores.com - Materias</title>
 
   <!-- Bootstrap core CSS -->
   <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -48,112 +48,25 @@
           <div class="p-5">
             <h2 class="display-4">Crear Nueva Materia</h2>
             
-            <form action="/crearMateria" method="POST">
+            <form action="/materia/registraMateria" method="POST">
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
-
-
-              <table style="width: 50%;";>
-                <tr>
-                  <th>Asignatura</th>
-                  <th></th>
-                  <th>Nivel</th>
-                </tr>
-                <tr>
-                  <td>Idiomas</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Historia</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Lengua y literatura</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Matematica y Algebra</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td> Fisica</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td> Quimica</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Otras</td>
-                  <td><input type="radio"></td>
-                  <td><select name="nivel" id="idMateria">
-                    <option ></option>
-                    <option value="primario">Primario</option>
-                    <option value="secundario">Secundario</option>
-                    <option value="terciario">Terciario</option>
-                    <option value="universitario">Universitario</option>
-                  </select>
-                  </td>
-                <p></p>
-                
-                </tr>
-
-              </table>
-              <div>
-              <p>Nombre de la materia</p>
               
-                <input type="text" placeholder="Escriba nombre de la materia">
-              </div>
-
-              </div>
-              <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
+              <br><label> Asignatura </label></br>
+              <select class="form-control" name= "asignatura"  type="text" placeholder="Indique la Asignatura">
+                <option th:each="asignaturaOpt : ${T(com.web.tutores.Enums.Asignatura).values()}" 
+                th:value="${asignaturaOpt}" th:text="${asignaturaOpt}"></option>
+              </select>
+              <br><label>Nombre de Materia</label></br>
+              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la materia" class="form-control" th:value="${nombre}"/>
+              <br><label> Nivel Educativo </label></br>
+              <select class="form-control" name= "nivel"  type="text" placeholder="Indique el nivel de la materia">
+                <option th:each="nivelOpt : ${T(com.web.tutores.Enums.NivelEducativo).values()}" 
+                th:value="${nivelOpt}" th:text="${nivelOpt}"></option>
+              </select>
+              <br><label>Descripcion de la Materia</label></br>
+              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${descripcion}"/>
+            </div>
+            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>
       </div>
     </div>
