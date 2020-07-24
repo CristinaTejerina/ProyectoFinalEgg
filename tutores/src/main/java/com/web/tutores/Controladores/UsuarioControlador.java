@@ -87,5 +87,22 @@ public class UsuarioControlador {
         return "exito.html";
     }
 
+      @PostMapping("/actualizar-perfil")
+    public String actualizar(ModelMap modelo, MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, String apellido, String mail, String clave1, String clave2, String idZona) {
+        Usuario usuario = null;
+        try {
+            usuario = usuarioServicio.buscarPorId(id);
+            usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona);
+            return "redirect:/inicio";
+        } catch (ErrorServicio ex) {
+            List<Zona> zonas = zonaRepositorio.findAll();
+            modelo.put("zonas", zonas);
+            modelo.put("error", ex.getMessage());
+            modelo.put("perfil", usuario);
+
+            return "exito.html";
+        }
+
+    }
     
 }

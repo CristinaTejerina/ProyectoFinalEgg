@@ -2,12 +2,22 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
+import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
+<<<<<<< HEAD
+import com.web.tutores.Repositorios.UsuarioRepositorio;
+=======
 import com.web.tutores.Repositorios.MateriaRepositorio;
+>>>>>>> 0adc31f70520b8dcb8095e0d52773340b686c9d3
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
+import com.web.tutores.Servicio.UsuarioServicio;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +32,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class TutorControlador {
 
     @Autowired
+    private UsuarioServicio usuarioServicio;
+    
+    @Autowired
     private ZonaRepositorio zonaRepositorio;
     
     @Autowired
@@ -29,6 +42,23 @@ public class TutorControlador {
 
     @Autowired
     private TutorServicio tutorServicio;
+
+    
+    public Usuario usuarioLogueado() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
+
+        return usuario;
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
+    @GetMapping("/iniciotutor")
+    public String inicioTutor(HttpSession session) {
+
+        session.setAttribute("clientesession", usuarioLogueado());
+        return "inicioTutor.html";
+    }
 
     @GetMapping("/registroTutor")
     public String registro(ModelMap modelo) {
@@ -43,7 +73,7 @@ public class TutorControlador {
         return "registroTutor.html";
     }
 
-    @GetMapping("/configuracionTutor")
+    @GetMapping("/editar-tutor")
     public String modificar(ModelMap modelo) {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
