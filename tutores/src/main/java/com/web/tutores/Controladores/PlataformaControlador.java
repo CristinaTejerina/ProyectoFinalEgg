@@ -3,6 +3,7 @@ package com.web.tutores.Controladores;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
+import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.UsuarioServicio;
 import java.util.List;
@@ -26,6 +27,9 @@ public class PlataformaControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
@@ -62,14 +66,21 @@ public class PlataformaControlador {
 
         return usuario;
     }
+    
+   
+ 
 
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
+
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO') || hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicio")
     public String inicio(ModelMap model, HttpSession session) {
 
-        session.setAttribute("clientesession", usuarioLogueado());
-
-        return "inicio.html";
+        if (SecurityContextHolder.getContext().getAuthentication().equals("ROLE_TUTOR")) {
+            return "redirect:/tutor/iniciotutor";
+        } else {
+            session.setAttribute("clientesession", usuarioLogueado());
+            return "inicio.html";
+        }
     }
 
     @GetMapping("/perfil")
@@ -88,6 +99,18 @@ public class PlataformaControlador {
     public String configuracion () {
 
         return "configuracionGral.html";
+    }
+
+    public Usuario autentificacion() {
+
+        Usuario usuario;
+        try {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            usuario = usuarioRepositorio.buscarPorMail(auth.getName());
+            return usuario;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
 //    @PostMapping("/registrar")
