@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Entidades/Usuario.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Controladores/UsuarioControlador.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/SeguridadConfiguracion.java
@@ -28,12 +29,17 @@
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Repositorios/ZonaRepositorio.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/TutoresApplication.java
 =======
+=======
+>>>>>>> 7bda35544c502732e7cc71f8af9d3047d2cd216e
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\NivelEducativo.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Rol.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Asignatura.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
+<<<<<<< HEAD
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\Controladores.java
+=======
+>>>>>>> 7bda35544c502732e7cc71f8af9d3047d2cd216e
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\ZonaServicio.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\PlataformaControlador.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
@@ -55,6 +61,7 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\TutorControlador.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
+<<<<<<< HEAD
 >>>>>>> 8198d91984540b69ad80638c46eb23a9370ac0e3
 =======
 =======
@@ -85,3 +92,5 @@ C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\t
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ErroresController.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Tutor.java
 C:\Users\RENZO\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
+=======
+>>>>>>> 7bda35544c502732e7cc71f8af9d3047d2cd216e
