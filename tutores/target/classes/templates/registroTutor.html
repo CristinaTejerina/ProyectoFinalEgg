@@ -68,10 +68,10 @@
                   <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
               </select>
               
-              <br><label> Asignatura </label></br>
+              <br><label> Materia </label></br>
               <p>En la seccion de "Configuracion" de "Tutor", podrá especificar datos de materia e incluir otras más para enseñar</p>
               <select class="form-control" name= "idMateria"  type="text" placeholder="Indique la materia que quiere enseñar">
-                <option th:each="materia:${materias}" th:value="${materia.id}" th:text="${materia.nombre + ' ' + materia.nivelEducativo}" >Asignatura</option>
+                <option th:each="materia:${materias}" th:value="${materia.id}" th:text="${materia.asignatura + '- ' +materia.nombre + '- ' + materia.nivelEducativo}" >Materia</option>
               </select>
               
               <br><label >Contraseña</label></br>
@@ -84,13 +84,6 @@
                   <label>Foto</label>
                   <input class="form-control" name="archivo" id="foto" type="file" placeholder="Foto" />
                   <p class="help-block text-danger"></p>
-              </div>
-
-              <a href="/configuracionGral/crearMateria" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar materia</a>
-
-              <div class="col-lg-6 order-lg-1">
-                <div class="p-5">
-                  <h2 class="display-4" th:text="${titulo}"></h2>
               </div>
 
               </div>
