@@ -80,7 +80,7 @@ public class UsuarioControlador {
             modelo.put("clave2", clave2);
             modelo.put("telefono", telefono);
 
-            return "registro2.html";
+            return "registroAlumno.html";
         }
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
