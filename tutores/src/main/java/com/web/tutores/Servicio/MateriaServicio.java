@@ -19,7 +19,7 @@ public class MateriaServicio {
     private MateriaRepositorio materiaRepositorio;
     
     @Transactional
-    public void agregarMateria(String nombre, String descripcion, Date alta, Asignatura asignatura, NivelEducativo nivel) throws ErrorServicio{
+    public void agregarMateria(String nombre, String descripcion, Asignatura asignatura, NivelEducativo nivel) throws ErrorServicio{
         
         validar(nombre, asignatura, nivel);
         
