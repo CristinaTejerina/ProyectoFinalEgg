@@ -32,17 +32,18 @@ public class UsuarioControlador {
         return "registroAlumno.html";
     }
 
-   @GetMapping("/editar-perfil")
-    public String editarPerfil(@RequestParam String id, ModelMap model) {
+    @GetMapping("/editar-perfil")
+    public String editarPerfil(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        
+        
         List<Zona> zonas = zonaRepositorio.findAll();
         model.put("zonas", zonas);
-        
+
         Usuario usuario = usuarioServicio.buscarPorId(id);
-        model.addAttribute("perfil", usuario);  
+        model.addAttribute("perfil", usuario);
 
         return "perfilAlumno.html";
     }
-    
 
     @GetMapping("/deshabilitar")
     public String deshabilitar(ModelMap modelo) {
@@ -60,11 +61,11 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/registrarAlumno")
-    public String registrar(ModelMap modelo, MultipartFile archivo, 
-            @RequestParam String nombre, 
+    public String registrar(ModelMap modelo, MultipartFile archivo,
+            @RequestParam String nombre,
             @RequestParam String apellido,
             @RequestParam String mail,
-            @RequestParam String clave, 
+            @RequestParam String clave,
             @RequestParam String clave2, @RequestParam String telefono, String idZona) {
         try {
             usuarioServicio.registrar(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona);
@@ -87,9 +88,16 @@ public class UsuarioControlador {
         return "exito.html";
     }
 
-      @PostMapping("/actualizar-perfil")
-    public String actualizar(ModelMap modelo, MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, String apellido, String mail, String clave1, String clave2, String idZona) {
+    @PostMapping("/actualizar-perfil")
+    public String actualizar(ModelMap modelo, 
+            MultipartFile archivo, @RequestParam String id, 
+            @RequestParam String nombre, String apellido, 
+            String mail, String clave1, String clave2, 
+            String idZona) {
         Usuario usuario = null;
+        
+        System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
+     
         try {
             usuario = usuarioServicio.buscarPorId(id);
             usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona);
@@ -100,9 +108,9 @@ public class UsuarioControlador {
             modelo.put("error", ex.getMessage());
             modelo.put("perfil", usuario);
 
-            return "exito.html";
+            return "perfilAlumno.html";
         }
 
     }
-    
+
 }
