@@ -7,12 +7,16 @@ import com.web.tutores.Entidades.Zona;
 
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import com.web.tutores.Repositorios.MateriaRepositorio;
 
 =======
 import com.web.tutores.Repositorios.MateriaRepositorio;
 >>>>>>> 100c00228a12dba8773e0aa07396bc756d619306
+=======
+
+>>>>>>> bfa5b03287ad95a09632190422ca2e3e552d84af
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -37,17 +41,16 @@ public class TutorControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-    
+
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
     private TutorServicio tutorServicio;
 
-    
     public Usuario usuarioLogueado() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -70,9 +73,7 @@ public class TutorControlador {
         modelo.put("zonas", zonas);
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
-        
-        
-        
+
         modelo.put("titulo", "¡Bienvenido nuevamente !");
         return "registroTutor.html";
     }
@@ -109,7 +110,7 @@ public class TutorControlador {
 
 //        try {
 //            tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, materia, descripcion);
-//            
+//
 //            archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, Foto foto, List<Materia> materias, String descripcion
 //        } catch (ErrorServicio ex) {
 //
