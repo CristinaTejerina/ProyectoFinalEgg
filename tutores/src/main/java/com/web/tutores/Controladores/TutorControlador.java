@@ -6,16 +6,6 @@ import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
-<<<<<<< HEAD
-
-import com.web.tutores.Repositorios.UsuarioRepositorio;
-
-import com.web.tutores.Repositorios.MateriaRepositorio;
-
-
-import com.web.tutores.Repositorios.MateriaRepositorio;
-=======
->>>>>>> 9a536a6860ecc920734b7a03db7fce89bedf9ced
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -73,14 +63,9 @@ public class TutorControlador {
         modelo.put("zonas", zonas);
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
-<<<<<<< HEAD
-        
-        
-        
-        modelo.put("titulo", "¡Bienvenido nuevamente !");
-=======
 
->>>>>>> 9a536a6860ecc920734b7a03db7fce89bedf9ced
+        modelo.put("titulo", "¡Bienvenido nuevamente !");
+
         return "registroTutor.html";
     }
 
@@ -112,35 +97,7 @@ public class TutorControlador {
             @RequestParam String apellido,
             @RequestParam String mail,
             @RequestParam String clave,
-<<<<<<< HEAD
-            @RequestParam String clave2, @RequestParam String telefono, String idZona) {
-
-//        try {
-//            tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, materia, descripcion);
-//            
-//            archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, Foto foto, List<Materia> materias, String descripcion
-//        } catch (ErrorServicio ex) {
-//
-//            List<Zona> zonas = zonaRepositorio.findAll();
-//            modelo.put("zonas", zonas);
-//            modelo.put("error", ex.getMessage());
-//            modelo.put("nombre", nombre);
-//            modelo.put("apellido", apellido);
-//            modelo.put("mail", mail);
-//            modelo.put("clave", clave);
-//            modelo.put("clave2", clave2);
-//            modelo.put("telefono", telefono);
-//
-//            return "registro2.html";
-//        }
-//        modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
-//        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
-//        return "exito.html";
-        return "inicioTutor.html";
-
-=======
-            @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, String idZona, String idMateria) {
-
+            @RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
         try {
             tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
         } catch (ErrorServicio ex) {
@@ -164,7 +121,7 @@ public class TutorControlador {
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
->>>>>>> 9a536a6860ecc920734b7a03db7fce89bedf9ced
+
     }
 
     @GetMapping("/listado")
