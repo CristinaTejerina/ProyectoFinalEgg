@@ -4,6 +4,7 @@ import com.web.tutores.Entidades.Foto;
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Zona;
+import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.TutorRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
@@ -51,6 +52,7 @@ public class TutorServicio {
         tutor.setBaja(null);
         tutor.setDescripcion(descripcion);
         tutor.setMaterias(materias);
+        tutor.setRol(Rol.TUTOR);
 
         tutor.setFoto(fotoServicio.guardar(archivo));
         tutorRepositorio.save(tutor);

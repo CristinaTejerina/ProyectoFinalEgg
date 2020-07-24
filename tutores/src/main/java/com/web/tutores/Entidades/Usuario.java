@@ -1,7 +1,10 @@
 package com.web.tutores.Entidades;
 
+import com.web.tutores.Enums.Rol;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -22,6 +25,9 @@ public class Usuario {
     protected String mail;
     protected String clave;
     protected String telefono;
+    
+    @Enumerated(EnumType.STRING)
+    protected Rol rol; 
 
     @OneToOne
     protected Zona zona;
@@ -79,6 +85,14 @@ public class Usuario {
         this.apellido = apellido;
     }
 
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+    
     public String getMail() {
         return mail;
     }
