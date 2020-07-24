@@ -3,6 +3,7 @@ package com.web.tutores.Servicio;
 import com.web.tutores.Entidades.Foto;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
+import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
@@ -52,6 +53,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setClave(encriptada);
         usuario.setAlta(new Date());
         usuario.setTelefono(telefono);
+        usuario.setRol(Rol.USUARIO);
 
         usuario.setFoto(fotoServicio.guardar(archivo));
         usuarioRepositorio.save(usuario);
@@ -161,8 +163,10 @@ public class UsuarioServicio implements UserDetailsService {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
-            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
             permisos.add(p1);
+   
+            
 
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession();
