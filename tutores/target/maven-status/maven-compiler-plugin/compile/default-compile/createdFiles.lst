@@ -6,7 +6,6 @@ com\web\tutores\Enums\Rol.class
 com\web\tutores\Enums\Asignatura.class
 com\web\tutores\Servicio\UsuarioServicio.class
 com\web\tutores\TutoresApplication.class
-com\web\tutores\Controladores\Controladores.class
 com\web\tutores\Entidades\Zona.class
 com\web\tutores\Entidades\Foto.class
 com\web\tutores\Entidades\Usuario.class

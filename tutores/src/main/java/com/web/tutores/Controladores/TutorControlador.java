@@ -4,11 +4,11 @@ import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
-<<<<<<< HEAD
+
 import com.web.tutores.Repositorios.UsuarioRepositorio;
-=======
+
 import com.web.tutores.Repositorios.MateriaRepositorio;
->>>>>>> 0adc31f70520b8dcb8095e0d52773340b686c9d3
+
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -33,17 +33,16 @@ public class TutorControlador {
 
     @Autowired
     private UsuarioServicio usuarioServicio;
-    
+
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
     private TutorServicio tutorServicio;
 
-    
     public Usuario usuarioLogueado() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -66,9 +65,7 @@ public class TutorControlador {
         modelo.put("zonas", zonas);
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
-        
-        
-        
+
         modelo.put("titulo", "¡Bienvenido nuevamente !");
         return "registroTutor.html";
     }
