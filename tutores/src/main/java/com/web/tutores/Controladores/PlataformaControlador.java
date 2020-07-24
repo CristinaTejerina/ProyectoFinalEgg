@@ -31,8 +31,8 @@ public class PlataformaControlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    @Autowired
-    private ZonaRepositorio zonaRepositorio;
+//    @Autowired
+//    private ZonaRepositorio zonaRepositorio;
 
     @GetMapping("/")
     public String index() {
@@ -90,14 +90,16 @@ public class PlataformaControlador {
 
     @GetMapping("/exito")
     public String exito(ModelMap modelo) {
-        modelo.put("titulo", "¡Bienvenido nuevamente !");
-        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
+        
+        //modelo.put("titulo", "¡Bienvenido nuevamente !");
+        //modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
         return "exito.html";
     }
     
     @GetMapping("/configuracion")
-    public String configuracion () {
-
+    public String configuracion (ModelMap modelo) {
+        
+        //modelo.put("titulo", "¡Bienvenido nuevamente !");
         return "configuracionGral.html";
     }
 
@@ -111,6 +113,12 @@ public class PlataformaControlador {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    @GetMapping("/crearMateria")
+    public String crearMateria() {
+        
+        return "crearMateria.html";
     }
 
 //    @PostMapping("/registrar")
