@@ -4,6 +4,7 @@ import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
+import com.web.tutores.Repositorios.MateriaRepositorio;
 
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 
@@ -119,7 +120,7 @@ public class TutorControlador {
 //        modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
 //        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
 //        return "exito.html";
-        return null;
+        return "inicioTutor.html";
 
     }
 
@@ -128,7 +129,7 @@ public class TutorControlador {
 
         ModelAndView modelV = new ModelAndView("nombrevista");
 
-        List<Tutor> tutores;
+        List<Tutor> tutores;    
 
         if (q == null || q.isEmpty()) {
             tutores = tutorServicio.listarActivos();
