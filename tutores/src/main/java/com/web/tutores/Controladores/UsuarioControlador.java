@@ -81,7 +81,7 @@ public class UsuarioControlador {
             modelo.put("clave2", clave2);
             modelo.put("telefono", telefono);
 
-            return "registro2.html";
+            return "registroAlumno.html";
         }
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
@@ -96,7 +96,7 @@ public class UsuarioControlador {
             String idZona) {
         Usuario usuario = null;
         
-        System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
+        //System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
      
         try {
             usuario = usuarioServicio.buscarPorId(id);
