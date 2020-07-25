@@ -96,11 +96,7 @@ public class UsuarioControlador {
             String idZona) {
         Usuario usuario = null;
         
-<<<<<<< HEAD
-        System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
-=======
-        //System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
->>>>>>> ed23c44496fed4d0f69200fd2275a332cd28ed9e
+
      
         try {
             usuario = usuarioServicio.buscarPorId(id);

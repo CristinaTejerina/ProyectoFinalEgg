@@ -1,18 +1,13 @@
+
+  
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
-<<<<<<< HEAD
-import com.web.tutores.Repositorios.MateriaRepositorio;
-
-import com.web.tutores.Repositorios.UsuarioRepositorio;
-
-=======
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
->>>>>>> ed23c44496fed4d0f69200fd2275a332cd28ed9e
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
@@ -104,39 +99,7 @@ public class TutorControlador {
             @RequestParam String apellido,
             @RequestParam String mail,
             @RequestParam String clave,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            @RequestParam String clave2, @RequestParam String telefono, String idZona) {
-
-//        try {
-//            tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, materia, descripcion);
-//
-//            archivo, String nombre, String apellido, String mail, String clave, String telefono, String idZona, Foto foto, List<Materia> materias, String descripcion
-//        } catch (ErrorServicio ex) {
-//
-//            List<Zona> zonas = zonaRepositorio.findAll();
-//            modelo.put("zonas", zonas);
-//            modelo.put("error", ex.getMessage());
-//            modelo.put("nombre", nombre);
-//            modelo.put("apellido", apellido);
-//            modelo.put("mail", mail);
-//            modelo.put("clave", clave);
-//            modelo.put("clave2", clave2);
-//            modelo.put("telefono", telefono);
-//
-//            return "registro2.html";
-//        }
-//        modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
-//        modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
-//        return "exito.html";
-        return "inicioTutor.html";
-
-=======
-            @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, String idZona, String idMateria) {
-
-=======
             @RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
->>>>>>> f8037be43f9d33c3897ec2ad4490854830e45f43
         try {
             tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
         } catch (ErrorServicio ex) {
@@ -160,11 +123,7 @@ public class TutorControlador {
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
-<<<<<<< HEAD
->>>>>>> ed23c44496fed4d0f69200fd2275a332cd28ed9e
-=======
 
->>>>>>> f8037be43f9d33c3897ec2ad4490854830e45f43
     }
 
     @GetMapping("/listado")
@@ -172,7 +131,7 @@ public class TutorControlador {
 
         ModelAndView modelV = new ModelAndView("nombrevista");
 
-        List<Tutor> tutores;    
+        List<Tutor> tutores;
 
         if (q == null || q.isEmpty()) {
             tutores = tutorServicio.listarActivos();
@@ -186,3 +145,4 @@ public class TutorControlador {
     }
 
 }
+
