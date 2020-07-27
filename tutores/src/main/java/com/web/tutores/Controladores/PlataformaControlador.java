@@ -76,7 +76,7 @@ public class PlataformaControlador {
     public String inicio(ModelMap model, HttpSession session) {
 
         if (SecurityContextHolder.getContext().getAuthentication().equals("ROLE_TUTOR")) {
-            return "redirect:/tutor/iniciotutor";
+            return "redirect:/tutor/inicioTutor";
         } else {
             session.setAttribute("clientesession", usuarioLogueado());
             return "inicio.html";
