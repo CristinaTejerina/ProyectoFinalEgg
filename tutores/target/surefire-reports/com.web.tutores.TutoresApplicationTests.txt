@@ -2,12 +2,20 @@
 Test set: com.web.tutores.TutoresApplicationTests
 -------------------------------------------------------------------------------
 <<<<<<< HEAD
+<<<<<<< HEAD
 Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.228 s - in com.web.tutores.TutoresApplicationTests
 =======
 Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.157 s <<< FAILURE! - in com.web.tutores.TutoresApplicationTests
 contextLoads  Time elapsed: 0.002 s  <<< ERROR!
+=======
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 7.545 s <<< FAILURE! - in com.web.tutores.TutoresApplicationTests
+contextLoads  Time elapsed: 0.001 s  <<< ERROR!
+>>>>>>> f8037be43f9d33c3897ec2ad4490854830e45f43
 java.lang.IllegalStateException: Failed to load ApplicationContext
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'tutorRepositorio': FactoryBean threw exception on object creation; nested exception is java.lang.IllegalArgumentException: Paging query needs to have a Pageable parameter! Offending method public abstract org.springframework.data.domain.Page com.web.tutores.Repositorios.TutorRepositorio.buscarActivos()
-Caused by: java.lang.IllegalArgumentException: Paging query needs to have a Pageable parameter! Offending method public abstract org.springframework.data.domain.Page com.web.tutores.Repositorios.TutorRepositorio.buscarActivos()
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fotoRepositorio' defined in com.web.tutores.Repositorios.FotoRepositorio defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean property 'mappingContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.SQLGrammarException: Unable to open JDBC Connection for DDL execution
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.SQLGrammarException: Unable to open JDBC Connection for DDL execution
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.SQLGrammarException: Unable to open JDBC Connection for DDL execution
+Caused by: org.hibernate.exception.SQLGrammarException: Unable to open JDBC Connection for DDL execution
+Caused by: java.sql.SQLSyntaxErrorException: Unknown database 'tutores'
 
 >>>>>>> 15cf793f781210aabd8985846a06a965ef682130

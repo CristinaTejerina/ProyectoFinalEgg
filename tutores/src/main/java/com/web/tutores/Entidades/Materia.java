@@ -29,10 +29,10 @@ public class Materia {
     @Temporal(TemporalType.TIMESTAMP)
     private Date baja;
     
-    @Enumerated(EnumType.STRING) //hacer refactor cuando importe enums
+    @Enumerated(EnumType.ORDINAL) //hacer refactor cuando importe enums
     private Asignatura asignatura;
     
-    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.ORDINAL)
     private NivelEducativo nivelEducativo;
 
     /**

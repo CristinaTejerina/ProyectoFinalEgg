@@ -66,10 +66,14 @@
               <br><label> Zona </label></br>
               <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
                   <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
-
-
               </select>
-
+              
+              <br><label> Materia </label></br>
+              <p>En la seccion de "Configuracion" de "Tutor", podrá especificar datos de materia e incluir otras más para enseñar</p>
+              <select class="form-control" name= "idMateria"  type="text" placeholder="Indique la materia que quiere enseñar">
+                <option th:each="materia:${materias}" th:value="${materia.id}" th:text="${materia.asignatura + '- ' +materia.nombre + '- ' + materia.nivelEducativo}" >Materia</option>
+              </select>
+              
               <br><label >Contraseña</label></br>
               <input name= "clave"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave}"/>
 
@@ -81,6 +85,7 @@
                   <input class="form-control" name="archivo" id="foto" type="file" placeholder="Foto" />
                   <p class="help-block text-danger"></p>
               </div>
+
               </div>
               <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
         </div>

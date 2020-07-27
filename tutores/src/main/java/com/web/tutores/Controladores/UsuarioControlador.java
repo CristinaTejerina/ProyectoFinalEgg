@@ -1,5 +1,6 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
@@ -31,11 +32,17 @@ public class UsuarioControlador {
         return "registroAlumno.html";
     }
 
-    @GetMapping("/modificar")
-    public String modificar(ModelMap modelo) {
+    @GetMapping("/editar-perfil")
+    public String editarPerfil(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        
+        
         List<Zona> zonas = zonaRepositorio.findAll();
-        modelo.put("zonas", zonas);
-        return "modificar.html";
+        model.put("zonas", zonas);
+
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+        model.addAttribute("perfil", usuario);
+
+        return "perfilAlumno.html";
     }
 
     @GetMapping("/deshabilitar")
@@ -54,11 +61,11 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/registrarAlumno")
-    public String registrar(ModelMap modelo, MultipartFile archivo, 
-            @RequestParam String nombre, 
+    public String registrar(ModelMap modelo, MultipartFile archivo,
+            @RequestParam String nombre,
             @RequestParam String apellido,
             @RequestParam String mail,
-            @RequestParam String clave, 
+            @RequestParam String clave,
             @RequestParam String clave2, @RequestParam String telefono, String idZona) {
         try {
             usuarioServicio.registrar(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona);
@@ -74,11 +81,36 @@ public class UsuarioControlador {
             modelo.put("clave2", clave2);
             modelo.put("telefono", telefono);
 
-            return "registro2.html";
+            return "registroAlumno.html";
         }
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
         return "exito.html";
+    }
+
+    @PostMapping("/actualizar-perfil")
+    public String actualizar(ModelMap modelo, 
+            MultipartFile archivo, @RequestParam String id, 
+            @RequestParam String nombre, String apellido, 
+            String mail, String clave1, String clave2, 
+            String idZona) {
+        Usuario usuario = null;
+        
+        //System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
+     
+        try {
+            usuario = usuarioServicio.buscarPorId(id);
+            usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona);
+            return "redirect:/inicio";
+        } catch (ErrorServicio ex) {
+            List<Zona> zonas = zonaRepositorio.findAll();
+            modelo.put("zonas", zonas);
+            modelo.put("error", ex.getMessage());
+            modelo.put("perfil", usuario);
+
+            return "perfilAlumno.html";
+        }
+
     }
 
 }

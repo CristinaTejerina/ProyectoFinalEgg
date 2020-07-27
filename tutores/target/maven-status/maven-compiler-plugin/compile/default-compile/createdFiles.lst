@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 com/web/tutores/TutoresApplication.class
 com/web/tutores/Repositorios/MateriaRepositorio.class
 com/web/tutores/Controladores/MateriaControlador.class
@@ -28,3 +29,31 @@ com/web/tutores/Repositorios/TutorRepositorio.class
 com/web/tutores/Servicio/FotoServicio.class
 =======
 >>>>>>> 15cf793f781210aabd8985846a06a965ef682130
+=======
+com\web\tutores\Entidades\Tutor.class
+com\web\tutores\Repositorios\UsuarioRepositorio.class
+com\web\tutores\Servicio\ZonaServicio.class
+com\web\tutores\Controladores\PlataformaControlador.class
+com\web\tutores\Enums\Rol.class
+com\web\tutores\Enums\Asignatura.class
+com\web\tutores\Servicio\UsuarioServicio.class
+com\web\tutores\TutoresApplication.class
+com\web\tutores\Entidades\Zona.class
+com\web\tutores\Entidades\Foto.class
+com\web\tutores\Entidades\Usuario.class
+com\web\tutores\Repositorios\MateriaRepositorio.class
+com\web\tutores\Servicio\TutorServicio.class
+com\web\tutores\Controladores\TutorControlador.class
+com\web\tutores\Enums\NivelEducativo.class
+com\web\tutores\Servicio\MateriaServicio.class
+com\web\tutores\Servicio\FotoServicio.class
+com\web\tutores\Controladores\MateriaControlador.class
+com\web\tutores\Repositorios\ZonaRepositorio.class
+com\web\tutores\Repositorios\FotoRepositorio.class
+com\web\tutores\SeguridadConfiguracion.class
+com\web\tutores\Errores\ErrorServicio.class
+com\web\tutores\Entidades\Materia.class
+com\web\tutores\Controladores\UsuarioControlador.class
+com\web\tutores\Controladores\ErroresController.class
+com\web\tutores\Repositorios\TutorRepositorio.class
+>>>>>>> f8037be43f9d33c3897ec2ad4490854830e45f43
