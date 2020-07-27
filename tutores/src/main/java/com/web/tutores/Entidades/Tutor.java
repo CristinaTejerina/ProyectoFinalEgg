@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -42,7 +43,7 @@ public class Tutor {
 
     private String descripcion;
 
-    @OneToMany
+    @ManyToMany
     private List<Materia> materias;
 
     @Enumerated(EnumType.STRING)

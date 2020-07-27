@@ -55,7 +55,9 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setTelefono(telefono);
         usuario.setRol(Rol.USUARIO);
 
-        usuario.setFoto(fotoServicio.guardar(archivo));
+        Foto foto = fotoServicio.guardar(archivo);
+        usuario.setFoto(foto);
+        
         usuarioRepositorio.save(usuario);
 
         return usuario;

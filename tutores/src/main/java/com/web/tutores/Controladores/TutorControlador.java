@@ -52,7 +52,7 @@ public class TutorControlador {
     }
 
     @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
-    @GetMapping("/iniciotutor")
+    @GetMapping("/inicioTutor")
     public String inicioTutor(HttpSession session) {
 
         session.setAttribute("clientesession", usuarioLogueado());
