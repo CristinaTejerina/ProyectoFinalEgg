@@ -48,7 +48,7 @@
           <div class="p-5">
             <h2 class="display-4">Registrate</h2>
             <p>Carga tus datos y pasa a formar parte de la comunidad Tutores.com!!</p>
-            <form action="/usuario/registrarAlumno" method="POST">
+            <form action="/usuario/registrarAlumno" method="POST" enctype="multipart/form-data" >
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
               <br><label>Nombre</label></br>
