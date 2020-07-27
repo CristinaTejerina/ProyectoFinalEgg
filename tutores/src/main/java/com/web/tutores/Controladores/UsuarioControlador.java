@@ -17,10 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/usuario")
-public class UsuarioControlador {
-
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+public class UsuarioControlador extends Controlador {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;

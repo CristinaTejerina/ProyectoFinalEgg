@@ -28,10 +28,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/tutor")
-public class TutorControlador {
+public class TutorControlador extends Controlador {
 
-    @Autowired
-    private UsuarioServicio usuarioServicio;
     
     @Autowired
     private ZonaRepositorio zonaRepositorio;
@@ -41,15 +39,6 @@ public class TutorControlador {
 
     @Autowired
     private TutorServicio tutorServicio;
-
-    
-    public Usuario usuarioLogueado() {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
-
-        return usuario;
-    }
 
     @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicioTutor")
@@ -120,23 +109,7 @@ public class TutorControlador {
 
     }
 
-    @GetMapping("/listado")
-    public ModelAndView listar(@RequestParam(required = false) String q) {
-
-        ModelAndView modelV = new ModelAndView("nombrevista");
-
-        List<Tutor> tutores;
-
-        if (q == null || q.isEmpty()) {
-            tutores = tutorServicio.listarActivos();
-        } else {
-            tutores = tutorServicio.listarActivos(q);
-        }
-
-        modelV.addObject("listatutores", tutores);
-
-        return modelV;
-    }
+    
 
 }
 

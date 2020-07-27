@@ -1,10 +1,12 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
+import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -20,16 +22,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class PlataformaControlador {
-
-    @Autowired
-    private UsuarioServicio usuarioServicio;
+public class PlataformaControlador extends Controlador{
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
+    
+     @Autowired
+    private TutorServicio tutorServicio;
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
@@ -58,18 +61,9 @@ public class PlataformaControlador {
         return "registro2.html";
     }
 
-    public Usuario usuarioLogueado() {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-        Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
-
-        return usuario;
-    }
+  
     
-   
  
-
 
     @PreAuthorize("hasAnyRole('ROLE_USUARIO') || hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicio")
@@ -113,6 +107,25 @@ public class PlataformaControlador {
         } catch (Exception e) {
             return null;
         }
+    }
+    
+    @GetMapping("/listar")
+    public String listar(HttpSession session, @RequestParam(required = false) String q, ModelMap model) {
+
+        ModelAndView modelV = new ModelAndView("inicio");
+
+        List<Tutor> tutores;
+
+        if (q == null || q.isEmpty()) {
+            tutores = tutorServicio.listarActivos();
+        } else {
+            tutores = tutorServicio.listarActivos(q);
+        }
+
+       model.put("tutores", tutores);
+       session.setAttribute("clientesession", usuarioLogueado());
+
+        return "inicio.html";
     }
     
     @GetMapping("/crearMateria")
