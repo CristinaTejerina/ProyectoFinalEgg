@@ -1,3 +1,5 @@
+
+  
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
@@ -95,16 +97,10 @@ public class TutorControlador {
 
     
     @PostMapping("/registrarTutor")
-    public String registrar(ModelMap modelo, MultipartFile archivo,
-            @RequestParam String nombre,
-            @RequestParam String apellido,
-            @RequestParam String mail,
-            @RequestParam String clave,
-            @RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
+    public String registrar(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String apellido,@RequestParam String mail,@RequestParam String clave,@RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
         try {
             tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
         } catch (ErrorServicio ex) {
-
             List<Zona> zonas = zonaRepositorio.findAll();
             modelo.put("zonas", zonas);
             modelo.put("error", ex.getMessage());
@@ -146,4 +142,8 @@ public class TutorControlador {
     }
 
 }
+<<<<<<< HEAD
 //comentario 
+=======
+
+>>>>>>> b758c5e4d148d2aacc5066563e129877b3cb2598

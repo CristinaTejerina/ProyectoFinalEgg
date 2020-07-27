@@ -34,8 +34,7 @@ public class UsuarioControlador {
 
     @GetMapping("/editar-perfil")
     public String editarPerfil(@RequestParam String id, ModelMap model) throws ErrorServicio {
-        
-        
+
         List<Zona> zonas = zonaRepositorio.findAll();
         model.put("zonas", zonas);
 
@@ -89,15 +88,13 @@ public class UsuarioControlador {
     }
 
     @PostMapping("/actualizar-perfil")
-    public String actualizar(ModelMap modelo, 
-            MultipartFile archivo, @RequestParam String id, 
-            @RequestParam String nombre, String apellido, 
-            String mail, String clave1, String clave2, 
+    public String actualizar(ModelMap modelo,
+            MultipartFile archivo, @RequestParam String id,
+            @RequestParam String nombre, String apellido,
+            String mail, String clave1, String clave2,
             String idZona) {
         Usuario usuario = null;
-        
-        //System.out.println(clave2+"+++++++++++++++++++++++++++++"+clave1);
-     
+
         try {
             usuario = usuarioServicio.buscarPorId(id);
             usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona);
