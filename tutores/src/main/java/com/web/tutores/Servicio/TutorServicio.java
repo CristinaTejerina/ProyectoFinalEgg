@@ -8,17 +8,13 @@ import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.TutorRepositorio;
-import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,6 +33,7 @@ public class TutorServicio {
 
     @Autowired
     private TutorRepositorio tutorRepositorio;
+    
 
     @Transactional
     public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
@@ -44,7 +41,7 @@ public class TutorServicio {
         Materia materia = materiaRepositorio.getOne(idMateria);
         
         validarTutor(nombre, apellido, mail, clave, clave2, telefono, zona, materia);
-
+        
         Tutor tutor = new Tutor();
 
         tutor.setNombre(nombre);
@@ -117,7 +114,7 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Foto foto, List<Materia> materias, String descripcion) throws ErrorServicio {
+    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, List<Materia> materias, String descripcion) throws ErrorServicio {
 
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, zona, materias);
 
@@ -134,6 +131,8 @@ public class TutorServicio {
             tutor.setClave(encriptada);
             tutor.setTelefono(telefono);
             tutor.setZona(zona);
+            
+            Foto foto = fotoServicio.guardar(archivo);
             tutor.setFoto(foto);
             tutor.setMaterias(materias);
 
@@ -252,5 +251,29 @@ public class TutorServicio {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
+    
+//    @Override
+//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+//        Usuario usuario = usuarioRepositorio.buscarPorMail(mail);
+//        if (usuario != null) {
+//
+//            List<GrantedAuthority> permisos = new ArrayList<>();
+//
+//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+//            permisos.add(p1);
+//   
+//            
+//
+//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+//            HttpSession session = attr.getRequest().getSession();
+//            session.setAttribute("usuariosession", usuario);
+//
+//            User user = new User(usuario.getMail(), usuario.getClave(), permisos);
+//            return user;
+//        } else {
+//            return null;
+//        }
+//    }
+    
 
 }
