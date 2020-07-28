@@ -8,6 +8,7 @@ import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.TutorRepositorio;
+import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,11 +30,15 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+<<<<<<< HEAD
 public class TutorServicio implements UserDetailsService{
+=======
+public class TutorServicio implements UserDetailsService {
+>>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
@@ -42,15 +47,17 @@ public class TutorServicio implements UserDetailsService{
 
     @Autowired
     private TutorRepositorio tutorRepositorio;
-    
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
     public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
         Materia materia = materiaRepositorio.getOne(idMateria);
-        
+
         validarTutor(nombre, apellido, mail, clave, clave2, telefono, zona, materia);
-        
+
         Tutor tutor = new Tutor();
 
         tutor.setNombre(nombre);
@@ -63,16 +70,17 @@ public class TutorServicio implements UserDetailsService{
 
         tutor.setAlta(new Date());
         tutor.setDescripcion(descripcion);
+
+        Materia materias = new Materia();
         
-        List<Materia> materias = new ArrayList();
-        materias.add(materia);
         tutor.setMaterias(materias);
-        
-        
+
         tutor.setRol(Rol.TUTOR);
 
-        tutor.setFoto(fotoServicio.guardar(archivo));
-        
+        Foto foto = fotoServicio.guardar(archivo);
+        tutor.setFoto(foto);
+
+        tutorRepositorio.save(tutor);
         tutorRepositorio.save(tutor);
 
     }
@@ -98,7 +106,6 @@ public class TutorServicio implements UserDetailsService{
 //        }
 //
 //    }
-
     @Transactional
     public void agregaMateriaTutor(String id, Materia materia) throws ErrorServicio {
 
@@ -108,9 +115,7 @@ public class TutorServicio implements UserDetailsService{
 
             Tutor tutor = respuesta.get();
 
-            List<Materia> materias = tutor.getMaterias();
-
-            materias.add(materia);
+            Materia materias = tutor.getMaterias();
 
             tutor.setMaterias(materias);
 
@@ -123,7 +128,7 @@ public class TutorServicio implements UserDetailsService{
     }
 
     @Transactional
-    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, List<Materia> materias, String descripcion) throws ErrorServicio {
+    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias, String descripcion) throws ErrorServicio {
 
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, zona, materias);
 
@@ -140,7 +145,7 @@ public class TutorServicio implements UserDetailsService{
             tutor.setClave(encriptada);
             tutor.setTelefono(telefono);
             tutor.setZona(zona);
-            
+
             Foto foto = fotoServicio.guardar(archivo);
             tutor.setFoto(foto);
             tutor.setMaterias(materias);
@@ -195,7 +200,7 @@ public class TutorServicio implements UserDetailsService{
 
     }
 
-    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, List<Materia> materias) throws ErrorServicio {
+    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede ser nulo.");
@@ -218,7 +223,7 @@ public class TutorServicio implements UserDetailsService{
         if (zona == null) {
             throw new ErrorServicio("La zona no puede ser nula.");
         }
-        if (materias == null || materias.isEmpty()) {
+        if (materias == null) {
             throw new ErrorServicio("La/s materias no pueden ser nulas.");
         }
 
@@ -247,20 +252,24 @@ public class TutorServicio implements UserDetailsService{
     public List<Tutor> listarActivos() {
         return tutorRepositorio.buscarActivos();
     }
-    
-    public Tutor buscarPorId(String id) throws ErrorServicio{
+
+    public Tutor buscarPorId(String id) throws ErrorServicio {
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-        
-        if(respuesta.isPresent()){
-            
+
+        if (respuesta.isPresent()) {
+
             Tutor tutor = respuesta.get();
             return tutor;
-            
-        }else{
+
+        } else {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         Tutor tutor = tutorRepositorio.buscarPorMail(mail);
@@ -268,6 +277,7 @@ public class TutorServicio implements UserDetailsService{
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
+<<<<<<< HEAD
             GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
             permisos.add(p1);
    
@@ -276,6 +286,14 @@ public class TutorServicio implements UserDetailsService{
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession();
             session.setAttribute("tutorsession", tutor);
+=======
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + tutor.getRol().toString());
+            permisos.add(p1);
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession();
+            session.setAttribute("clientesession", tutor);
+>>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
 
             User user = new User(tutor.getMail(), tutor.getClave(), permisos);
             return user;
@@ -283,6 +301,9 @@ public class TutorServicio implements UserDetailsService{
             return null;
         }
     }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
 
 }

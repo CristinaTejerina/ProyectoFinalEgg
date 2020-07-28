@@ -1,6 +1,7 @@
 package com.web.tutores.Repositorios;
 
 import com.web.tutores.Entidades.Tutor;
+import com.web.tutores.Entidades.Usuario;
 
 import java.util.List;
 
@@ -27,6 +28,8 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     @Query("SELECT c FROM Tutor c WHERE c.mail = :mail")
     public Tutor buscarPorMail(@Param("mail") String mail);
 
+    @Query("SELECT c FROM Tutor c WHERE c.mail = :mail")
+    public Tutor buscarPorMail(@Param("mail") String mail);
 
 //    @Query("SELECT a from Tutor a WHERE a.eliminado IS NULL AND a.nombre LIKE :nombre")
 //    public Page<Actividad> buscarActivos(Pageable pageable, @Param("nombre") String nombre);
