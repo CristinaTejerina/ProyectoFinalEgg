@@ -73,12 +73,12 @@ public class Tutor {
         this.descripcion = descripcion;
     }
 
-    public Materia getMaterias() {
+    public Materia getMateria() {
         return materias;
     }
 
-    public void setMaterias(Materia materias) {
-        this.materias = materias;
+    public void setMateria(Materia materia) {
+        this.materias = materia;
     }
 
     public String getId() {

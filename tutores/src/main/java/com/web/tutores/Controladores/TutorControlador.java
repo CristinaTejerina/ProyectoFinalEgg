@@ -38,7 +38,8 @@ public class TutorControlador extends Controlador {
     @GetMapping("/inicioTutor")
     public String inicioTutor(HttpSession session) {
 
-        session.setAttribute("clientesession", usuarioLogueado());
+        
+        session.setAttribute("clientesession", tutorLogueado());
         return "inicioTutor.html";
     }
 

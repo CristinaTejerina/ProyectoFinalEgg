@@ -5,7 +5,10 @@
  */
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
+import com.web.tutores.Repositorios.TutorRepositorio;
+import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,12 +23,23 @@ public class Controlador {
     @Autowired
     protected UsuarioServicio usuarioServicio;
 
+    @Autowired
+    protected TutorRepositorio tutorRepositorio;
+
     protected Usuario usuarioLogueado() {
 
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
 
         return usuario;
+    }
+
+    protected Tutor tutorLogueado() {
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Tutor tutor = tutorRepositorio.buscarPorMail(auth.getName());
+
+        return tutor;
     }
 
 }
