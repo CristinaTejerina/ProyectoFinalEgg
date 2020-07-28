@@ -23,6 +23,9 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
 
     @Query("SELECT a FROM Tutor a, IN(a.materias) m WHERE m.nombre = :nombre")
     public List<Tutor> buscarPorMateria(@Param("nombre") String nombre);
+    
+    @Query("SELECT c FROM Tutor c WHERE c.mail = :mail")
+    public Tutor buscarPorMail(@Param("mail") String mail);
 
 
 //    @Query("SELECT a from Tutor a WHERE a.eliminado IS NULL AND a.nombre LIKE :nombre")

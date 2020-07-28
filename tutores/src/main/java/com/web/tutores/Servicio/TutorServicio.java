@@ -13,14 +13,23 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class TutorServicio {
+public class TutorServicio implements UserDetailsService{
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
@@ -252,28 +261,28 @@ public class TutorServicio {
         }
     }
     
-//    @Override
-//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-//        Usuario usuario = usuarioRepositorio.buscarPorMail(mail);
-//        if (usuario != null) {
-//
-//            List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
-//            permisos.add(p1);
-//   
-//            
-//
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//            HttpSession session = attr.getRequest().getSession();
-//            session.setAttribute("usuariosession", usuario);
-//
-//            User user = new User(usuario.getMail(), usuario.getClave(), permisos);
-//            return user;
-//        } else {
-//            return null;
-//        }
-//    }
+    @Override
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
+        if (tutor != null) {
+
+            List<GrantedAuthority> permisos = new ArrayList<>();
+
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
+            permisos.add(p1);
+   
+            
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession();
+            session.setAttribute("tutorsession", tutor);
+
+            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
+            return user;
+        } else {
+            return null;
+        }
+    }
     
 
 }
