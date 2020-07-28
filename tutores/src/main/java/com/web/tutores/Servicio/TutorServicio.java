@@ -30,8 +30,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+<<<<<<< HEAD
 public class TutorServicio implements UserDetailsService {
     
+=======
+public class TutorServicio {
+
+>>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
@@ -67,9 +72,15 @@ public class TutorServicio implements UserDetailsService {
         tutor.setAlta(new Date());
         tutor.setDescripcion(descripcion);
 
+<<<<<<< HEAD
         //Materia materias = new Materia();
         
         tutor.setMaterias(materia);
+=======
+        
+        
+        tutor.setMateria(materia);
+>>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
 
         tutor.setRol(Rol.TUTOR);
 
@@ -111,9 +122,9 @@ public class TutorServicio implements UserDetailsService {
 
             Tutor tutor = respuesta.get();
 
-            Materia materias = tutor.getMaterias();
+            Materia materias = tutor.getMateria();
 
-            tutor.setMaterias(materias);
+            tutor.setMateria(materias);
 
             tutorRepositorio.save(tutor);
 
@@ -144,7 +155,7 @@ public class TutorServicio implements UserDetailsService {
 
             Foto foto = fotoServicio.guardar(archivo);
             tutor.setFoto(foto);
-            tutor.setMaterias(materias);
+            tutor.setMateria(materias);
 
             tutorRepositorio.save(tutor);
 
@@ -262,6 +273,7 @@ public class TutorServicio implements UserDetailsService {
         }
     }
 
+<<<<<<< HEAD
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         Tutor tutor = tutorRepositorio.buscarPorMail(mail);
@@ -285,4 +297,6 @@ public class TutorServicio implements UserDetailsService {
         }
     }
 
+=======
+>>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
 }

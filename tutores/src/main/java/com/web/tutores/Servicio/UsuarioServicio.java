@@ -1,10 +1,12 @@
 package com.web.tutores.Servicio;
 
 import com.web.tutores.Entidades.Foto;
+import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
+import com.web.tutores.Repositorios.TutorRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import java.util.ArrayList;
@@ -33,6 +35,9 @@ public class UsuarioServicio implements UserDetailsService {
     private UsuarioRepositorio usuarioRepositorio;
 
     @Autowired
+    private TutorRepositorio tutorRepositorio;
+
+    @Autowired
     private FotoServicio fotoServicio;
 
     @Autowired
@@ -57,7 +62,7 @@ public class UsuarioServicio implements UserDetailsService {
 
         Foto foto = fotoServicio.guardar(archivo);
         usuario.setFoto(foto);
-        
+
         usuarioRepositorio.save(usuario);
 
         return usuario;
@@ -160,15 +165,14 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+
         Usuario usuario = usuarioRepositorio.buscarPorMail(mail);
         if (usuario != null) {
 
             List<GrantedAuthority> permisos = new ArrayList<>();
 
-            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
             permisos.add(p1);
-   
-            
 
             ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
             HttpSession session = attr.getRequest().getSession();
@@ -177,22 +181,39 @@ public class UsuarioServicio implements UserDetailsService {
             User user = new User(usuario.getMail(), usuario.getClave(), permisos);
             return user;
         } else {
-            return null;
+            Tutor tutor = tutorRepositorio.buscarPorMail(mail);
+            if (tutor != null) {
+
+                List<GrantedAuthority> permisos = new ArrayList<>();
+
+                GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + tutor.getRol().toString());
+                permisos.add(p1);
+
+                ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+                HttpSession session = attr.getRequest().getSession();
+                session.setAttribute("usuariosession", tutor);
+
+                User user = new User(tutor.getMail(), tutor.getClave(), permisos);
+                return user;
+            } else {
+                return null;
+
+            }
         }
+
     }
-    
-    public Usuario buscarPorId(String id) throws ErrorServicio{
+
+    public Usuario buscarPorId(String id) throws ErrorServicio {
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
-        
-        if(respuesta.isPresent()){
-            
+
+        if (respuesta.isPresent()) {
+
             Usuario usuario = respuesta.get();
             return usuario;
-            
-        }else{
+
+        } else {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
-
 
 }

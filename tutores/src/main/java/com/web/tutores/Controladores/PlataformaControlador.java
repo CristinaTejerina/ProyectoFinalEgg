@@ -26,17 +26,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
-public class PlataformaControlador extends Controlador{
+public class PlataformaControlador extends Controlador {
 
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
-    
-     @Autowired
+
+    @Autowired
     private TutorServicio tutorServicio;
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
-
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -61,20 +60,25 @@ public class PlataformaControlador extends Controlador{
         return "registro2.html";
     }
 
-  
-    
- 
-
     @PreAuthorize("hasAnyRole('ROLE_USUARIO') || hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicio")
     public String inicio(ModelMap model, HttpSession session) {
 
-        if (SecurityContextHolder.getContext().getAuthentication().equals("ROLE_TUTOR")) {
-            return "redirect:/tutor/inicioTutor";
-        } else {
+        try {
+            if (tutorLogueado().getRol().toString().equals("TUTOR")) {
+                System.out.println("+++++++++++++++++++++++++tutor++" + tutorLogueado().getRol().toString());
+                return "redirect:/tutor/inicioTutor";
+            } else {
+                System.out.println("+++++++++++++++++++++++++usuario++" + usuarioLogueado().getRol().toString());
+                session.setAttribute("clientesession", usuarioLogueado());
+                return "inicio.html";
+            }
+        } catch (Exception e) {
+            System.out.println("+++++++++++++++++++++++++usuario++" + usuarioLogueado().getRol().toString());
             session.setAttribute("clientesession", usuarioLogueado());
             return "inicio.html";
         }
+
     }
 
     @GetMapping("/perfil")
@@ -84,15 +88,15 @@ public class PlataformaControlador extends Controlador{
 
     @GetMapping("/exito")
     public String exito(ModelMap modelo) {
-        
+
         //modelo.put("titulo", "¡Bienvenido nuevamente !");
         //modelo.put("descripcion", "Tu usuario fue registrado correctamene, ¡¡Bienvenido!!");
         return "exito.html";
     }
-    
+
     @GetMapping("/configuracion")
-    public String configuracion (ModelMap modelo) {
-        
+    public String configuracion(ModelMap modelo) {
+
         //modelo.put("titulo", "¡Bienvenido nuevamente !");
         return "configuracionGral.html";
     }
@@ -108,7 +112,7 @@ public class PlataformaControlador extends Controlador{
             return null;
         }
     }
-    
+
     @GetMapping("/listar")
     public String listar(HttpSession session, @RequestParam(required = false) String q, ModelMap model) {
 
@@ -122,23 +126,22 @@ public class PlataformaControlador extends Controlador{
             tutores = tutorServicio.listarActivos(q);
         }
 
-       model.put("tutores", tutores);
-       session.setAttribute("clientesession", usuarioLogueado());
+        model.put("tutores", tutores);
+        session.setAttribute("clientesession", usuarioLogueado());
 
         return "inicio.html";
     }
-    
+
     @GetMapping("/crearMateria")
     public String crearMateria() {
-        
+
         return "crearMateria.html";
     }
-    
+
     @GetMapping("/crearZona")
     public String crearZona() {
-        
+
         return "crearZona.html";
     }
-
 
 }
