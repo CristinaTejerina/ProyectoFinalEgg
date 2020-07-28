@@ -8,23 +8,33 @@ import com.web.tutores.Enums.Rol;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.TutorRepositorio;
+import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class TutorServicio {
+public class TutorServicio implements UserDetailsService {
 
     @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
@@ -33,15 +43,17 @@ public class TutorServicio {
 
     @Autowired
     private TutorRepositorio tutorRepositorio;
-    
+
+    @Autowired
+    private UsuarioRepositorio usuarioRepositorio;
 
     @Transactional
     public void crearTutor(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
         Materia materia = materiaRepositorio.getOne(idMateria);
-        
+
         validarTutor(nombre, apellido, mail, clave, clave2, telefono, zona, materia);
-        
+
         Tutor tutor = new Tutor();
 
         tutor.setNombre(nombre);
@@ -54,16 +66,17 @@ public class TutorServicio {
 
         tutor.setAlta(new Date());
         tutor.setDescripcion(descripcion);
+
+        Materia materias = new Materia();
         
-        List<Materia> materias = new ArrayList();
-        materias.add(materia);
         tutor.setMaterias(materias);
-        
-        
+
         tutor.setRol(Rol.TUTOR);
 
-        tutor.setFoto(fotoServicio.guardar(archivo));
-        
+        Foto foto = fotoServicio.guardar(archivo);
+        tutor.setFoto(foto);
+
+        tutorRepositorio.save(tutor);
         tutorRepositorio.save(tutor);
 
     }
@@ -89,7 +102,6 @@ public class TutorServicio {
 //        }
 //
 //    }
-
     @Transactional
     public void agregaMateriaTutor(String id, Materia materia) throws ErrorServicio {
 
@@ -99,9 +111,7 @@ public class TutorServicio {
 
             Tutor tutor = respuesta.get();
 
-            List<Materia> materias = tutor.getMaterias();
-
-            materias.add(materia);
+            Materia materias = tutor.getMaterias();
 
             tutor.setMaterias(materias);
 
@@ -114,7 +124,7 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, List<Materia> materias, String descripcion) throws ErrorServicio {
+    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias, String descripcion) throws ErrorServicio {
 
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, zona, materias);
 
@@ -131,7 +141,7 @@ public class TutorServicio {
             tutor.setClave(encriptada);
             tutor.setTelefono(telefono);
             tutor.setZona(zona);
-            
+
             Foto foto = fotoServicio.guardar(archivo);
             tutor.setFoto(foto);
             tutor.setMaterias(materias);
@@ -186,7 +196,7 @@ public class TutorServicio {
 
     }
 
-    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, List<Materia> materias) throws ErrorServicio {
+    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede ser nulo.");
@@ -209,7 +219,7 @@ public class TutorServicio {
         if (zona == null) {
             throw new ErrorServicio("La zona no puede ser nula.");
         }
-        if (materias == null || materias.isEmpty()) {
+        if (materias == null) {
             throw new ErrorServicio("La/s materias no pueden ser nulas.");
         }
 
@@ -238,42 +248,39 @@ public class TutorServicio {
     public List<Tutor> listarActivos() {
         return tutorRepositorio.buscarActivos();
     }
-    
-    public Tutor buscarPorId(String id) throws ErrorServicio{
+
+    public Tutor buscarPorId(String id) throws ErrorServicio {
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-        
-        if(respuesta.isPresent()){
-            
+
+        if (respuesta.isPresent()) {
+
             Tutor tutor = respuesta.get();
             return tutor;
-            
-        }else{
+
+        } else {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
-    
-//    @Override
-//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-//        Usuario usuario = usuarioRepositorio.buscarPorMail(mail);
-//        if (usuario != null) {
-//
-//            List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+usuario.getRol().toString());
-//            permisos.add(p1);
-//   
-//            
-//
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//            HttpSession session = attr.getRequest().getSession();
-//            session.setAttribute("usuariosession", usuario);
-//
-//            User user = new User(usuario.getMail(), usuario.getClave(), permisos);
-//            return user;
-//        } else {
-//            return null;
-//        }
-//    }
-    
+
+    @Override
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
+        if (tutor != null) {
+
+            List<GrantedAuthority> permisos = new ArrayList<>();
+
+            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_" + tutor.getRol().toString());
+            permisos.add(p1);
+
+            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+            HttpSession session = attr.getRequest().getSession();
+            session.setAttribute("clientesession", tutor);
+
+            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
+            return user;
+        } else {
+            return null;
+        }
+    }
 
 }

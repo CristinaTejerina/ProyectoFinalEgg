@@ -43,10 +43,10 @@
                     <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
 
                     <!--BUSCADOR-->
-                    <form action="/tutor/listado" method="POST"> 
+                    <form action="/listar" method="GET"> 
                         <p>
 
-                            <input type="search" name="buscar" id="buscar" placeholder="Buscar Tutor" th:value="${q}"> 
+                            <input type="search" name="q" id="buscar" placeholder="Buscar Tutor" th:value="${q}"> 
                             <input type="submit" value="Buscar" ></p>
 
                     </form>
@@ -84,11 +84,14 @@
                             <tr th:each="tutor: ${tutores}">
                                 <td th:text="${tutor.nombre}"></td>
                                 <td th:text="${tutor.apellido}"></td>
-                                <td th:text="${tutor.materia}"></td>
-                                <td th:text="${tutor.asignatura}"></td>
-                                <td th:text="${tutor.nivel}"></td>
+                                <td th:text="${tutor.materia.nombre}"></td>
+                                <td th:text="${tutor.materia.asignatura}"></td>
+                                <!--<td ><a th:ref="@{/asdasd/{tutor.id}}">+Info</a></td>
+                                <!--                                <td ><a>Asignaturas +Info</a></td>-->
+                                <td th:text="${tutor.materia.nivel}"></td>
                                 <td th:text="${tutor.zona.nombre}"></td>
-                                <td><a th:href="@{eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
+
+                                <!--<td><a th:href="@{eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->
                             </tr>
                         </tbody>
                     </table>

@@ -1,10 +1,7 @@
-
-  
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
-import com.web.tutores.Entidades.Tutor;
-import com.web.tutores.Entidades.Usuario;
+
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
@@ -13,13 +10,12 @@ import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import com.web.tutores.Servicio.UsuarioServicio;
+
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,32 +23,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/tutor")
-public class TutorControlador {
+public class TutorControlador extends Controlador {
 
     @Autowired
-    private UsuarioServicio usuarioServicio;
-    
-    @Autowired
     private ZonaRepositorio zonaRepositorio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
     private TutorServicio tutorServicio;
-
-    
-    public Usuario usuarioLogueado() {
-
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Usuario usuario = usuarioServicio.buscarPorEmail(auth.getName());
-
-        return usuario;
-    }
 
     @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicioTutor")
@@ -95,9 +78,8 @@ public class TutorControlador {
         return "habilitar.html";
     }
 
-    
     @PostMapping("/registrarTutor")
-    public String registrar(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String apellido,@RequestParam String mail,@RequestParam String clave,@RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
+    public String registrar(ModelMap modelo, MultipartFile archivo, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave, @RequestParam String clave2, @RequestParam String telefono, String descripcion, String idZona, String idMateria) {
         try {
             tutorServicio.crearTutor(archivo, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
         } catch (ErrorServicio ex) {
@@ -116,34 +98,19 @@ public class TutorControlador {
 
             return "registroTutor.html";
         }
-        
+
         modelo.put("titulo", "¡Bienvenido a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
 
     }
 
-    @GetMapping("/listado")
-    public ModelAndView listar(@RequestParam(required = false) String q) {
-
-        ModelAndView modelV = new ModelAndView("nombrevista");
-
-        List<Tutor> tutores;
-
-        if (q == null || q.isEmpty()) {
-            tutores = tutorServicio.listarActivos();
-        } else {
-            tutores = tutorServicio.listarActivos(q);
-        }
-
-        modelV.addObject("listatutores", tutores);
-
-        return modelV;
-    }
-
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 //comentario 
 =======
 
 >>>>>>> b758c5e4d148d2aacc5066563e129877b3cb2598
+=======
+>>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
