@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -43,8 +44,8 @@ public class Tutor {
 
     private String descripcion;
 
-    @ManyToMany
-    private List<Materia> materias;
+    @ManyToOne
+    private Materia materias;
 
     @Enumerated(EnumType.STRING)
     protected Rol rol;
@@ -72,11 +73,11 @@ public class Tutor {
         this.descripcion = descripcion;
     }
 
-    public List<Materia> getMaterias() {
+    public Materia getMaterias() {
         return materias;
     }
 
-    public void setMaterias(List<Materia> materias) {
+    public void setMaterias(Materia materias) {
         this.materias = materias;
     }
 
