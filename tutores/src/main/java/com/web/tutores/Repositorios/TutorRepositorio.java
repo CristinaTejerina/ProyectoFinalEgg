@@ -22,7 +22,7 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     @Query("SELECT a FROM Tutor a WHERE a.zona.nombre = :nombre")
     public List<Tutor> buscarPorZona(@Param("nombre") String nombre);
 
-    @Query("SELECT a FROM Tutor a, IN(a.materias) m WHERE m.nombre = :nombre")
+    @Query("SELECT a FROM Tutor a, IN(a.materia) m WHERE m.nombre = :nombre")
     public List<Tutor> buscarPorMateria(@Param("nombre") String nombre);
     
     @Query("SELECT c FROM Tutor c WHERE c.mail = :mail")
@@ -65,7 +65,7 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     public List<Tutor> buscarActivos();
 
     @Query("SELECT h from Tutor h "
-            + ", IN(h.materias) v"
+            + ", IN(h.materia) v"
             + " WHERE h.baja IS NULL "
             + " AND h.nombre LIKE :q "
             + " OR h.apellido LIKE :q "

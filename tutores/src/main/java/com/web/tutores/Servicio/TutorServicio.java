@@ -29,14 +29,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service
-<<<<<<< HEAD
-public class TutorServicio implements UserDetailsService {
-    
-=======
+@Service    
 public class TutorServicio {
 
->>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
@@ -72,22 +67,18 @@ public class TutorServicio {
         tutor.setAlta(new Date());
         tutor.setDescripcion(descripcion);
 
-<<<<<<< HEAD
         //Materia materias = new Materia();
         
-        tutor.setMaterias(materia);
-=======
+        //tutor.setMateria(materia);
         
         
         tutor.setMateria(materia);
->>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
 
         tutor.setRol(Rol.TUTOR);
 
         Foto foto = fotoServicio.guardar(archivo);
         tutor.setFoto(foto);
 
-        tutorRepositorio.save(tutor);
         tutorRepositorio.save(tutor);
 
     }
@@ -273,30 +264,27 @@ public class TutorServicio {
         }
     }
 
-<<<<<<< HEAD
-    @Override
-    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
-        if (tutor != null) {
+//    @Override
+//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+//        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
+//        if (tutor != null) {
+//
+//            List<GrantedAuthority> permisos = new ArrayList<>();
+//
+//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
+//            permisos.add(p1);
+//   
+//            
+//
+//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+//            HttpSession session = attr.getRequest().getSession();
+//            session.setAttribute("tutorsession", tutor);
+//
+//            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
+//            return user;
+//        } else {
+//            return null;
+//        }
+//    }
 
-            List<GrantedAuthority> permisos = new ArrayList<>();
-
-            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
-            permisos.add(p1);
-   
-            
-
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-            HttpSession session = attr.getRequest().getSession();
-            session.setAttribute("tutorsession", tutor);
-
-            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
-            return user;
-        } else {
-            return null;
-        }
-    }
-
-=======
->>>>>>> d7dc848ce06f0d9cfc86dbe1ace09b7277020415
 }

@@ -45,7 +45,7 @@ public class Tutor {
     private String descripcion;
 
     @ManyToOne
-    private Materia materias;
+    private Materia materia;
 
     @Enumerated(EnumType.STRING)
     protected Rol rol;
@@ -74,11 +74,11 @@ public class Tutor {
     }
 
     public Materia getMateria() {
-        return materias;
+        return materia;
     }
 
     public void setMateria(Materia materia) {
-        this.materias = materia;
+        this.materia = materia;
     }
 
     public String getId() {
