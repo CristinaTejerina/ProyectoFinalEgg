@@ -106,11 +106,6 @@ public class TutorControlador extends Controlador {
     }
 
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-//comentario 
-=======
 
->>>>>>> b758c5e4d148d2aacc5066563e129877b3cb2598
-=======
->>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
+//comentario 
+

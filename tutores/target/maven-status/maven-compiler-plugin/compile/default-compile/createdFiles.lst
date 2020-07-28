@@ -17,10 +17,7 @@ com\web\tutores\SeguridadConfiguracion.class
 com\web\tutores\Errores\ErrorServicio.class
 com\web\tutores\Controladores\ZonaControlador.class
 com\web\tutores\Entidades\Materia.class
-<<<<<<< HEAD
-=======
 com\web\tutores\Controladores\Controlador.class
 com\web\tutores\Controladores\UsuarioControlador.class
->>>>>>> 39aed49e843fc573f16a668061c66ed25ee75d6f
 com\web\tutores\Controladores\ErroresController.class
 com\web\tutores\Repositorios\TutorRepositorio.class
