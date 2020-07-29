@@ -46,22 +46,24 @@
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4">Registrate</h2>
-            <p>Carga tus datos y pasa a formar parte de la comunidad Tutores.com!!</p>
-            <form action="/tutor/registrarTutor" method="POST" enctype="multipart/form-data">
+            <h2 class="display-4">Modifica tu perfil</h2>
+            <p>Carga tus nuevos datos y sigue siendo parte de la comunidad Tutores.com!!</p>
+            <form action="/tutor/actualizar-perfil" method="POST" enctype="multipart/form-data">
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
+              <input name="id" type="hidden" th:value="${perfil.id}">
+              
               <br><label>Nombre</label></br>
-              <input name= "nombre"  type="text" placeholder="Escribe tu nombre" class="form-control" th:value="${nombre}"/>
+              <input name= "nombre"  type="text" placeholder="Escribe tu nombre" class="form-control" th:value="${perfil.nombre}"/>
 
               <br><label>Apellido</label></br>
-              <input name= "apellido"  type="text" placeholder="Escribe tu apellido" class="form-control" th:value="${apellido}"/>
+              <input name= "apellido"  type="text" placeholder="Escribe tu apellido" class="form-control" th:value="${perfil.apellido}"/>
 
               <br><label>Telefono</label></br>
-              <input name= "telefono"  type="text" placeholder="Telefono" class="form-control" th:value="${telefono}"/>
-
+              <input name= "telefono"  type="text" placeholder="Telefono" class="form-control" th:value="${perfil.telefono}"/>
+              
               <br><label>Mail</label></br>
-              <input name= "mail"  type="email" placeholder="Mail" class="form-control" th:value="${mail}"/>
+              <input name= "mail"  type="email" placeholder="Mail" class="form-control" th:value="${perfil.mail}"/>
 
               <br><label> Zona </label></br>
               <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
@@ -79,15 +81,15 @@
 
               <br><label> Repita la contraseña </label></br>
               <input name= "clave2"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave2}"/>
+              
+              <br><label>Descripcion</label></br>
+              <input name= "descripcion"  type="text" placeholder="Escribe una breve idea sobre tu forma de enseñar" class="form-control" th:value="${perfil.descripcion}"/>
 
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
                   <label>Foto</label>
                   <input class="form-control" name="archivo" id="foto" type="file" placeholder="Foto" />
                   <p class="help-block text-danger"></p>
               </div>
-
-              <br><label>Descripcion</label></br>
-              <input name= "descripcion"  type="text" placeholder="Escribe una breve idea sobre tu forma de enseñar" class="form-control" th:value="${descripcion}"/>
 
               </div>
               <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
