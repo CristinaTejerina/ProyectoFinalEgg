@@ -14,6 +14,7 @@ com\web\tutores\Servicio\TutorServicio.class
 com\web\tutores\Controladores\TutorControlador.class
 com\web\tutores\Enums\NivelEducativo.class
 com\web\tutores\Servicio\MateriaServicio.class
+com\web\tutores\Controladores\FotoControlador.class
 com\web\tutores\Servicio\FotoServicio.class
 com\web\tutores\Controladores\MateriaControlador.class
 com\web\tutores\Repositorios\ZonaRepositorio.class
