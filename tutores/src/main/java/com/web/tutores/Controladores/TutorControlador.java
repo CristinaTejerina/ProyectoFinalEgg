@@ -1,6 +1,8 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
+import com.web.tutores.Entidades.Tutor;
+import com.web.tutores.Entidades.Usuario;
 
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
@@ -38,7 +40,6 @@ public class TutorControlador extends Controlador {
     @GetMapping("/inicioTutor")
     public String inicioTutor(HttpSession session) {
 
-        
         session.setAttribute("clientesession", tutorLogueado());
         return "inicioTutor.html";
     }
@@ -56,10 +57,17 @@ public class TutorControlador extends Controlador {
     }
 
     @GetMapping("/editar-tutor")
-    public String modificar(ModelMap modelo) {
+    public String modificar(@RequestParam String id, ModelMap model) throws ErrorServicio {
         List<Zona> zonas = zonaRepositorio.findAll();
-        modelo.put("zonas", zonas);
-        return "configuracionTutor.html";
+        model.put("zonas", zonas);
+
+        List<Materia> materias = materiaRepositorio.findAll();
+        model.put("materias", materias);
+
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
+
+        return "perfilTutor3.html";
     }
 
     @GetMapping("/deshabilitar")
@@ -101,6 +109,28 @@ public class TutorControlador extends Controlador {
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
 
+    }
+
+    @PostMapping("/actualizar-perfilTutor")
+    public String actualizar(ModelMap modelo,
+            MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave, @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, @RequestParam String idZona, @RequestParam String idMateria) {
+        Tutor tutor = null;
+
+        try {
+            tutor = tutorServicio.buscarPorId(id);
+            tutorServicio.modificarTutor(archivo, id, nombre, apellido, mail, clave, clave2, telefono, descripcion, idZona, idMateria);
+            
+        } catch (ErrorServicio ex) {
+            List<Zona> zonas = zonaRepositorio.findAll();
+            modelo.put("zonas", zonas);
+            List<Materia> materias = materiaRepositorio.findAll();
+            modelo.put("materias", materias);
+            modelo.put("error", ex.getMessage());
+            modelo.put("perfil", tutor);
+
+            return "perfilTutor3.html";
+        }
+        return "redirect:/tutor/inicioTutor";
     }
 
 }
