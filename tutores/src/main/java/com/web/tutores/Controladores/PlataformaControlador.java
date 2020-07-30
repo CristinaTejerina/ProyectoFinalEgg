@@ -4,6 +4,17 @@ import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
+<<<<<<< HEAD
+=======
+
+
+import com.web.tutores.Entidades.Foto;
+
+import com.web.tutores.Entidades.Tutor;
+import com.web.tutores.Entidades.Usuario;
+import com.web.tutores.Entidades.Zona;
+import com.web.tutores.Errores.ErrorServicio;
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
@@ -35,10 +46,20 @@ public class PlataformaControlador extends Controlador {
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
     private ZonaRepositorio zonaRepositorio;
 
     private FotoRepositorio fotoRepositorio;
 
+<<<<<<< HEAD
+=======
+//    @Autowired
+//    private ZonaRepositorio zonaRepositorio;
+
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -146,10 +167,23 @@ public class PlataformaControlador extends Controlador {
 
         return "crearZona.html";
     }
+<<<<<<< HEAD
+=======
+
+
+    @GetMapping("/editarMateria")
+        public String editarMateria(ModelMap modelo) {
+
+
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
 
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
 
@@ -157,8 +191,18 @@ public class PlataformaControlador extends Controlador {
     }
 
     @GetMapping("/editarZona")
+<<<<<<< HEAD
     public String editarZona(ModelMap modelo
     ) {
+=======
+
+        public String editarZona(ModelMap modelo) {
+
+
+    public String editarZona(ModelMap modelo) {
+
+
+>>>>>>> 9f87a30cea10dfc331b70c1437d6dec5e14a24b9
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
