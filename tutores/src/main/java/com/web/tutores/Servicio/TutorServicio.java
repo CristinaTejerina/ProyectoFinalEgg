@@ -126,11 +126,16 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias, String descripcion) throws ErrorServicio {
+    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
 
-        validarTutor2(nombre, apellido, mail, clave, clave2, telefono, zona, materias);
-
+        validarTutor2(nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria);
+        
+        Zona zona = zonaRepositorio.getOne(idZona);
+        
+        Materia materia = materiaRepositorio.getOne(idMateria);
+        
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+        
 
         if (respuesta.isPresent()) {
 
@@ -142,11 +147,13 @@ public class TutorServicio {
             String encriptada = new BCryptPasswordEncoder().encode(clave);
             tutor.setClave(encriptada);
             tutor.setTelefono(telefono);
+            tutor.setDescripcion(descripcion);
             tutor.setZona(zona);
 
             Foto foto = fotoServicio.guardar(archivo);
             tutor.setFoto(foto);
-            tutor.setMateria(materias);
+            
+            tutor.setMateria(materia);
 
             tutorRepositorio.save(tutor);
 
@@ -198,7 +205,7 @@ public class TutorServicio {
 
     }
 
-    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materias) throws ErrorServicio {
+    private void validarTutor2(String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria) throws ErrorServicio {
 
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede ser nulo.");
@@ -218,10 +225,10 @@ public class TutorServicio {
         if (telefono == null || telefono.isEmpty()) {
             throw new ErrorServicio("El telefono no puede ser nulo.");
         }
-        if (zona == null) {
+        if (idZona == null) {
             throw new ErrorServicio("La zona no puede ser nula.");
         }
-        if (materias == null) {
+        if (idMateria == null) {
             throw new ErrorServicio("La/s materias no pueden ser nulas.");
         }
 

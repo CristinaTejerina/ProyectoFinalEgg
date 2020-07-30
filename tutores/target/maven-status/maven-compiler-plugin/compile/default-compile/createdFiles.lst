@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 com\web\tutores\Entidades\Tutor.class
 com\web\tutores\Repositorios\UsuarioRepositorio.class
 com\web\tutores\Servicio\ZonaServicio.class
@@ -10,6 +12,7 @@ com\web\tutores\Entidades\Usuario.class
 com\web\tutores\Repositorios\MateriaRepositorio.class
 com\web\tutores\Enums\NivelEducativo.class
 com\web\tutores\Servicio\MateriaServicio.class
+com\web\tutores\Controladores\FotoControlador.class
 com\web\tutores\Servicio\FotoServicio.class
 com\web\tutores\Repositorios\ZonaRepositorio.class
 com\web\tutores\Repositorios\FotoRepositorio.class
@@ -21,3 +24,4 @@ com\web\tutores\Controladores\Controlador.class
 com\web\tutores\Controladores\UsuarioControlador.class
 com\web\tutores\Controladores\ErroresController.class
 com\web\tutores\Repositorios\TutorRepositorio.class
+>>>>>>> c23f604d9a530922e54df3c404b2995260206183

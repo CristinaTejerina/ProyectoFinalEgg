@@ -19,12 +19,16 @@
 
         <!-- Custom styles for this template -->
         <link href="/css/one-page-wonder.min.css" rel="stylesheet">
-
+        <link href="/css/estilosInicio.css" rel="stylesheet" >
     </head>
     <body>
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" >
+            <div class="container">
+                <a class="navbar-brand" href="/#">
+                    <img src="img/logo.png" alt="">
+                </a>
+
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}">Configurar Usuario</a>
@@ -39,26 +43,28 @@
         <header class="masthead text-center text-white">
             <div class="masthead-content">
                 <div class="container">
-                    <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
+                    <h1 class="masthead-subheading mb-0">Hola de nuevo!</h1>
                     <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
 
                     <!--BUSCADOR-->
-                    <form action="/listar" method="GET"> 
-                        <p>
+                   
+                         <form action="/listar" method="GET"> 
+                            <p>
 
-                            <input type="search" name="q" id="buscar" placeholder="Buscar Tutor" th:value="${q}"> 
-                            <input type="submit" value="Buscar" ></p>
+                                <input type="search" name="q" id="buscar" placeholder="Buscar Tutor" th:value="${q}"> 
+                                <input type="submit" value="Buscar" ></p>
 
-                    </form>
+                        </form>
 
 
-                    <!--fin-->
+                        <!--fin-->
+                    </div>
+
                 </div>
-
             </div>
-            <div class="bg-circle-1 bg-circle"></div>
-            <div class="bg-circle-2 bg-circle"></div>
-            <div class="bg-circle-3 bg-circle"></div>
+            <!-- <div class="bg-circle-1 bg-circle"></div>
+             <div class="bg-circle-2 bg-circle"></div>
+             <div class="bg-circle-3 bg-circle"></div>
             <!--<div class="bg-circle-4 bg-circle"></div>-->
         </header>
         <p/>
@@ -87,7 +93,7 @@
                                 <td th:text="${tutor.materia.nombre}"></td>
                                 <td th:text="${tutor.materia.asignatura}"></td>
                                 <!--<td ><a th:ref="@{/asdasd/{tutor.id}}">+Info</a></td>
-                                <!--                                <td ><a>Asignaturas +Info</a></td>-->
+                                <td ><a>Asignaturas +Info</a></td>-->
                                 <td th:text="${tutor.materia.nivelEducativo}"></td>
                                 <td th:text="${tutor.zona.nombre}"></td>
                                 <!--<td><a href="/perfilTutor.html" type="btn btn-primary">Ver Perfil</a> </td>-->
