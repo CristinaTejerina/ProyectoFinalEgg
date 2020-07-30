@@ -1,19 +1,19 @@
 package com.web.tutores.Controladores;
 
-<<<<<<< HEAD
+
 import com.web.tutores.Entidades.Materia;
-=======
+
 import com.web.tutores.Entidades.Foto;
->>>>>>> c23f604d9a530922e54df3c404b2995260206183
+
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
-<<<<<<< HEAD
+
 import com.web.tutores.Repositorios.MateriaRepositorio;
-=======
+
 import com.web.tutores.Repositorios.FotoRepositorio;
->>>>>>> c23f604d9a530922e54df3c404b2995260206183
+
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -54,16 +54,16 @@ public class PlataformaControlador extends Controlador {
     
 
     @Autowired
-<<<<<<< HEAD
+
     private ZonaRepositorio zonaRepositorio;
     
     
-=======
+
     private FotoRepositorio fotoRepositorio;
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
->>>>>>> c23f604d9a530922e54df3c404b2995260206183
+
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -172,9 +172,8 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
     
-<<<<<<< HEAD
- }
-=======
+
+
     
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
@@ -191,13 +190,11 @@ public class PlataformaControlador extends Controlador {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
-<<<<<<< HEAD
+
         return "editarZona.html";
     }
     
-=======
- 
 
->>>>>>> c23f604d9a530922e54df3c404b2995260206183
+
 }
->>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e
+

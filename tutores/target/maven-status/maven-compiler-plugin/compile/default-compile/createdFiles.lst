@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 com\web\tutores\Entidades\Tutor.class
 com\web\tutores\Repositorios\UsuarioRepositorio.class
 com\web\tutores\Servicio\ZonaServicio.class
@@ -24,4 +22,3 @@ com\web\tutores\Controladores\Controlador.class
 com\web\tutores\Controladores\UsuarioControlador.class
 com\web\tutores\Controladores\ErroresController.class
 com\web\tutores\Repositorios\TutorRepositorio.class
->>>>>>> c23f604d9a530922e54df3c404b2995260206183
