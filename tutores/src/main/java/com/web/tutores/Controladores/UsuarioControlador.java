@@ -36,7 +36,7 @@ public class UsuarioControlador extends Controlador {
         model.put("zonas", zonas);
 
         Usuario usuario = usuarioServicio.buscarPorId(id);
-        System.out.println("+++++++++++++++++++"+usuario.getFoto().getId());
+        // System.out.println("+++++++++++++++++++"+usuario.getFoto().getId());
         model.addAttribute("perfil", usuario);
 
         return "perfilAlumno.html";
@@ -90,12 +90,12 @@ public class UsuarioControlador extends Controlador {
             MultipartFile archivo, @RequestParam String id,
             @RequestParam String nombre, String apellido,
             String mail, String clave1, String clave2,
-            String idZona) {
+            String idZona, String telefono) {
         Usuario usuario = null;
 
         try {
             usuario = usuarioServicio.buscarPorId(id);
-            usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona);
+            usuarioServicio.modificar(archivo, id, nombre, apellido, mail, clave1, clave2, idZona, telefono);
             return "redirect:/inicio";
         } catch (ErrorServicio ex) {
             List<Zona> zonas = zonaRepositorio.findAll();

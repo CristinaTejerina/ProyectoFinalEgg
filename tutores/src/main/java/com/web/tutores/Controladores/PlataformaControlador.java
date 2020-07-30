@@ -1,6 +1,9 @@
 package com.web.tutores.Controladores;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Entidades.Materia;
 
 import com.web.tutores.Entidades.Foto;
@@ -9,11 +12,16 @@ import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
+<<<<<<< HEAD
 
 import com.web.tutores.Repositorios.MateriaRepositorio;
 
 import com.web.tutores.Repositorios.FotoRepositorio;
 
+=======
+import com.web.tutores.Repositorios.MateriaRepositorio;
+import com.web.tutores.Repositorios.FotoRepositorio;
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -48,16 +56,18 @@ public class PlataformaControlador extends Controlador {
     private UsuarioRepositorio usuarioRepositorio;
 
     private TutorServicio tutorServicio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
-    
 
     @Autowired
 
     private ZonaRepositorio zonaRepositorio;
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 
     private FotoRepositorio fotoRepositorio;
 
@@ -168,16 +178,20 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/crearZona")
     public String crearZona() {
-        
+
         return "crearZona.html";
     }
+<<<<<<< HEAD
     
 
 
     
+=======
+
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
-        
+
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
 
@@ -186,10 +200,11 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/editarZona")
     public String editarZona(ModelMap modelo) {
-        
+
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
+<<<<<<< HEAD
 
         return "editarZona.html";
     }
@@ -198,3 +213,9 @@ public class PlataformaControlador extends Controlador {
 
 }
 
+=======
+        return "editarZona.html";
+    }
+
+}
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
