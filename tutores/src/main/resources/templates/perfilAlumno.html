@@ -54,10 +54,15 @@
             <form action="/usuario/actualizar-perfil" method="POST" >
                 <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
+<<<<<<< HEAD
 
                 
                <img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;"> 
                 <!--<img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
+=======
+                <!--<img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;">
+                <img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
                      height="200" alt="Editar foto" id="ember471" class="profile-photo-edit__preview ember-view">-->
 
                 <input name="id" type="hidden" th:value="${perfil.id}">

@@ -4,7 +4,6 @@ import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
-import com.web.tutores.Servicio.UsuarioServicio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,9 +35,12 @@ public class UsuarioControlador extends Controlador {
         model.put("zonas", zonas);
 
         Usuario usuario = usuarioServicio.buscarPorId(id);
+<<<<<<< HEAD
 
         System.out.println("+++++"+usuario.getFoto().getContenido());
 
+=======
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
         model.addAttribute("perfil", usuario);
 
         return "perfilAlumno.html";
