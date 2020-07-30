@@ -1,4 +1,34 @@
 <<<<<<< HEAD
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\MateriaRepositorio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\ZonaServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Foto.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Errores\ErrorServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Zona.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\TutorControlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ZonaControlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Rol.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\Asignatura.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Materia.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\TutorRepositorio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\TutoresApplication.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\UsuarioControlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\FotoRepositorio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\SeguridadConfiguracion.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\Controlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\ZonaRepositorio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\MateriaServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\FotoServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Tutor.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\TutorServicio.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\PlataformaControlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Enums\NivelEducativo.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\MateriaControlador.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Entidades\Usuario.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Controladores\ErroresController.java
+C:\Users\Kaneda\Documents\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Repositorios\UsuarioRepositorio.java
+=======
+<<<<<<< HEAD
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Entidades/Usuario.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Controladores/ZonaControlador.java
 /Users/martingimenez/Documents/GitHub/ProyectoFinalEgg/tutores/src/main/java/com/web/tutores/Controladores/UsuarioControlador.java
@@ -60,3 +90,4 @@ E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tuto
 E:\Agustin\Documentos\GitHub\ProyectoFinalEgg\tutores\src\main\java\com\web\tutores\Servicio\UsuarioServicio.java
 
 >>>>>>> c23f604d9a530922e54df3c404b2995260206183
+>>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e

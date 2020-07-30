@@ -270,7 +270,7 @@ public class TutorServicio {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
-
+    
 //    @Override
 //    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
 //        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
