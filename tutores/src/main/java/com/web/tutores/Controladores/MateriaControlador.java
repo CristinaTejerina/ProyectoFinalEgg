@@ -38,6 +38,29 @@ public class MateriaControlador {
     }
     
     
+    @PostMapping("/cambioMateria")
+    public String cambioMateria(ModelMap modelo, @RequestParam String nombre, @RequestParam String descripcion, @RequestParam Asignatura asignatura, @RequestParam NivelEducativo nivel, @RequestParam String id) {
+        try {
+            materiaServicio.modificar(id, nombre, descripcion, asignatura, nivel);
+        } catch (ErrorServicio ex) {
+            modelo.put("nombre", nombre);
+            modelo.put("descripcion", descripcion);
+            modelo.put("asignatura", asignatura);
+            modelo.put("nivel", nivel);
+            
+            return "editarMateria.html";
+        }
+        
+        modelo.put("titulo", "Tu materia fue modificada exitosamente!");
+
+        return "configuracionGral.html";
+    }
+    
+    
+    
+    
+
+    
     
     
     @GetMapping("/modificar")
