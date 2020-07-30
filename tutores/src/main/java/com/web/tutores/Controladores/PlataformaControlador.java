@@ -1,9 +1,11 @@
 package com.web.tutores.Controladores;
 
+import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
+import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -31,11 +33,16 @@ public class PlataformaControlador extends Controlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-    @Autowired
     private TutorServicio tutorServicio;
+    
+    @Autowired
+    private MateriaRepositorio materiaRepositorio;
+    
 
-//    @Autowired
-//    private ZonaRepositorio zonaRepositorio;
+    @Autowired
+    private ZonaRepositorio zonaRepositorio;
+    
+    
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -140,8 +147,27 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/crearZona")
     public String crearZona() {
-
+        
         return "crearZona.html";
     }
+    
+    
+    @GetMapping("/editarMateria")
+    public String editarMateria(ModelMap modelo) {
+        
+        List<Materia> materias = materiaRepositorio.findAll();
+        modelo.put("materias", materias);
 
+        return "editarMateria.html";
+    }
+
+    @GetMapping("/editarZona")
+    public String editarZona(ModelMap modelo) {
+        
+        List<Zona> zonas = zonaRepositorio.findAll();
+        modelo.put("zonas", zonas);
+
+        return "editarZona.html";
+    }
+    
 }
