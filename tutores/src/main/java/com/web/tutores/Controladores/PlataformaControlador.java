@@ -56,7 +56,6 @@ public class PlataformaControlador extends Controlador {
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
-
     @GetMapping("/")
     public String index() {
         return "index.html";
