@@ -46,7 +46,7 @@ public class UsuarioServicio implements UserDetailsService {
     @Transactional
     public Usuario registrar(MultipartFile archivo, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
-        validar(nombre, apellido, mail, clave, clave2, zona);
+        validar(nombre, apellido, mail, clave, clave2, zona,telefono);
         Usuario usuario = new Usuario();
 
         usuario.setNombre(nombre);
@@ -69,10 +69,10 @@ public class UsuarioServicio implements UserDetailsService {
     }
 
     @Transactional
-    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String idZona) throws ErrorServicio {
+    public void modificar(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String idZona ,String telefono) throws ErrorServicio {
         Zona zona = zonaRepositorio.getOne(idZona);
 
-        validar(nombre, apellido, mail, clave, clave2, zona);
+        validar(nombre, apellido, mail, clave, clave2, zona,telefono);
 
         Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
         if (respuesta.isPresent()) {
@@ -83,6 +83,8 @@ public class UsuarioServicio implements UserDetailsService {
             String encriptada = new BCryptPasswordEncoder().encode(clave);
             usuario.setClave(encriptada);
             usuario.setZona(zona);
+            usuario.setTelefono(telefono);
+            
 
             String idFoto = null;
 
@@ -125,7 +127,7 @@ public class UsuarioServicio implements UserDetailsService {
         }
     }
 
-    public void validar(String nombre, String apellido, String mail, String clave, String clave2, Zona zona) throws ErrorServicio {
+    public void validar(String nombre, String apellido, String mail, String clave, String clave2, Zona zona,String telefono) throws ErrorServicio {
 
         System.out.println("++++++++++++++++" + clave + "++++++++++++++++++++++" + clave2);
         System.out.println(clave.equals(clave2));
@@ -148,6 +150,9 @@ public class UsuarioServicio implements UserDetailsService {
 
         if (zona == null) {
             throw new ErrorServicio("No se encontro la zona solicitada");
+        }
+        if (telefono == null || telefono.isEmpty()) {
+            throw new ErrorServicio("El telefono no puede ser nulo.");
         }
     }
 

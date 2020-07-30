@@ -2,6 +2,13 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
+<<<<<<< HEAD
+=======
+
+import com.web.tutores.Entidades.Usuario;
+
+
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
