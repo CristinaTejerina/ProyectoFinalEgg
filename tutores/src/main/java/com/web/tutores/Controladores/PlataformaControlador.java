@@ -1,6 +1,10 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
+import com.web.tutores.Entidades.Tutor;
+import com.web.tutores.Entidades.Usuario;
+import com.web.tutores.Entidades.Zona;
+
 
 import com.web.tutores.Entidades.Foto;
 
@@ -13,27 +17,17 @@ import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import com.web.tutores.Servicio.UsuarioServicio;
-import static java.lang.System.load;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionIdListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -56,6 +50,7 @@ public class PlataformaControlador extends Controlador {
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
+
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -164,8 +159,15 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
+
+    @GetMapping("/editarMateria")
+        public String editarMateria(ModelMap modelo) {
+
+
+
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
+
 
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
@@ -174,7 +176,12 @@ public class PlataformaControlador extends Controlador {
     }
 
     @GetMapping("/editarZona")
+
+        public String editarZona(ModelMap modelo) {
+
+
     public String editarZona(ModelMap modelo) {
+
 
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);

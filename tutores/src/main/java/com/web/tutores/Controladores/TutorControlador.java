@@ -2,15 +2,15 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
+<<<<<<< HEAD
+=======
 
 import com.web.tutores.Entidades.Usuario;
 
 
+>>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
-import com.web.tutores.Repositorios.MateriaRepositorio;
-import com.web.tutores.Repositorios.UsuarioRepositorio;
-import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -154,7 +154,7 @@ public class TutorControlador extends Controlador {
             modelo.put("error", ex.getMessage());
             modelo.put("perfil", tutor);
 
-            return "perfilTutor3.html";
+            return "perfilTutor4.html";
         }
         return "redirect:/tutor/inicioTutor";
     }
