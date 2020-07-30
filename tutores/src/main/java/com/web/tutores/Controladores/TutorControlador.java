@@ -1,6 +1,7 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
+import com.web.tutores.Entidades.Tutor;
 
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
@@ -104,6 +105,26 @@ public class TutorControlador extends Controlador {
         modelo.put("descripcion", "Te has registrado correctamene como Tutor, ¡¡Bienvenido!!");
         return "exito.html";
 
+    }
+    
+    @PostMapping("/enviarTutor")
+    public String enviarTutor(@RequestParam String idTutor){ //esta bien??
+        String id = idTutor;
+        return id;
+    }
+    
+    @GetMapping("/mostrarTutor")
+    public String mostrarTutor(@RequestParam String id){
+        
+        try{
+           Tutor tutor = tutorServicio.buscarPorId(id);
+           
+            return "perfilTutor.html";
+        }catch(ErrorServicio e){
+            return "error.html";
+            
+        }
+        
     }
 
 }
