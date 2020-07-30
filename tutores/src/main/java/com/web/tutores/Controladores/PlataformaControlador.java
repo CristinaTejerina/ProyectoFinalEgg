@@ -2,6 +2,12 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Zona;
+<<<<<<< HEAD
+
+import com.web.tutores.Entidades.Foto;
+
+=======
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
@@ -10,6 +16,7 @@ import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +37,7 @@ public class PlataformaControlador extends Controlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
     private TutorServicio tutorServicio;
 
     @Autowired
@@ -38,11 +46,11 @@ public class PlataformaControlador extends Controlador {
     @Autowired
     private ZonaRepositorio zonaRepositorio;
 
+    @Autowired
     private FotoRepositorio fotoRepositorio;
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
-
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -126,11 +134,13 @@ public class PlataformaControlador extends Controlador {
         ModelAndView modelV = new ModelAndView("inicio");
 
         List<Tutor> tutores;
-
         if (q == null || q.isEmpty()) {
+          
             tutores = tutorServicio.listarActivos();
         } else {
+            
             tutores = tutorServicio.listarActivos(q);
+           
         }
 
         model.put("tutores", tutores);
@@ -151,9 +161,12 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
@@ -161,6 +174,7 @@ public class PlataformaControlador extends Controlador {
         modelo.put("materias", materias);
 
         return "editarMateria.html";
+
     }
 
     @GetMapping("/editarZona")

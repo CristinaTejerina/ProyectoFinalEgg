@@ -252,6 +252,7 @@ public class TutorServicio {
 
     public List<Tutor> listarActivos(String q) {
         return tutorRepositorio.buscarActivos("%" + q + "%");
+//        return tutorRepositorio.findAll();
     }
 
     public List<Tutor> listarActivos() {

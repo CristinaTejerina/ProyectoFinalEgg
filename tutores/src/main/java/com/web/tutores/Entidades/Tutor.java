@@ -161,4 +161,11 @@ public class Tutor {
         this.baja = baja;
     }
 
+    @Override
+    public String toString() {
+        return "Tutor{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail + ", clave=" + clave + ", telefono=" + telefono + ", zona=" + zona + ", foto=" + foto + ", alta=" + alta + ", baja=" + baja + ", descripcion=" + descripcion + ", materia=" + materia + ", rol=" + rol + '}';
+    }
+    
+    
+
 }

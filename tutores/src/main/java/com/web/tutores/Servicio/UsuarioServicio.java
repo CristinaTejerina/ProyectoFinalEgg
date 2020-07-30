@@ -129,8 +129,7 @@ public class UsuarioServicio implements UserDetailsService {
 
     public void validar(String nombre, String apellido, String mail, String clave, String clave2, Zona zona,String telefono) throws ErrorServicio {
 
-        System.out.println("++++++++++++++++" + clave + "++++++++++++++++++++++" + clave2);
-        System.out.println(clave.equals(clave2));
+
 
         if (nombre == null || nombre.isEmpty()) {
             throw new ErrorServicio("El nombre del usuario no puede ser nulo");

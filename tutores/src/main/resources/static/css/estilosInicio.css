@@ -43,3 +43,6 @@ section {
     background-color: #000000;
     border-color: #ffffff;
 }
+.text-white {
+    color: #fff!important;
+}
