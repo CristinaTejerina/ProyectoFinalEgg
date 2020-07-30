@@ -39,19 +39,8 @@
         <header class="masthead text-center text-white">
             <div class="masthead-content">
                 <div class="container">
-                    <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
-                    <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}" th:text="${session.clientesession.nombre}"></h2>
-
-                    <!--BUSCADOR-->
-                    <form action="/tutor/listado" method="POST"> 
-                        <p>
-
-                            <input type="search" name="buscar" id="buscar" placeholder="Buscar Tutor" th:value="${q}"> 
-                            <input type="submit" value="Buscar" ></p>
-
-                    </form>
-
-
+                    <h1 class="masthead-subheading mb-0">Perfil Tutor</h1>
+                                     
                     <!--fin-->
                 </div>
 
@@ -62,39 +51,43 @@
             <!--<div class="bg-circle-4 bg-circle"></div>-->
         </header>
         <p/>
-        <div class="container">
-            <div class="card bg">
+        <form action="/tutor/mostrarTutor" method="GET">
+            <div class="container">
+                <div class="card bg">
+                 <div>
+                     <img src="${tutor.foto}" alt="poner foto tutor">
+                </div>
                 <div class="card-header">
-                    <h3>Lista de tutores</h3>
+                    <h3>Nombre:</h3>
+                    <p th:text="${tutor.nombre + ' ' + tutor.apellido}"></p>
                 </div>
-                <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Materia</th> 
-                                <th>Asignatura</th>  
-                                <th>Nivel</th>    
-                                <th>Zona</th>                   
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr th:each="tutor: ${tutores}">
-                                <td th:text="${tutor.nombre}"></td>
-                                <td th:text="${tutor.apellido}"></td>
-                                <td th:text="${tutor.materia}"></td>
-                                <td th:text="${tutor.asignatura}"></td>
-                                <td th:text="${tutor.nivel}"></td>
-                                <td th:text="${tutor.zona.nombre}"></td>
-                                <td><a th:href="@{eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div>
+                    <h3>Zona:</h3>
+                    <p th:text="${tutor.zona.nombre}"></p>
                 </div>
-            </div>
-        </div>
+                <div>
+                    <h3>Email:</h3>
+                    <p th:text="${tutor.mail}"></p>
+                </div>
+                <div>
+                    <h3>Telefono:</h3>
+                    <p th:text="${tutor.telefono}"></p>
+                </div>
+                <div>
+                    <h3>Materia:</h3>
+                    <p th:text="${tutor.materia.nombre}"></p>
+                </div>
+                <div>
+                    <h3>Asignatura:</h3>
+                    <p th:text="${tutor.materia.asignatura}"></p>
+                </div>
+                <div>
+                    <h3>Nivel educativo:</h3>
+                    <p th:text="${tutor.materia.nivelEducativo}"></p>
+                </div>
+                </div>
+             </div>
+        </form>
         <section>
 
             <div class="container">

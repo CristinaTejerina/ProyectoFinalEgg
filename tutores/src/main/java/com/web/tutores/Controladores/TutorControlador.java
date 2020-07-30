@@ -2,10 +2,16 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
+<<<<<<< HEAD
+=======
 import com.web.tutores.Entidades.Usuario;
+>>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e
 
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
+import com.web.tutores.Repositorios.MateriaRepositorio;
+import com.web.tutores.Repositorios.UsuarioRepositorio;
+import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -111,6 +117,26 @@ public class TutorControlador extends Controlador {
         return "exito.html";
 
     }
+    
+    @PostMapping("/enviarTutor")
+    public String enviarTutor(@RequestParam String idTutor){ //esta bien??
+        String id = idTutor;
+        return id;
+    }
+    
+    @GetMapping("/mostrarTutor")
+    public String mostrarTutor(@RequestParam String id){
+        
+        try{
+           Tutor tutor = tutorServicio.buscarPorId(id);
+           
+            return "perfilTutor.html";
+        }catch(ErrorServicio e){
+            return "error.html";
+            
+        }
+        
+    }
 
     @PostMapping("/actualizar-perfilTutor")
     public String actualizar(ModelMap modelo,
@@ -135,3 +161,6 @@ public class TutorControlador extends Controlador {
     }
 
 }
+
+//comentario 
+

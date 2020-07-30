@@ -172,6 +172,9 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
     
+<<<<<<< HEAD
+ }
+=======
     
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
@@ -197,3 +200,4 @@ public class PlataformaControlador extends Controlador {
 
 >>>>>>> c23f604d9a530922e54df3c404b2995260206183
 }
+>>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e
