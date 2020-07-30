@@ -36,11 +36,9 @@ public class UsuarioControlador extends Controlador {
         model.put("zonas", zonas);
 
         Usuario usuario = usuarioServicio.buscarPorId(id);
-<<<<<<< HEAD
-       // System.out.println("+++++++++++++++++++"+usuario.getFoto().getId());
-=======
-        // System.out.println("+++++++++++++++++++"+usuario.getFoto().getId());
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
+
+        System.out.println("+++++"+usuario.getFoto().getContenido());
+
         model.addAttribute("perfil", usuario);
 
         return "perfilAlumno.html";

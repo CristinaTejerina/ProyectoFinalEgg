@@ -5,7 +5,6 @@ import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 
-
 import com.web.tutores.Entidades.Foto;
 
 import com.web.tutores.Entidades.Tutor;
@@ -17,6 +16,7 @@ import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,20 +37,20 @@ public class PlataformaControlador extends Controlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
     private TutorServicio tutorServicio;
 
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
-
     private ZonaRepositorio zonaRepositorio;
 
+    @Autowired
     private FotoRepositorio fotoRepositorio;
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
-
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -134,11 +134,13 @@ public class PlataformaControlador extends Controlador {
         ModelAndView modelV = new ModelAndView("inicio");
 
         List<Tutor> tutores;
-
         if (q == null || q.isEmpty()) {
+          
             tutores = tutorServicio.listarActivos();
         } else {
+            
             tutores = tutorServicio.listarActivos(q);
+           
         }
 
         model.put("tutores", tutores);
@@ -159,29 +161,18 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
-
-    @GetMapping("/editarMateria")
-        public String editarMateria(ModelMap modelo) {
-
-
-
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
-
 
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
 
         return "editarMateria.html";
+
     }
 
     @GetMapping("/editarZona")
-
-        public String editarZona(ModelMap modelo) {
-
-
     public String editarZona(ModelMap modelo) {
-
 
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
