@@ -2,10 +2,9 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-<<<<<<< HEAD
-=======
+
 import com.web.tutores.Entidades.Usuario;
->>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e
+
 
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
