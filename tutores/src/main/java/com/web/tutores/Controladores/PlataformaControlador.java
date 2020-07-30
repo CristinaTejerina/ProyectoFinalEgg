@@ -1,6 +1,5 @@
 package com.web.tutores.Controladores;
 
-
 import com.web.tutores.Entidades.Materia;
 
 import com.web.tutores.Entidades.Foto;
@@ -45,16 +44,13 @@ public class PlataformaControlador extends Controlador {
     private UsuarioRepositorio usuarioRepositorio;
 
     private TutorServicio tutorServicio;
-    
+
     @Autowired
     private MateriaRepositorio materiaRepositorio;
-    
 
     @Autowired
 
     private ZonaRepositorio zonaRepositorio;
-    
-    
 
     private FotoRepositorio fotoRepositorio;
 
@@ -165,17 +161,13 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/crearZona")
     public String crearZona() {
-        
+
         return "crearZona.html";
     }
-    
-<<<<<<< HEAD
- }
-=======
-    
+
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
-        
+
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
 
@@ -184,14 +176,11 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/editarZona")
     public String editarZona(ModelMap modelo) {
-        
+
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
-
         return "editarZona.html";
     }
-    
 
 }
->>>>>>> f96730e95a45764a4655741f8061ec09ef9f572e
