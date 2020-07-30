@@ -1,0 +1,45 @@
+/* .container{
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+  } */
+
+  .text-white {
+    color: #000!important;}
+
+    
+.navbar-custom {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+    background-color: rgba(0,0,0,.7);
+}
+
+
+header.masthead {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background: linear-gradient(0deg,#dedede 0,#505050 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+section {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background: linear-gradient(0deg,#dedede 100%,#dedede 0);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.btn-primary {
+    background-color: #000000;
+    border-color: #ffffff;
+}

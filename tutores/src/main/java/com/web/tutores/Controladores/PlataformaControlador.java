@@ -1,25 +1,39 @@
 package com.web.tutores.Controladores;
 
+<<<<<<< HEAD
 import com.web.tutores.Entidades.Materia;
+=======
+import com.web.tutores.Entidades.Foto;
+>>>>>>> c23f604d9a530922e54df3c404b2995260206183
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
+<<<<<<< HEAD
 import com.web.tutores.Repositorios.MateriaRepositorio;
+=======
+import com.web.tutores.Repositorios.FotoRepositorio;
+>>>>>>> c23f604d9a530922e54df3c404b2995260206183
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
 import com.web.tutores.Servicio.UsuarioServicio;
+import static java.lang.System.load;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionIdListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,9 +54,16 @@ public class PlataformaControlador extends Controlador {
     
 
     @Autowired
+<<<<<<< HEAD
     private ZonaRepositorio zonaRepositorio;
     
     
+=======
+    private FotoRepositorio fotoRepositorio;
+
+//    @Autowired
+//    private ZonaRepositorio zonaRepositorio;
+>>>>>>> c23f604d9a530922e54df3c404b2995260206183
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -167,7 +188,12 @@ public class PlataformaControlador extends Controlador {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
+<<<<<<< HEAD
         return "editarZona.html";
     }
     
+=======
+ 
+
+>>>>>>> c23f604d9a530922e54df3c404b2995260206183
 }
