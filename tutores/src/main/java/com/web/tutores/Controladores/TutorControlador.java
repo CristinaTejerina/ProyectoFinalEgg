@@ -2,13 +2,6 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-<<<<<<< HEAD
-=======
-
-import com.web.tutores.Entidades.Usuario;
-
-
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
@@ -61,7 +54,6 @@ public class TutorControlador extends Controlador {
         return "registroTutor.html";
     }
 
-   
     @GetMapping("/editar-tutor")
     public String modificar(@RequestParam String id, ModelMap model) throws ErrorServicio {
         List<Zona> zonas = zonaRepositorio.findAll();
@@ -73,7 +65,7 @@ public class TutorControlador extends Controlador {
         Tutor tutor = tutorServicio.buscarPorId(id);
         model.addAttribute("perfil", tutor);
 
-        return "perfilTutor3.html";
+        return "perfilTutor4.html";
     }
 
     @GetMapping("/deshabilitar")
@@ -116,25 +108,25 @@ public class TutorControlador extends Controlador {
         return "exito.html";
 
     }
-    
+
     @PostMapping("/enviarTutor")
-    public String enviarTutor(@RequestParam String idTutor){ //esta bien??
+    public String enviarTutor(@RequestParam String idTutor) { //esta bien??
         String id = idTutor;
         return id;
     }
-    
+
     @GetMapping("/mostrarTutor")
-    public String mostrarTutor(@RequestParam String id){
-        
-        try{
-           Tutor tutor = tutorServicio.buscarPorId(id);
-           
+    public String mostrarTutor(@RequestParam String id) {
+
+        try {
+            Tutor tutor = tutorServicio.buscarPorId(id);
+
             return "perfilTutor.html";
-        }catch(ErrorServicio e){
+        } catch (ErrorServicio e) {
             return "error.html";
-            
+
         }
-        
+
     }
 
     @PostMapping("/actualizar-perfilTutor")
@@ -145,7 +137,7 @@ public class TutorControlador extends Controlador {
         try {
             tutor = tutorServicio.buscarPorId(id);
             tutorServicio.modificarTutor(archivo, id, nombre, apellido, mail, clave, clave2, telefono, descripcion, idZona, idMateria);
-            
+
         } catch (ErrorServicio ex) {
             List<Zona> zonas = zonaRepositorio.findAll();
             modelo.put("zonas", zonas);
