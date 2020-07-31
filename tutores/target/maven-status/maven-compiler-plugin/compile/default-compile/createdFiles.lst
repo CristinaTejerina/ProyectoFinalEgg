@@ -1,6 +1,7 @@
 com\web\tutores\Entidades\Tutor.class
 com\web\tutores\Repositorios\UsuarioRepositorio.class
 com\web\tutores\Servicio\ZonaServicio.class
+com\web\tutores\Controladores\PlataformaControlador.class
 com\web\tutores\Enums\Rol.class
 com\web\tutores\Enums\Asignatura.class
 com\web\tutores\TutoresApplication.class
