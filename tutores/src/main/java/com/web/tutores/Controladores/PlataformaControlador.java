@@ -1,27 +1,14 @@
 package com.web.tutores.Controladores;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 import com.web.tutores.Entidades.Materia;
-
 import com.web.tutores.Entidades.Foto;
-
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
-<<<<<<< HEAD
-
-import com.web.tutores.Repositorios.MateriaRepositorio;
-
-import com.web.tutores.Repositorios.FotoRepositorio;
-
-=======
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.FotoRepositorio;
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
+import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -63,12 +50,8 @@ public class PlataformaControlador extends Controlador {
     @Autowired
 
     private ZonaRepositorio zonaRepositorio;
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
 
+    @Autowired
     private FotoRepositorio fotoRepositorio;
 
 //    @Autowired
@@ -181,14 +164,7 @@ public class PlataformaControlador extends Controlador {
 
         return "crearZona.html";
     }
-<<<<<<< HEAD
-    
 
-
-    
-=======
-
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
@@ -204,7 +180,6 @@ public class PlataformaControlador extends Controlador {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
-<<<<<<< HEAD
 
         return "editarZona.html";
     }
@@ -213,9 +188,4 @@ public class PlataformaControlador extends Controlador {
 
 }
 
-=======
-        return "editarZona.html";
-    }
 
-}
->>>>>>> eff6bb2755781ce6c8f29cbd566b84df57aa7439
