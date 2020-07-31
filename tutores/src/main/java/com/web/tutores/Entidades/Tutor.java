@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -30,7 +31,7 @@ public class Tutor {
     private String clave;
     private String telefono;
 
-    @OneToOne
+    @ManyToOne
     private Zona zona;
 
     @OneToOne

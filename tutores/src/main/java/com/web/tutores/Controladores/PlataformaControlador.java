@@ -1,13 +1,6 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
-import com.web.tutores.Entidades.Zona;
-<<<<<<< HEAD
-
-import com.web.tutores.Entidades.Foto;
-
-=======
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
@@ -16,7 +9,6 @@ import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,12 +153,6 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
