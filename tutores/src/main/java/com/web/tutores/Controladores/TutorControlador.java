@@ -2,13 +2,23 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
+<<<<<<< HEAD
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Usuario;
+=======
+<<<<<<< HEAD
+
+
+
+import com.web.tutores.Entidades.Usuario;
+
+
+
+=======
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
+>>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
-import com.web.tutores.Repositorios.MateriaRepositorio;
-import com.web.tutores.Repositorios.UsuarioRepositorio;
-import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
@@ -57,7 +67,6 @@ public class TutorControlador extends Controlador {
         return "registroTutor.html";
     }
 
-   
     @GetMapping("/editar-tutor")
     public String modificar(@RequestParam String id, ModelMap model) throws ErrorServicio {
         List<Zona> zonas = zonaRepositorio.findAll();
@@ -69,7 +78,7 @@ public class TutorControlador extends Controlador {
         Tutor tutor = tutorServicio.buscarPorId(id);
         model.addAttribute("perfil", tutor);
 
-        return "perfilTutor3.html";
+        return "perfilTutor4.html";
     }
 
     @GetMapping("/deshabilitar")
@@ -112,14 +121,15 @@ public class TutorControlador extends Controlador {
         return "exito.html";
 
     }
-    
+
     @PostMapping("/enviarTutor")
-    public String enviarTutor(@RequestParam String idTutor){ //esta bien??
+    public String enviarTutor(@RequestParam String idTutor) { //esta bien??
         String id = idTutor;
         return id;
     }
-    
+
     @GetMapping("/mostrarTutor")
+<<<<<<< HEAD
     public String mostrarTutor(@RequestParam String id){
         
         try{
@@ -127,10 +137,19 @@ public class TutorControlador extends Controlador {
            
             return "mostrarTutor.html";
         }catch(ErrorServicio e){
+=======
+    public String mostrarTutor(@RequestParam String id) {
+
+        try {
+            Tutor tutor = tutorServicio.buscarPorId(id);
+
+            return "perfilTutor.html";
+        } catch (ErrorServicio e) {
+>>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
             return "error.html";
-            
+
         }
-        
+
     }
 
     @PostMapping("/actualizar-perfilTutor")
@@ -141,7 +160,7 @@ public class TutorControlador extends Controlador {
         try {
             tutor = tutorServicio.buscarPorId(id);
             tutorServicio.modificarTutor(archivo, id, nombre, apellido, mail, clave, clave2, telefono, descripcion, idZona, idMateria);
-            
+
         } catch (ErrorServicio ex) {
             List<Zona> zonas = zonaRepositorio.findAll();
             modelo.put("zonas", zonas);
@@ -150,7 +169,7 @@ public class TutorControlador extends Controlador {
             modelo.put("error", ex.getMessage());
             modelo.put("perfil", tutor);
 
-            return "perfilTutor3.html";
+            return "perfilTutor4.html";
         }
         return "redirect:/tutor/inicioTutor";
     }

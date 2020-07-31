@@ -69,7 +69,7 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
             + " WHERE h.baja IS NULL "
             + " AND h.nombre LIKE :q "
             + " OR h.apellido LIKE :q "
-            + "OR h.zona.nombre LIKE :q "
+            +  " OR h.zona.nombre LIKE :q "
             + " OR v.nombre LIKE :q "
             + " OR v.nivelEducativo LIKE :q "
             + " OR v.asignatura LIKE :q ")

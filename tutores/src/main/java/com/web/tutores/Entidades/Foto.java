@@ -22,8 +22,6 @@ public class Foto {
     @Lob
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
-    
-    //GET Y SET
 
     public String getId() {
         return id;
@@ -56,6 +54,8 @@ public class Foto {
     public void setContenido(byte[] contenido) {
         this.contenido = contenido;
     }
+    
+  
     
     
 

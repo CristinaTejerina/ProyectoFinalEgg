@@ -19,6 +19,5 @@ com\web\tutores\Errores\ErrorServicio.class
 com\web\tutores\Controladores\ZonaControlador.class
 com\web\tutores\Entidades\Materia.class
 com\web\tutores\Controladores\Controlador.class
-com\web\tutores\Controladores\UsuarioControlador.class
 com\web\tutores\Controladores\ErroresController.class
 com\web\tutores\Repositorios\TutorRepositorio.class

@@ -1,38 +1,38 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
+<<<<<<< HEAD
 import com.web.tutores.Entidades.Foto;
+=======
+import com.web.tutores.Entidades.Zona;
+<<<<<<< HEAD
+
+import com.web.tutores.Entidades.Foto;
+
+=======
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
+>>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
-import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.FotoRepositorio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import com.web.tutores.Servicio.UsuarioServicio;
-import static java.lang.System.load;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionIdListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -42,13 +42,13 @@ public class PlataformaControlador extends Controlador {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
+    @Autowired
     private TutorServicio tutorServicio;
 
     @Autowired
     private MateriaRepositorio materiaRepositorio;
 
     @Autowired
-
     private ZonaRepositorio zonaRepositorio;
 
     @Autowired
@@ -56,7 +56,6 @@ public class PlataformaControlador extends Controlador {
 
 //    @Autowired
 //    private ZonaRepositorio zonaRepositorio;
-
     @GetMapping("/")
     public String index() {
         return "index.html";
@@ -140,11 +139,13 @@ public class PlataformaControlador extends Controlador {
         ModelAndView modelV = new ModelAndView("inicio");
 
         List<Tutor> tutores;
-
         if (q == null || q.isEmpty()) {
+          
             tutores = tutorServicio.listarActivos();
         } else {
+            
             tutores = tutorServicio.listarActivos(q);
+           
         }
 
         model.put("tutores", tutores);
@@ -165,6 +166,12 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
@@ -172,6 +179,7 @@ public class PlataformaControlador extends Controlador {
         modelo.put("materias", materias);
 
         return "editarMateria.html";
+
     }
 
     @GetMapping("/editarZona")
