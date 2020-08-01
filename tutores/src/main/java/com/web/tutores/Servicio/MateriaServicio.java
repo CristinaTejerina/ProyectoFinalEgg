@@ -42,7 +42,7 @@ public class MateriaServicio {
         Optional<Materia> respuesta = materiaRepositorio.findById(idMateria);
         
         if(respuesta.isPresent()){
-            Materia materia = respuesta.get();
+            Materia materia = materiaRepositorio.findById(idMateria).get();
             
             materia.setNombre(nombre);
             materia.setDescripcion(descripcion);
@@ -82,6 +82,21 @@ public class MateriaServicio {
         if(nivel == null){
             
             throw new ErrorServicio("El nivel educativo no puede ser nulo");
+        }
+    }
+    
+    
+        public Materia buscarPorId(String id) throws ErrorServicio {
+            
+        Optional<Materia> respuesta = materiaRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Materia materia = respuesta.get();
+            return materia;
+
+        } else {
+            throw new ErrorServicio("No se encontro la materia solicitada.");
         }
     }
     

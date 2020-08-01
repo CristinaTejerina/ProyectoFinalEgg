@@ -48,20 +48,19 @@
           <div class="p-5">
             <h2 class="display-4">Editar Zonas Disponibles</h2>
             
-            <form action="/zona/registraZona" method="POST">
+            <form action="/zona/cambioZona" method="POST" th:object="${zona}">
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
               
-              <br><label> Zona a editar </label></br>
-              <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
-                  <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
-              </select>
+              <input name="id" type="hidden" th:value="${zona.id}"> 
+              
               
               <br><label>Nuevo Nombre de la Zona</label></br>
-              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la zona" class="form-control" th:value="${nombre}"/>
+              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la zona" class="form-control" th:value="${zona.nombre}"/>
               <br><label>Nueva Descripcion de la Zona</label></br>
-              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${descripcion}"/>
-            </div>
-            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
+              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${zona.descripcion}"/>
+
+            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>   
+            </form>
         </div>
       </div>
     </div>

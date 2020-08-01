@@ -67,6 +67,7 @@
              <div class="bg-circle-3 bg-circle"></div>
             <--<div class="bg-circle-4 bg-circle"></div>-->
         </header>
+<<<<<<< HEAD
         <p>
         <div class="container">
             <div class="card bg">
@@ -108,7 +109,53 @@
             </div>
         </div>
         <section>
+=======
+>>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
 
+        
+        <section>
+            <p>
+                <div class="container">
+                    <div class="card bg">
+                        <div class="card-header">
+                            <h3>Lista de tutores</h3>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+        
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Materia</th> 
+                                        <th>Asignatura</th>  
+                                        <th>Nivel</th>    
+                                        <th>Zona</th>                   
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="tutor: ${tutores}">
+                                        <td th:text="${tutor.nombre}"></td>
+                                        <td th:text="${tutor.apellido}"></td>
+                                        <td th:text="${tutor.materia.nombre}"></td>
+                                        <td th:text="${tutor.materia.asignatura}"></td>
+                                        <!--<td ><a th:ref="@{/asdasd/{tutor.id}}">+Info</a></td>
+                                        <td ><a>Asignaturas +Info</a></td>-->
+                                        <td th:text="${tutor.materia.nivelEducativo}"></td>
+                                        <td th:text="${tutor.zona.nombre}"></td>
+                                        <td><a th:href="${'/tutor/mostrarTutor/' + tutor.id}" type="btn btn-primary">Ver Perfil</a> </td>
+                                        
+<!--                                <form action="/tutor/enviarTutor" method="GET"> 
+                                    <input type="hidden" th:value="${tutor.id}"><td><input type="submit" value="Ver Perfil"></td></form>-->
+       
+
+                                        <!--<td><a th:href="@{eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6 order-lg-2">

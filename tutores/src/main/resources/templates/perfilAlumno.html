@@ -26,7 +26,7 @@
     <body>
 
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" >
+        <!-- <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" >
             <div class="container">
                 <a class="navbar-brand" href="/inicio">
                     <img src="img/logo.png" alt="">
@@ -39,13 +39,13 @@
 
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
-                      <a class="nav-link active" href="/inicio">Volver</a>
+                      <a class="nav-link" href="/inicio">Volver</a>
                     </li>
                     
                   </ul>
 
             </div>
-        </nav>
+        </nav> -->
 
         <header class="masthead text-center text-white">
 
@@ -60,16 +60,15 @@
             <form action="/usuario/actualizar-perfil" method="POST" >
                 <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
-<<<<<<< HEAD
 
                 
+<<<<<<< HEAD
                <img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;"> 
 >>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
-                <!--<img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
 =======
-                <!--<img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;">
-                <img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
+              <!--  <img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;">  -->
+>>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
+                <!--<img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
                      height="200" alt="Editar foto" id="ember471" class="profile-photo-edit__preview ember-view">-->
 
                 <input name="id" type="hidden" th:value="${perfil.id}">

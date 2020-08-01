@@ -27,8 +27,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}">Configurar Usuario</a>
                         <!--<a th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
+=======
+                        <!--<a class="nav-link" th:href="@{'/usuario/editar-perfil/'+session.clientesession.id}">Configurar Usuario</a>
+                        <!--<a th:href="@{/usuario/editar-perfil(id=_${session.clientesession.id}_ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
+>>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Salir</a>
@@ -51,7 +56,11 @@
             <!--<div class="bg-circle-4 bg-circle"></div>-->
         </header>
         <p/>
+<<<<<<< HEAD
         <form action="/tutor/mostrarTutor" method="GET">
+=======
+        <form action="/tutor/mostrarTutor" method="GET" th:object="${tutor}">
+>>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
             <p th:if="${error != null}" th:text="${error}" style= "color:red;"></p>
             <input type="hidden" name="id" th:value="${tutor.id}"/>
             <div class="control-group">

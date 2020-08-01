@@ -10,23 +10,13 @@ import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.TutorRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service    
@@ -126,13 +116,17 @@ public class TutorServicio {
     }
 
     @Transactional
-    public void modificarTutor(MultipartFile archivo, String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
+    public void modificarTutor(String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
 
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria);
         
         Zona zona = zonaRepositorio.getOne(idZona);
         
+        
+        System.out.println("++++++++++++++++++"+idMateria);
         Materia materia = materiaRepositorio.getOne(idMateria);
+        
+       
         
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
         
@@ -150,10 +144,12 @@ public class TutorServicio {
             tutor.setDescripcion(descripcion);
             tutor.setZona(zona);
 
-            Foto foto = fotoServicio.guardar(archivo);
-            tutor.setFoto(foto);
-            
+//            Foto foto = fotoServicio.guardar(archivo);
+//            tutor.setFoto(foto);
+           
             tutor.setMateria(materia);
+            
+            System.out.println("Materia++++++++++++++++++++++++++++++"+materia.toString());
 
             tutorRepositorio.save(tutor);
 
@@ -170,6 +166,21 @@ public class TutorServicio {
         if (respuesta.isPresent()) {
             Tutor tutor = respuesta.get();
             tutorRepositorio.delete(tutor);
+
+        } else {
+            throw new ErrorServicio("No se encontró al tutor");
+        }
+    }
+    
+    public void darDeBajaTutor(String id) throws ErrorServicio {
+
+        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Tutor tutor = respuesta.get();
+            tutor.setBaja(new Date());
+            
+            tutorRepositorio.save(tutor);
 
         } else {
             throw new ErrorServicio("No se encontró al tutor");
@@ -260,16 +271,7 @@ public class TutorServicio {
     }
 
     public Tutor buscarPorId(String id) throws ErrorServicio {
-        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-
-        if (respuesta.isPresent()) {
-
-            Tutor tutor = respuesta.get();
-            return tutor;
-
-        } else {
-            throw new ErrorServicio("No se encontro el usuario solicitado.");
-        }
+        return tutorRepositorio.getOne(id);
     }
     
 //    @Override
