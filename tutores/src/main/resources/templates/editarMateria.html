@@ -48,13 +48,11 @@
           <div class="p-5">
             <h2 class="display-4">Editar Materias Disponibles</h2>
             
-            <form action="/materia/registraMateria" method="POST">
+            <form action="/materia/cambioMateria" method="POST" th:object="${materia}">
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
               
-              <br><label> Materia a editar </label></br>
-              <select class="form-control" name= "idMateria"  type="text" placeholder="Indique la materia que quiere enseñar">
-                <option th:each="materia:${materias}" th:value="${materia.id}" th:text="${materia.asignatura + '- ' +materia.nombre + '- ' + materia.nivelEducativo}" >Materia</option>
-              </select>
+ 
+              <input name="id" type="hidden" th:value="${materia.id}"> 
               
               <br><label> Nueva Asignatura </label></br>
               <select class="form-control" name= "asignatura"  type="text" placeholder="Indique la Asignatura">
@@ -62,19 +60,26 @@
                 th:value="${asignaturaOpt}" th:text="${asignaturaOpt}"></option>
               </select>
               <br><label>Nuevo Nombre de Materia</label></br>
-              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la materia" class="form-control" th:value="${nombre}"/>
+              <input name= "nombre"  type="text" placeholder="Escribe el nombre de la materia" class="form-control" th:value="${materia.nombre}"/>
               <br><label> Nuevo Nivel Educativo </label></br>
               <select class="form-control" name= "nivel"  type="text" placeholder="Indique el nivel de la materia">
                 <option th:each="nivelOpt : ${T(com.web.tutores.Enums.NivelEducativo).values()}" 
                 th:value="${nivelOpt}" th:text="${nivelOpt}"></option>
               </select>
               <br><label>Nueva Descripcion de la Materia</label></br>
-              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${descripcion}"/>
-            </div>
-            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
+              <input name= "descripcion"  type="text" placeholder="Escribe una descripcion sobre la materia" class="form-control" th:value="${materia.descripcion}"/>
+           
+            
+            <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>   
+            </form>
+          </div>
+            
+           
         </div>
       </div>
-    </div>
+      
+      
+    
   </section>
  <!-- Footer -->
  <footer class="py-5 bg-black">
