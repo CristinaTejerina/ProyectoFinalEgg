@@ -10,6 +10,7 @@ import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
+import java.util.Date;
 
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -115,12 +116,20 @@ public class TutorControlador extends Controlador {
 
     @PostMapping("/actualizar-perfilTutor")
     public String actualizar(ModelMap modelo,
-            MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave, @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, @RequestParam String idZona, @RequestParam String idMateria) {
+             @RequestParam String id,
+             @RequestParam String nombre,
+             @RequestParam String apellido,
+             @RequestParam String mail,
+             @RequestParam String clave,
+             @RequestParam String clave2,
+             @RequestParam String telefono,
+             @RequestParam String descripcion,
+             @RequestParam String idZona, @RequestParam String idMateria) {
         Tutor tutor = null;
 
         try {
             tutor = tutorServicio.buscarPorId(id);
-            tutorServicio.modificarTutor(archivo, id, nombre, apellido, mail, clave, clave2, telefono, descripcion, idZona, idMateria);
+            tutorServicio.modificarTutor(id, nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria, descripcion);
 
         } catch (ErrorServicio ex) {
             List<Zona> zonas = zonaRepositorio.findAll();
@@ -134,6 +143,11 @@ public class TutorControlador extends Controlador {
         }
         return "redirect:/tutor/inicioTutor";
     }
+
+    @GetMapping("/elimina-Tutor")
+    public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
 
     @GetMapping("/enviarTutor/{idTutor}")
     public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio { //esta bien??
@@ -162,5 +176,27 @@ public class TutorControlador extends Controlador {
 
 }
 
-//comentario 
+        } catch (ErrorServicio e) {
+            return "error.html";
 
+        }
+        return "index.html";
+    }
+
+    @PostMapping("/bajaTutor")
+    public String bajaTutor(ModelMap modelo, @RequestParam String id) {
+
+        try {
+            tutorServicio.darDeBajaTutor(id);
+
+        } catch (ErrorServicio e) {
+
+             return "error.html";
+
+        }
+        modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
+        modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
+        return "exito.html";
+    }
+
+}
