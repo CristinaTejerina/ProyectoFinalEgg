@@ -52,7 +52,9 @@
         </header>
         <p/>
         <form action="/tutor/mostrarTutor" method="GET">
-            <div class="container">
+            <p th:if="${error != null}" th:text="${error}" style= "color:red;"></p>
+            <input type="hidden" name="id" th:value="${tutor.id}"/>
+            <div class="control-group">
                 <div class="card bg">
                  <div>
                      <img src="${tutor.foto}" alt="poner foto tutor">

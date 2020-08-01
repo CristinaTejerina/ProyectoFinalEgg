@@ -97,7 +97,7 @@
                                 <td th:text="${tutor.materia.nivelEducativo}"></td>
                                 <td th:text="${tutor.zona.nombre}"></td>
                                 <!--<td><a href="/perfilTutor.html" type="btn btn-primary">Ver Perfil</a> </td>-->
-                                <!--<td><a href="/mostrarTutor/${tutor.id}"><input type="submit" value="Ver Perfil"></a> </td>-->
+                                <td><a href="/enviarTutor/${tutor.id}" th:value="${tutor.id}"><input type="submit" value="Ver Perfil"></a> </td>
                                 <!--<form action="/tutor/enviarTutor" method="POST"><td><input type="submit" value="Ver Perfil"></td></form>-->
 
                                 <!--<td><a th:href="@{eliminar/} + ${producto.id}" th:text="'Eliminar'" class="btn btn-outline-danger"></a></td>-->

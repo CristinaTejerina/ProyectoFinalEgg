@@ -2,21 +2,9 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-<<<<<<< HEAD
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Usuario;
-=======
-<<<<<<< HEAD
-
-
-
 import com.web.tutores.Entidades.Usuario;
-
-
-
-=======
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
->>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
@@ -129,23 +117,14 @@ public class TutorControlador extends Controlador {
     }
 
     @GetMapping("/mostrarTutor")
-<<<<<<< HEAD
-    public String mostrarTutor(@RequestParam String id){
-        
-        try{
-           Tutor tutor = tutorServicio.buscarPorId(id);
-           
-            return "mostrarTutor.html";
-        }catch(ErrorServicio e){
-=======
     public String mostrarTutor(@RequestParam String id) {
-
+        Tutor tutor = null;
         try {
-            Tutor tutor = tutorServicio.buscarPorId(id);
+            tutor = tutorServicio.buscarPorId(id);
 
-            return "perfilTutor.html";
-        } catch (ErrorServicio e) {
->>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
+            return "redirect:/perfilTutor.html";
+        } catch (ErrorServicio e){
+        
             return "error.html";
 
         }

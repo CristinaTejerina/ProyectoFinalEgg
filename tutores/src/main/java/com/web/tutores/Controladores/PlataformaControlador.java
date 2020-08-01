@@ -1,17 +1,9 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
-<<<<<<< HEAD
 import com.web.tutores.Entidades.Foto;
-=======
 import com.web.tutores.Entidades.Zona;
-<<<<<<< HEAD
-
 import com.web.tutores.Entidades.Foto;
-
-=======
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
->>>>>>> 647ba148aeb8ff3488b0ed205483b1a1c72b782f
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
@@ -166,12 +158,6 @@ public class PlataformaControlador extends Controlador {
         return "crearZona.html";
     }
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
     @GetMapping("/editarMateria")
     public String editarMateria(ModelMap modelo) {
 
