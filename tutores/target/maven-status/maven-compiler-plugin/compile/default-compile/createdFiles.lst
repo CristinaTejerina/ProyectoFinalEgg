@@ -16,7 +16,6 @@ com\web\tutores\Repositorios\ZonaRepositorio.class
 com\web\tutores\Repositorios\FotoRepositorio.class
 com\web\tutores\SeguridadConfiguracion.class
 com\web\tutores\Errores\ErrorServicio.class
-com\web\tutores\Controladores\ZonaControlador.class
 com\web\tutores\Entidades\Materia.class
 com\web\tutores\Controladores\Controlador.class
 com\web\tutores\Controladores\ErroresController.class

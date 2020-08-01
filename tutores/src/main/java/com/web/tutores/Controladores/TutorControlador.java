@@ -2,16 +2,9 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-<<<<<<< HEAD
-
-
 
 import com.web.tutores.Entidades.Usuario;
 
-
-
-=======
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
@@ -26,6 +19,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -119,26 +113,6 @@ public class TutorControlador extends Controlador {
 
     }
 
-    @PostMapping("/enviarTutor")
-    public String enviarTutor(@RequestParam String idTutor) { //esta bien??
-        String id = idTutor;
-        return id;
-    }
-
-    @GetMapping("/mostrarTutor")
-    public String mostrarTutor(@RequestParam String id) {
-
-        try {
-            Tutor tutor = tutorServicio.buscarPorId(id);
-
-            return "perfilTutor.html";
-        } catch (ErrorServicio e) {
-            return "error.html";
-
-        }
-
-    }
-
     @PostMapping("/actualizar-perfilTutor")
     public String actualizar(ModelMap modelo,
             MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, @RequestParam String apellido, @RequestParam String mail, @RequestParam String clave, @RequestParam String clave2, @RequestParam String telefono, @RequestParam String descripcion, @RequestParam String idZona, @RequestParam String idMateria) {
@@ -159,6 +133,31 @@ public class TutorControlador extends Controlador {
             return "perfilTutor4.html";
         }
         return "redirect:/tutor/inicioTutor";
+    }
+
+    @GetMapping("/enviarTutor/{idTutor}")
+    public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio { //esta bien??
+//        String id = idTutor;
+        Tutor tutor = tutorServicio.buscarPorId(idTutor);
+        modelo.addAttribute("tutor", tutor);
+        return "mostrarTutor.html";
+    }
+
+    @GetMapping("/mostrarTutor/{id}")
+    public String mostrarTutor(@PathVariable String id, ModelMap modelo, HttpSession session) {
+        Tutor tutor = null;
+        try {
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++"+ id);
+            tutor = tutorServicio.buscarPorId(id);
+            modelo.put("tutor", tutor);
+            session.setAttribute("clientesession", usuarioLogueado());
+
+        } catch (ErrorServicio e) {
+
+            return "error.html";
+
+        }
+        return "mostrarTutor.html";
     }
 
 }

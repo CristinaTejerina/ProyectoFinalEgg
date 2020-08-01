@@ -6,6 +6,7 @@ import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +29,7 @@ public class UsuarioControlador extends Controlador {
         return "registroAlumno.html";
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO') || hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/editar-perfil")
     public String editarPerfil(@RequestParam String id, ModelMap model) throws ErrorServicio {
 
@@ -35,12 +37,7 @@ public class UsuarioControlador extends Controlador {
         model.put("zonas", zonas);
 
         Usuario usuario = usuarioServicio.buscarPorId(id);
-<<<<<<< HEAD
 
-        System.out.println("+++++"+usuario.getFoto().getContenido());
-
-=======
->>>>>>> a0fbb96bfa22266c19e1d99d85d0e02e6dc59dc2
         model.addAttribute("perfil", usuario);
 
         return "perfilAlumno.html";

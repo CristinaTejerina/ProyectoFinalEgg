@@ -260,16 +260,7 @@ public class TutorServicio {
     }
 
     public Tutor buscarPorId(String id) throws ErrorServicio {
-        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-
-        if (respuesta.isPresent()) {
-
-            Tutor tutor = respuesta.get();
-            return tutor;
-
-        } else {
-            throw new ErrorServicio("No se encontro el usuario solicitado.");
-        }
+        return tutorRepositorio.getOne(id);
     }
     
 //    @Override

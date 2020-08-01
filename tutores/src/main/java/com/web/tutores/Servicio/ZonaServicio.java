@@ -1,4 +1,3 @@
-
 package com.web.tutores.Servicio;
 
 import com.web.tutores.Entidades.Zona;
@@ -33,16 +32,26 @@ public class ZonaServicio {
     
     @Transactional
     public void editarZona(String id, String nombre, String descripcion) throws ErrorServicio{
+        validar(nombre,descripcion);
         
         Optional<Zona> respuesta = zonaRepositorio.findById(id);
                 
         if (respuesta.isPresent()) {
             
-            Zona zona = respuesta.get();
+             Zona zona = zonaRepositorio.findById(id).get();
+            
+            
             zona.setNombre(nombre);
             zona.setDescripcion(descripcion);
+            
+            zonaRepositorio.save(zona);
+    }else
+            throw new ErrorServicio("No existe una zona con el identificador solicitado.");
     }
-    }
+    
+    
+    
+
     
     
      public void validar(String nombre, String descripcion) throws ErrorServicio{
@@ -56,6 +65,21 @@ public class ZonaServicio {
 //            throw new ErrorServicio("La descripcion no puede ser nula");
 //        }
         
+    }
+     
+     
+         
+        public Zona buscarPorId(String id) throws ErrorServicio {
+        Optional<Zona> respuesta = zonaRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+
+            Zona zona = respuesta.get();
+            return zona;
+
+        } else {
+            throw new ErrorServicio("No se encontro la zona solicitada.");
+        }
     }
     
     
