@@ -116,15 +116,15 @@ public class TutorControlador extends Controlador {
 
     @PostMapping("/actualizar-perfilTutor")
     public String actualizar(ModelMap modelo,
-             @RequestParam String id,
-             @RequestParam String nombre,
-             @RequestParam String apellido,
-             @RequestParam String mail,
-             @RequestParam String clave,
-             @RequestParam String clave2,
-             @RequestParam String telefono,
-             @RequestParam String descripcion,
-             @RequestParam String idZona, @RequestParam String idMateria) {
+            @RequestParam String id,
+            @RequestParam String nombre,
+            @RequestParam String apellido,
+            @RequestParam String mail,
+            @RequestParam String clave,
+            @RequestParam String clave2,
+            @RequestParam String telefono,
+            @RequestParam String descripcion,
+            @RequestParam String idZona, @RequestParam String idMateria) {
         Tutor tutor = null;
 
         try {
@@ -148,55 +148,50 @@ public class TutorControlador extends Controlador {
     public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
         Tutor tutor = tutorServicio.buscarPorId(id);
         model.addAttribute("perfil", tutor);
+        return null;
+    }
+    
 
-    @GetMapping("/enviarTutor/{idTutor}")
-    public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio { //esta bien??
+        @GetMapping("/enviarTutor/{idTutor}")
+        public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio { 
 //        String id = idTutor;
-        Tutor tutor = tutorServicio.buscarPorId(idTutor);
-        modelo.addAttribute("tutor", tutor);
-        return "mostrarTutor.html";
-    }
+            Tutor tutor = tutorServicio.buscarPorId(idTutor);
+            modelo.addAttribute("tutor", tutor);
+            return "mostrarTutor.html";
+        }
 
-    @GetMapping("/mostrarTutor/{id}")
-    public String mostrarTutor(@PathVariable String id, ModelMap modelo, HttpSession session) {
+        @GetMapping("/mostrarTutor/{id}")
+        public String mostrarTutor(@PathVariable String id, ModelMap modelo , HttpSession session  ) {
         Tutor tutor = null;
-        try {
-            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++"+ id);
-            tutor = tutorServicio.buscarPorId(id);
-            modelo.put("tutor", tutor);
-            session.setAttribute("clientesession", usuarioLogueado());
+            try {
+                System.out.println("+++++++++++++++++++++++++++++++++++++++++++++" + id);
+                tutor = tutorServicio.buscarPorId(id);
+                modelo.put("tutor", tutor);
+                session.setAttribute("clientesession", usuarioLogueado());
 
-        } catch (ErrorServicio e) {
+            } catch (ErrorServicio e) {
 
-            return "error.html";
+                return "error.html";
 
+            }
+            return "mostrarTutor.html";
         }
-        return "mostrarTutor.html";
-    }
 
-}
-
-        } catch (ErrorServicio e) {
-            return "error.html";
-
-        }
-        return "index.html";
-    }
-
-    @PostMapping("/bajaTutor")
-    public String bajaTutor(ModelMap modelo, @RequestParam String id) {
+        @PostMapping("/bajaTutor")
+        public String bajaTutor (ModelMap modelo, @RequestParam String id  ) {
 
         try {
-            tutorServicio.darDeBajaTutor(id);
+                tutorServicio.darDeBajaTutor(id);
 
-        } catch (ErrorServicio e) {
+            } catch ( ErrorServicio e) {
 
-             return "error.html";
+                return "error.html";
 
+            }
+            modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
+            modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
+            return "exito.html";
         }
-        modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
-        modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
-        return "exito.html";
     }
 
-}
+

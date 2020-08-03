@@ -132,13 +132,14 @@ header.masthead .bg-circle-4 {
 }
 
 .btn-primary {
-  background-color: #ee0979;
-  border-color: #ee0979;
+  background-color: #000000;
+  border-color: #191970;
 }
 
 .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
-  background-color: #bd0760 !important;
-  border-color: #bd0760 !important;
+  background-color: #778899 !important;
+  /* background-color: #bd0760 !important; */
+  border-color: #191970 !important;
 }
 
 .btn-primary:focus {
@@ -151,8 +152,9 @@ header.masthead .bg-circle-4 {
 }
 
 .btn-secondary:active, .btn-secondary:focus, .btn-secondary:hover {
-  background-color: #cc5500 !important;
-  border-color: #cc5500 !important;
+    background-color: #778899 !important;
+  /* background-color: #cc5500 !important; */
+  border-color: #191970 !important;
 }
 
 .btn-secondary:focus {
