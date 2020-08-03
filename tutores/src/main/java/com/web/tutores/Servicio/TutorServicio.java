@@ -159,19 +159,20 @@ public class TutorServicio {
         }
     }
 
-    public void eliminarTutor(String id) throws ErrorServicio {
-
-        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-
-        if (respuesta.isPresent()) {
-            Tutor tutor = respuesta.get();
-            tutorRepositorio.delete(tutor);
-
-        } else {
-            throw new ErrorServicio("No se encontró al tutor");
-        }
-    }
+//    public void eliminarTutor(String id) throws ErrorServicio {
+//
+//        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+//
+//        if (respuesta.isPresent()) {
+//            Tutor tutor = respuesta.get();
+//            tutorRepositorio.delete(tutor);
+//
+//        } else {
+//            throw new ErrorServicio("No se encontró al tutor");
+//        }
+//    }
     
+    @Transactional
     public void darDeBajaTutor(String id) throws ErrorServicio {
 
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
