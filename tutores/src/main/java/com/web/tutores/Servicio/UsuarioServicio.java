@@ -219,5 +219,21 @@ public class UsuarioServicio implements UserDetailsService {
             throw new ErrorServicio("No se encontro el usuario solicitado.");
         }
     }
+    
+    @Transactional
+    public void darDeBajaTutor(String id) throws ErrorServicio {
+
+        Optional<Usuario> respuesta = usuarioRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Usuario usuario = respuesta.get();
+            usuario.setBaja(new Date());
+            
+            usuarioRepositorio.save(usuario);
+
+        } else {
+            throw new ErrorServicio("No se encontró al tutor");
+        }
+    }
 
 }

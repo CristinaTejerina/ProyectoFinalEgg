@@ -108,5 +108,30 @@ public class UsuarioControlador extends Controlador {
         }
 
     }
+    
+    @GetMapping("/elimina-Alumno")
+    public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Usuario usuario = usuarioServicio.buscarPorId(id);
+        model.addAttribute("perfil", usuario);
+        return "eliminaAlumno.html";
+    }
+
+    @PostMapping("/bajaAlumno")
+    public String bajaAlumno(@RequestParam String id, ModelMap modelo) {
+        Usuario usuario = null;
+
+        try {
+            usuario = usuarioServicio.buscarPorId(id);
+            usuarioServicio.darDeBajaTutor(id);
+            modelo.put("perfil", usuario);
+
+        } catch (ErrorServicio e) {
+
+            return "error.html";
+        }
+        modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
+        modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
+        return "exito.html";
+    }
 
 }
