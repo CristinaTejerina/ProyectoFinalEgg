@@ -2,21 +2,15 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-
-import com.web.tutores.Entidades.Usuario;
-
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import java.util.Date;
-
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +39,14 @@ public class TutorControlador extends Controlador {
 
         session.setAttribute("clientesession", tutorLogueado());
         return "inicioTutor.html";
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
+    @GetMapping("/altaTutor")
+    public String altaTutor(HttpSession session) {
+
+        session.setAttribute("clientesession", tutorLogueado());
+        return "altaTutor.html";
     }
 
     @GetMapping("/registroTutor")
@@ -191,6 +193,31 @@ public class TutorControlador extends Controlador {
         }
         modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
+        return "exito.html";
+    }
+    
+    @GetMapping("/altaTutor2")
+    public String altaTutor(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
+        return "altaTutor2.html";
+    }
+    
+    @PostMapping("/darDeAltaTutor")
+    public String darDeAltaTutor(@RequestParam String id, ModelMap modelo) {
+        Tutor tutor = null;
+
+        try {
+            tutor = tutorServicio.buscarPorId(id);
+            tutorServicio.darDeAltaTutor(id);
+            modelo.put("perfil", tutor);
+
+        } catch (ErrorServicio e) {
+
+            return "error.html";
+        }
+        modelo.put("titulo", "¡Volviste a pertences a la comunidad de Tutores.com !");
+        modelo.put("descripcion", "Bienvenido!!");
         return "exito.html";
     }
 }

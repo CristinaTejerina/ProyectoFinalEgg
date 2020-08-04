@@ -187,6 +187,22 @@ public class TutorServicio {
             throw new ErrorServicio("No se encontró al tutor");
         }
     }
+    
+    @Transactional
+    public void darDeAltaTutor(String id) throws ErrorServicio {
+
+        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Tutor tutor = respuesta.get();
+            tutor.setBaja(null);
+            
+            tutorRepositorio.save(tutor);
+
+        } else {
+            throw new ErrorServicio("No se encontró al tutor");
+        }
+    }
 
     private void validarTutor(String nombre, String apellido, String mail, String clave, String clave2, String telefono, Zona zona, Materia materia) throws ErrorServicio {
 
@@ -274,28 +290,6 @@ public class TutorServicio {
     public Tutor buscarPorId(String id) throws ErrorServicio {
         return tutorRepositorio.getOne(id);
     }
-    
-//    @Override
-//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-//        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
-//        if (tutor != null) {
-//
-//            List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
-//            permisos.add(p1);
-//   
-//            
-//
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//            HttpSession session = attr.getRequest().getSession();
-//            session.setAttribute("tutorsession", tutor);
-//
-//            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
-//            return user;
-//        } else {
-//            return null;
-//        }
-//    }
+
 
 }
