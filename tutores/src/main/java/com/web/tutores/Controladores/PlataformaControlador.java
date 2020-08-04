@@ -1,11 +1,6 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
-<<<<<<< HEAD
-import com.web.tutores.Entidades.Foto;
-import com.web.tutores.Entidades.Zona;
-=======
->>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
 import com.web.tutores.Entidades.Foto;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
@@ -13,7 +8,6 @@ import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.FotoRepositorio;
-import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.MateriaServicio;
@@ -178,9 +172,6 @@ public class PlataformaControlador extends Controlador {
     }
 
     @GetMapping("/editarMateria")
-<<<<<<< HEAD
-    public String editarMateria(ModelMap modelo) {
-=======
     public String editarMateria(@RequestParam String id, ModelMap modelo) throws ErrorServicio {
 
 //        List<Materia> materias = materiaRepositorio.findAll();
@@ -193,7 +184,6 @@ public class PlataformaControlador extends Controlador {
 
     @GetMapping("/seleccionarMateria")
     public String seleccionarMateria(ModelMap modelo) {
->>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
 
         List<Materia> materias = materiaRepositorio.findAll();
         modelo.put("materias", materias);
@@ -220,18 +210,9 @@ public class PlataformaControlador extends Controlador {
         List<Zona> zonas = zonaRepositorio.findAll();
         modelo.put("zonas", zonas);
 
-<<<<<<< HEAD
-
-        return "editarZona.html";
-=======
 //        Materia materia = materiaServicio.buscarPorId(id);
 //        modelo.addAttribute("materia", materia);
         return "seleccionarZona.html";
->>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
     }
-    
-
 
 }
-
-

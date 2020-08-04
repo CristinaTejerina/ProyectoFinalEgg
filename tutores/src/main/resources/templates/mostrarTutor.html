@@ -18,7 +18,9 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
         <!-- Custom styles for this template -->
+        <link href="/css/estiloMostrarTutor.css" rel="stylesheet">  
         <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+          
 
     </head>
     <body>
@@ -27,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-<<<<<<< HEAD
+
                         <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}">Configurar Usuario</a>
                         <!--<a th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
-=======
+
                         <!--<a class="nav-link" th:href="@{'/usuario/editar-perfil/'+session.clientesession.id}">Configurar Usuario</a>
                         <!--<a th:href="@{/usuario/editar-perfil(id=_${session.clientesession.id}_ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
->>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Salir</a>
@@ -50,24 +52,22 @@
                 </div>
 
             </div>
-            <div class="bg-circle-1 bg-circle"></div>
+            <!--<div class="bg-circle-1 bg-circle"></div>
             <div class="bg-circle-2 bg-circle"></div>
             <div class="bg-circle-3 bg-circle"></div>
             <!--<div class="bg-circle-4 bg-circle"></div>-->
         </header>
         <p/>
-<<<<<<< HEAD
-        <form action="/tutor/mostrarTutor" method="GET">
-=======
+
         <form action="/tutor/mostrarTutor" method="GET" th:object="${tutor}">
->>>>>>> 893e4ca2948b6ba58fbca59c1b88e4d5047fa5d8
+
             <p th:if="${error != null}" th:text="${error}" style= "color:red;"></p>
             <input type="hidden" name="id" th:value="${tutor.id}"/>
             <div class="control-group">
                 <div class="card bg">
-                 <div>
+                 <!--<div>
                      <img src="${tutor.foto}" alt="poner foto tutor">
-                </div>
+                </div>-->
                 <div class="card-header">
                     <h3>Nombre:</h3>
                     <p th:text="${tutor.nombre + ' ' + tutor.apellido}"></p>
@@ -97,8 +97,12 @@
                     <p th:text="${tutor.materia.nivelEducativo}"></p>
                 </div>
                 </div>
+                <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver</a>
              </div>
+            
         </form>
+    
+        <!--<input type="submit" value="Volver" action="/volverBusqueda">-->
         <section>
 
             <div class="container">

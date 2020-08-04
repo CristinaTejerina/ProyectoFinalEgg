@@ -1,4 +1,3 @@
-com\web\tutores\Entidades\Tutor.class
 com\web\tutores\Repositorios\UsuarioRepositorio.class
 com\web\tutores\Servicio\ZonaServicio.class
 com\web\tutores\Controladores\PlataformaControlador.class
