@@ -216,7 +216,7 @@ public class TutorControlador extends Controlador {
 
             return "error.html";
         }
-        modelo.put("titulo", "¡Volviste a pertences a la comunidad de Tutores.com !");
+        modelo.put("titulo", "¡Volviste a pertencer a la comunidad de Tutores.com !");
         modelo.put("descripcion", "Bienvenido!!");
         return "exito.html";
     }
