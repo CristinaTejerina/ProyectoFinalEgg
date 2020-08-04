@@ -19,7 +19,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-@Service    
+@Service
 public class TutorServicio {
 
     @Autowired
@@ -58,10 +58,10 @@ public class TutorServicio {
         tutor.setDescripcion(descripcion);
 
         //Materia materias = new Materia();
-        
+
         //tutor.setMateria(materia);
-        
-        
+
+
         tutor.setMateria(materia);
 
         tutor.setRol(Rol.TUTOR);
@@ -119,17 +119,17 @@ public class TutorServicio {
     public void modificarTutor(String id, String nombre, String apellido, String mail, String clave, String clave2, String telefono, String idZona, String idMateria, String descripcion) throws ErrorServicio {
 
         validarTutor2(nombre, apellido, mail, clave, clave2, telefono, idZona, idMateria);
-        
+
         Zona zona = zonaRepositorio.getOne(idZona);
-        
-        
+
+
         System.out.println("++++++++++++++++++"+idMateria);
         Materia materia = materiaRepositorio.getOne(idMateria);
-        
-       
-        
+
+
+
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-        
+
 
         if (respuesta.isPresent()) {
 
@@ -146,9 +146,9 @@ public class TutorServicio {
 
 //            Foto foto = fotoServicio.guardar(archivo);
 //            tutor.setFoto(foto);
-           
+
             tutor.setMateria(materia);
-            
+
             System.out.println("Materia++++++++++++++++++++++++++++++"+materia.toString());
 
             tutorRepositorio.save(tutor);
@@ -171,7 +171,7 @@ public class TutorServicio {
 //            throw new ErrorServicio("No se encontró al tutor");
 //        }
 //    }
-    
+
     @Transactional
     public void darDeBajaTutor(String id) throws ErrorServicio {
 
@@ -180,14 +180,14 @@ public class TutorServicio {
         if (respuesta.isPresent()) {
             Tutor tutor = respuesta.get();
             tutor.setBaja(new Date());
-            
+
             tutorRepositorio.save(tutor);
 
         } else {
             throw new ErrorServicio("No se encontró al tutor");
         }
     }
-    
+
     @Transactional
     public void darDeAltaTutor(String id) throws ErrorServicio {
 
@@ -196,7 +196,7 @@ public class TutorServicio {
         if (respuesta.isPresent()) {
             Tutor tutor = respuesta.get();
             tutor.setBaja(null);
-            
+
             tutorRepositorio.save(tutor);
 
         } else {
@@ -290,6 +290,7 @@ public class TutorServicio {
     public Tutor buscarPorId(String id) throws ErrorServicio {
         return tutorRepositorio.getOne(id);
     }
+
 
 
 }

@@ -41,7 +41,7 @@
         <h1 class="masthead-subheading mb-0">Usuario Logueado</h1>
         <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}"
           th:text="${session.clientesession.nombre}"></h2>
-        <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
+        <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
         <a th:href="@{/tutor/editar-tutor(id=__${session.clientesession.id}__ )}"
           class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Tutor</a>
 

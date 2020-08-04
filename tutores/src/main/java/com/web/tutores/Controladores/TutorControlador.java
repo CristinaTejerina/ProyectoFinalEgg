@@ -40,7 +40,7 @@ public class TutorControlador extends Controlador {
         session.setAttribute("clientesession", tutorLogueado());
         return "inicioTutor.html";
     }
-    
+
     @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/altaTutor")
     public String altaTutor(HttpSession session) {
@@ -146,28 +146,35 @@ public class TutorControlador extends Controlador {
         return "redirect:/tutor/inicioTutor";
     }
 
+
     @GetMapping("/enviarTutor/{idTutor}")
     public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio {
-//        String id = idTutor;
-        Tutor tutor = tutorServicio.buscarPorId(idTutor);
-        modelo.addAttribute("tutor", tutor);
-        return "mostrarTutor.html";
-    }
 
-    @GetMapping("/mostrarTutor/{id}")
-    public String mostrarTutor(@PathVariable String id, ModelMap modelo, HttpSession session) {
+//        String id = idTutor;
+            Tutor tutor = tutorServicio.buscarPorId(idTutor);
+            modelo.addAttribute("tutor", tutor);
+            return "mostrarTutor.html";
+        }
+
+        @GetMapping("/mostrarTutor/{id}")
+        public String mostrarTutor(@PathVariable String id, ModelMap modelo , HttpSession session  ) {
         Tutor tutor = null;
+
         try {
             System.out.println("+++++++++++++++++++++++++++++++++++++++++++++" + id);
             tutor = tutorServicio.buscarPorId(id);
             modelo.put("tutor", tutor);
             session.setAttribute("clientesession", usuarioLogueado());
 
-        } catch (ErrorServicio e) {
 
-            return "error.html";
+            } catch (ErrorServicio e) {
 
+                return "error.html";
+
+            }
+            return "mostrarTutor.html";
         }
+
         return "mostrarTutor.html";
     }
 
@@ -187,22 +194,49 @@ public class TutorControlador extends Controlador {
             tutorServicio.darDeBajaTutor(id);
             modelo.put("perfil", tutor);
 
-        } catch (ErrorServicio e) {
+
+            } catch ( ErrorServicio e) {
+
 
             return "error.html";
+
         }
-        modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
-        modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
-        return "exito.html";
     }
-    
+
     @GetMapping("/altaTutor2")
     public String altaTutor(@RequestParam String id, ModelMap model) throws ErrorServicio {
         Tutor tutor = tutorServicio.buscarPorId(id);
         model.addAttribute("perfil", tutor);
         return "altaTutor2.html";
     }
-    
+
+    @PostMapping("/darDeAltaTutor")
+    public String darDeAltaTutor(@RequestParam String id, ModelMap modelo) {
+        Tutor tutor = null;
+
+
+        try {
+            tutor = tutorServicio.buscarPorId(id);
+            tutorServicio.darDeAltaTutor(id);
+            modelo.put("perfil", tutor);
+
+        } catch (ErrorServicio e) {
+
+            return "error.html";
+        }
+        modelo.put("titulo", "¡Volviste a pertences a la comunidad de Tutores.com !");
+        modelo.put("descripcion", "Bienvenido!!");
+        return "exito.html";
+    }
+
+
+    @GetMapping("/altaTutor2")
+    public String altaTutor(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
+        return "altaTutor2.html";
+    }
+
     @PostMapping("/darDeAltaTutor")
     public String darDeAltaTutor(@RequestParam String id, ModelMap modelo) {
         Tutor tutor = null;
@@ -220,4 +254,6 @@ public class TutorControlador extends Controlador {
         modelo.put("descripcion", "Bienvenido!!");
         return "exito.html";
     }
+}
+
 }

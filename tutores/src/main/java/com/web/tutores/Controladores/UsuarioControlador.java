@@ -110,7 +110,7 @@ public class UsuarioControlador extends Controlador {
         }
 
     }
-    
+
     @GetMapping("/elimina-Alumno")
     public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
         Usuario usuario = usuarioServicio.buscarPorId(id);
@@ -135,7 +135,7 @@ public class UsuarioControlador extends Controlador {
         modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
         return "exito.html";
     }
-    
+
     @PreAuthorize("hasAnyRole('ROLE_USUARIO')")
     @GetMapping("/altaAlumno")
     public String altaAlumno(HttpSession session) {
@@ -143,14 +143,14 @@ public class UsuarioControlador extends Controlador {
         session.setAttribute("clientesession", usuarioLogueado());
         return "altaAlumno.html";
     }
-    
+
     @GetMapping("/altaAlumno2")
     public String altaAlumno(@RequestParam String id, ModelMap model) throws ErrorServicio {
         Usuario usuario = usuarioServicio.buscarPorId(id);
         model.addAttribute("perfil", usuario);
         return "altaAlumno2.html";
     }
-    
+
     @PostMapping("/darDeAltaAlumno")
     public String darDeAltaAlumno(@RequestParam String id, ModelMap modelo) {
         Usuario usuario = null;
