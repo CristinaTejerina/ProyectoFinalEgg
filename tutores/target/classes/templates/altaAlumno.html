@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
@@ -41,7 +41,7 @@
         <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}"
           th:text="${session.clientesession.nombre}"></h2>
         <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
-        <a th:href="@{/usuario/altaAlumno2(id=_${session.clientesession.id}_ )}"
+        <a th:href="@{/usuario/altaAlumno2(id=__${session.clientesession.id}__ )}"
           class="btn btn-primary btn-xl rounded-pill mt-5">Activar Perfil Alumno</a>
 
       </div>
