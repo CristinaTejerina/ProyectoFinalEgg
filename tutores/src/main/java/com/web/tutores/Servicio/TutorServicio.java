@@ -159,19 +159,20 @@ public class TutorServicio {
         }
     }
 
-    public void eliminarTutor(String id) throws ErrorServicio {
-
-        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
-
-        if (respuesta.isPresent()) {
-            Tutor tutor = respuesta.get();
-            tutorRepositorio.delete(tutor);
-
-        } else {
-            throw new ErrorServicio("No se encontró al tutor");
-        }
-    }
+//    public void eliminarTutor(String id) throws ErrorServicio {
+//
+//        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+//
+//        if (respuesta.isPresent()) {
+//            Tutor tutor = respuesta.get();
+//            tutorRepositorio.delete(tutor);
+//
+//        } else {
+//            throw new ErrorServicio("No se encontró al tutor");
+//        }
+//    }
     
+    @Transactional
     public void darDeBajaTutor(String id) throws ErrorServicio {
 
         Optional<Tutor> respuesta = tutorRepositorio.findById(id);
@@ -179,6 +180,22 @@ public class TutorServicio {
         if (respuesta.isPresent()) {
             Tutor tutor = respuesta.get();
             tutor.setBaja(new Date());
+            
+            tutorRepositorio.save(tutor);
+
+        } else {
+            throw new ErrorServicio("No se encontró al tutor");
+        }
+    }
+    
+    @Transactional
+    public void darDeAltaTutor(String id) throws ErrorServicio {
+
+        Optional<Tutor> respuesta = tutorRepositorio.findById(id);
+
+        if (respuesta.isPresent()) {
+            Tutor tutor = respuesta.get();
+            tutor.setBaja(null);
             
             tutorRepositorio.save(tutor);
 
@@ -273,28 +290,6 @@ public class TutorServicio {
     public Tutor buscarPorId(String id) throws ErrorServicio {
         return tutorRepositorio.getOne(id);
     }
-    
-//    @Override
-//    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-//        Tutor tutor = tutorRepositorio.buscarPorMail(mail);
-//        if (tutor != null) {
-//
-//            List<GrantedAuthority> permisos = new ArrayList<>();
-//
-//            GrantedAuthority p1 = new SimpleGrantedAuthority("ROLE_"+tutor.getRol().toString());
-//            permisos.add(p1);
-//   
-//            
-//
-//            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//            HttpSession session = attr.getRequest().getSession();
-//            session.setAttribute("tutorsession", tutor);
-//
-//            User user = new User(tutor.getMail(), tutor.getClave(), permisos);
-//            return user;
-//        } else {
-//            return null;
-//        }
-//    }
+
 
 }

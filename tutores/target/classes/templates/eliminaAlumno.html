@@ -45,7 +45,7 @@
 
         <h2 class="display-4">Elimina tu perfil</h2>
         <p></p>
-        <form action="/tutor/bajaTutor" method="POST" th:object="${perfil}">
+        <form action="/usuario/bajaAlumno" method="POST" th:object="${perfil}">
             <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
             <input name="id" type="hidden" th:value="${perfil.id}">
