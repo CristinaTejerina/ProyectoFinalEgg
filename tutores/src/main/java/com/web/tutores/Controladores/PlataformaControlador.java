@@ -1,7 +1,6 @@
 package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
-import com.web.tutores.Entidades.Foto;
 import com.web.tutores.Entidades.Tutor;
 import com.web.tutores.Entidades.Usuario;
 import com.web.tutores.Entidades.Zona;
@@ -12,28 +11,18 @@ import com.web.tutores.Repositorios.UsuarioRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.MateriaServicio;
 import com.web.tutores.Servicio.TutorServicio;
-import com.web.tutores.Servicio.UsuarioServicio;
 import com.web.tutores.Servicio.ZonaServicio;
-import static java.lang.System.load;
 import java.util.List;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionIdListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -90,20 +79,26 @@ public class PlataformaControlador extends Controlador {
     @PreAuthorize("hasAnyRole('ROLE_USUARIO') || hasAnyRole('ROLE_TUTOR')")
     @GetMapping("/inicio")
     public String inicio(ModelMap model, HttpSession session) {
-
         try {
-            if (tutorLogueado().getRol().toString().equals("TUTOR")) {
-                System.out.println("+++++++++++++++++++++++++tutor++" + tutorLogueado().getRol().toString());
+            if (tutorLogueado().getRol().toString().equals("TUTOR") && tutorLogueado().getBaja() == null) {
+                session.setAttribute("clientesession", tutorLogueado());
                 return "redirect:/tutor/inicioTutor";
             } else {
-                System.out.println("+++++++++++++++++++++++++usuario++" + usuarioLogueado().getRol().toString());
-                session.setAttribute("clientesession", usuarioLogueado());
-                return "inicio.html";
+                if (tutorLogueado().getRol().toString().equals("TUTOR")) {
+                    session.setAttribute("clientesession", tutorLogueado());
+                    return "redirect:/tutor/altaTutor";
+                } else {
+                    return null;
+                }
             }
         } catch (Exception e) {
-            System.out.println("+++++++++++++++++++++++++usuario++" + usuarioLogueado().getRol().toString());
-            session.setAttribute("clientesession", usuarioLogueado());
-            return "inicio.html";
+            if (usuarioLogueado().getRol().toString().equals("USUARIO") && usuarioLogueado().getBaja() == null) {
+                session.setAttribute("clientesession", usuarioLogueado());
+                return "inicio.html";
+            } else {
+                session.setAttribute("clientesession", usuarioLogueado());
+                return "redirect:/usuario/altaAlumno";
+            }
         }
 
     }

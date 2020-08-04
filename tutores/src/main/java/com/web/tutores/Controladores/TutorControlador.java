@@ -2,21 +2,15 @@ package com.web.tutores.Controladores;
 
 import com.web.tutores.Entidades.Materia;
 import com.web.tutores.Entidades.Tutor;
-
-import com.web.tutores.Entidades.Usuario;
-
 import com.web.tutores.Entidades.Zona;
 import com.web.tutores.Errores.ErrorServicio;
 import com.web.tutores.Repositorios.MateriaRepositorio;
 import com.web.tutores.Repositorios.ZonaRepositorio;
 import com.web.tutores.Servicio.TutorServicio;
-import java.util.Date;
-
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +39,14 @@ public class TutorControlador extends Controlador {
 
         session.setAttribute("clientesession", tutorLogueado());
         return "inicioTutor.html";
+    }
+    
+    @PreAuthorize("hasAnyRole('ROLE_TUTOR')")
+    @GetMapping("/altaTutor")
+    public String altaTutor(HttpSession session) {
+
+        session.setAttribute("clientesession", tutorLogueado());
+        return "altaTutor.html";
     }
 
     @GetMapping("/registroTutor")
@@ -144,6 +146,7 @@ public class TutorControlador extends Controlador {
         return "redirect:/tutor/inicioTutor";
     }
 
+<<<<<<< HEAD
     @GetMapping("/elimina-Tutor")
     public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
         Tutor tutor = tutorServicio.buscarPorId(id);
@@ -154,6 +157,10 @@ public class TutorControlador extends Controlador {
 
         @GetMapping("/enviarTutor/{idTutor}")
         public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio { 
+=======
+    @GetMapping("/enviarTutor/{idTutor}")
+    public String enviarTutor(@PathVariable String idTutor, ModelMap modelo) throws ErrorServicio {
+>>>>>>> f6cd1c098848697b70813e370be125d120bb9038
 //        String id = idTutor;
             Tutor tutor = tutorServicio.buscarPorId(idTutor);
             modelo.addAttribute("tutor", tutor);
@@ -163,11 +170,19 @@ public class TutorControlador extends Controlador {
         @GetMapping("/mostrarTutor/{id}")
         public String mostrarTutor(@PathVariable String id, ModelMap modelo , HttpSession session  ) {
         Tutor tutor = null;
+<<<<<<< HEAD
             try {
                 System.out.println("+++++++++++++++++++++++++++++++++++++++++++++" + id);
                 tutor = tutorServicio.buscarPorId(id);
                 modelo.put("tutor", tutor);
                 session.setAttribute("clientesession", usuarioLogueado());
+=======
+        try {
+            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++" + id);
+            tutor = tutorServicio.buscarPorId(id);
+            modelo.put("tutor", tutor);
+            session.setAttribute("clientesession", usuarioLogueado());
+>>>>>>> f6cd1c098848697b70813e370be125d120bb9038
 
             } catch (ErrorServicio e) {
 
@@ -176,22 +191,75 @@ public class TutorControlador extends Controlador {
             }
             return "mostrarTutor.html";
         }
+<<<<<<< HEAD
 
         @PostMapping("/bajaTutor")
         public String bajaTutor (ModelMap modelo, @RequestParam String id  ) {
 
         try {
                 tutorServicio.darDeBajaTutor(id);
+=======
+        return "mostrarTutor.html";
+    }
+
+    @GetMapping("/elimina-Tutor")
+    public String elimina(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
+        return "eliminaTutor.html";
+    }
+
+    @PostMapping("/bajaTutor")
+    public String bajaTutor(@RequestParam String id, ModelMap modelo) {
+        Tutor tutor = null;
+
+        try {
+            tutor = tutorServicio.buscarPorId(id);
+            tutorServicio.darDeBajaTutor(id);
+            modelo.put("perfil", tutor);
+>>>>>>> f6cd1c098848697b70813e370be125d120bb9038
 
             } catch ( ErrorServicio e) {
 
+<<<<<<< HEAD
                 return "error.html";
 
             }
             modelo.put("titulo", "¡Ya no pertences a la comunidad de Tutores.com !");
             modelo.put("descripcion", "Puedes volver cuando quieras!! Te esperamos!!");
             return "exito.html";
+=======
+            return "error.html";
+>>>>>>> f6cd1c098848697b70813e370be125d120bb9038
         }
     }
+    
+    @GetMapping("/altaTutor2")
+    public String altaTutor(@RequestParam String id, ModelMap model) throws ErrorServicio {
+        Tutor tutor = tutorServicio.buscarPorId(id);
+        model.addAttribute("perfil", tutor);
+        return "altaTutor2.html";
+    }
+    
+    @PostMapping("/darDeAltaTutor")
+    public String darDeAltaTutor(@RequestParam String id, ModelMap modelo) {
+        Tutor tutor = null;
 
+<<<<<<< HEAD
 
+=======
+        try {
+            tutor = tutorServicio.buscarPorId(id);
+            tutorServicio.darDeAltaTutor(id);
+            modelo.put("perfil", tutor);
+
+        } catch (ErrorServicio e) {
+
+            return "error.html";
+        }
+        modelo.put("titulo", "¡Volviste a pertences a la comunidad de Tutores.com !");
+        modelo.put("descripcion", "Bienvenido!!");
+        return "exito.html";
+    }
+}
+>>>>>>> f6cd1c098848697b70813e370be125d120bb9038

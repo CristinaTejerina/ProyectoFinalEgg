@@ -67,12 +67,12 @@ public interface TutorRepositorio extends JpaRepository<Tutor, String> {
     @Query("SELECT h from Tutor h "
             + ", IN(h.materia) v"
             + " WHERE h.baja IS NULL "
-            + " AND h.nombre LIKE :q "
+            + " AND (h.nombre LIKE :q "
             + " OR h.apellido LIKE :q "
             +  " OR h.zona.nombre LIKE :q "
             + " OR v.nombre LIKE :q "
             + " OR v.nivelEducativo LIKE :q "
-            + " OR v.asignatura LIKE :q ")
+            + " OR v.asignatura LIKE :q )")
     public List<Tutor> buscarActivos(@Param("q") String q);
 
 
