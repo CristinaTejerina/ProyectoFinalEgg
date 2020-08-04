@@ -20,6 +20,7 @@
 
   <!-- Custom styles for this template -->
   <link href="/css/one-page-wonder.min.css" rel="stylesheet">
+  <link href="/css/estilosInicio.css" rel="stylesheet">
 
 </head>
 
@@ -31,16 +32,13 @@
         <li class="nav-item">
           <a class="nav-link" href="/logout">Salir</a>
         </li>
-        <li class="nav-item">
-        <a th:href="@{/tutor/elimina-Tutor(id=__${session.clientesession.id}__ )}" class="nav-link" >Eliminar Perfil</a>
-        </li>
       </ul>
     </div>
   </nav>
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-subheading mb-0">Usurio Logeado</h1>
+        <h1 class="masthead-subheading mb-0">Usuario Logueado</h1>
         <h2 class="masthead-subheading mb-0" th:if="${session.clientesession != null}"
           th:text="${session.clientesession.nombre}"></h2>
         <a href="/inicio" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
@@ -49,18 +47,15 @@
 
       </div>
     </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
+
   </header>
 
-  <section>
+  <!-- <section>
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="/img/done.jpg" alt="">
+
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
@@ -70,7 +65,7 @@
           </div>
         </div>
       </div>
-  </section>
+  </section> -->
   <!-- Footer -->
   <footer class="py-5 bg-black">
     <div class="container">

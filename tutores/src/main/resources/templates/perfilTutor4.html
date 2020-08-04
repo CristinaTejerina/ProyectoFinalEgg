@@ -28,18 +28,14 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="/inicio">
-               
-            </a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a th:href="@{/tutor/elimina-Tutor(id=_${session.clientesession.id}_ )}" class="nav-link" >Eliminar Perfil</a>
+            </li>
+          </ul>
         </div>
-    </nav>
+      </nav>
 
     <header class="masthead text-center text-white">
 
@@ -48,7 +44,7 @@
         <form action="/tutor/actualizar-perfilTutor" method="POST" th:object="${perfil}">
             <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
-            <!--<img th:src="@{/foto/cargar/__${perfil.id}__}" style="width: auto; height: 60px;">
+            <!--<img th:src="@{/foto/cargar/_${perfil.id}_}" style="width: auto; height: 60px;">
             <img width="200" src="https://enlinea.santotomas.cl/wp-content/uploads/sites/2/2018/03/vu-700x465.png" 
                      height="200" alt="Editar foto" id="ember471" class="profile-photo-edit__preview ember-view">-->
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="es" xmlns:th="https://www.thymeleaf.org">
 
     <head>
@@ -31,8 +31,8 @@
 
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}">Configurar Usuario</a>
-                        <!--<a th:href="@{/usuario/editar-perfil(id=__${session.clientesession.id}__ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
+                        <a class="nav-link" th:href="@{/usuario/editar-perfil/_${session.clientesession.id}_ }">Configurar Usuario</a>
+                        <!--<a th:href="@{/usuario/editar-perfil(id=_${session.clientesession.id}_ )}" class="btn btn-primary btn-xl rounded-pill mt-5">Configurar Usuario</a>-->
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/logout">Salir</a>
