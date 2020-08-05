@@ -15,14 +15,16 @@
 
   <!-- Custom fonts for this template -->
   <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template -->
   <link href="/css/one-page-wonder.min.css" rel="stylesheet">
 
 </head>
+
 <body>
-<header class="masthead text-center text-white">
+  <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
         <h1 class="masthead-heading mb-0">Tutores.com</h1>
@@ -30,10 +32,7 @@
         <a href="/" class="btn btn-primary btn-xl rounded-pill mt-5">Volver a Inicio</a>
       </div>
     </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
+
   </header>
 
   <section>
@@ -52,43 +51,51 @@
               <p th:if="${error!=null}" th:text="${error}" style="color:red;"></p>
 
               <br><label>Nombre</label></br>
-              <input name= "nombre"  type="text" placeholder="Escribe tu nombre" class="form-control" th:value="${nombre}"/>
+              <input name="nombre" type="text" placeholder="Escribe tu nombre" class="form-control"
+                th:value="${nombre}" />
 
               <br><label>Apellido</label></br>
-              <input name= "apellido"  type="text" placeholder="Escribe tu apellido" class="form-control" th:value="${apellido}"/>
+              <input name="apellido" type="text" placeholder="Escribe tu apellido" class="form-control"
+                th:value="${apellido}" />
 
               <br><label>Telefono</label></br>
-              <input name= "telefono"  type="text" placeholder="Telefono" class="form-control" th:value="${telefono}"/>
+              <input name="telefono" type="text" placeholder="Telefono" class="form-control" th:value="${telefono}" />
 
               <br><label>Mail</label></br>
-              <input name= "mail"  type="email" placeholder="Mail" class="form-control" th:value="${mail}"/>
+              <input name="mail" type="email" placeholder="Mail" class="form-control" th:value="${mail}" />
 
               <br><label> Zona </label></br>
-              <select class="form-control" name= "idZona"  type="text" placeholder="Indique su zona">
-                  <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}" >Mendoza</option>
+              <select class="form-control" name="idZona" type="text" placeholder="Indique su zona">
+                <option th:each="zona:${zonas}" th:value="${zona.id}" th:text="${zona.nombre}">Mendoza</option>
               </select>
 
 
 
-              <br><label >Contraseña</label></br>
-              <input name= "clave"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave}"/>
+              <br><label>Contraseña</label></br>
+              <input name="clave" type="password" placeholder="Cotraseña" class="form-control" th:value="${clave}" />
 
               <br><label> Repita la contraseña </label></br>
-              <input name= "clave2"  type="password" placeholder="Cotraseña" class="form-control" th:value="${clave2}"/>
+              <input name="clave2" type="password" placeholder="Cotraseña" class="form-control" th:value="${clave2}" />
 
               <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                  <label>Foto</label>
+                 <label>Foto</label>
                   <input class="form-control" name="archivo" id="foto" type="file" placeholder="Foto" />
                   <p class="help-block text-danger"></p>
+
               </div>
-              </div>
-              <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>    </div>
+
+          </div>
+
+
+          <button type="submit" class="btn btn-primary btn-xl rounded-pill mt-5">Cargar</button>
         </div>
+
       </div>
     </div>
+    </div>
   </section>
- <!-- Footer -->
- <footer class="py-5 bg-black">
+  <!-- Footer -->
+  <footer class="py-5 bg-black">
     <div class="container">
       <p class="m-0 text-center text-white small">Copyright &copy; Your Website 2020</p>
     </div>
